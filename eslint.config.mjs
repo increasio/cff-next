@@ -1,13 +1,14 @@
+import { configs as tseslintConfigs } from 'typescript-eslint'
 import { defineConfig } from 'eslint/config'
 import eslintPlugin from '@eslint/js'
-import { configs as tseslintConfigs } from 'typescript-eslint'
-import reactPlugin from 'eslint-plugin-react'
-import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
+import eslintPluginPerfectionist from 'eslint-plugin-perfectionist'
+import eslintPluginUnicorn from 'eslint-plugin-unicorn'
+import eslintPluginUnusedImports from 'eslint-plugin-unused-imports'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
 import nextPlugin from '@next/eslint-plugin-next'
-import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
-import eslintPluginUnusedImports from 'eslint-plugin-unused-imports'
-import eslintPluginPerfectionist from 'eslint-plugin-perfectionist'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import reactPlugin from 'eslint-plugin-react'
 
 // Global ignores configuration
 // Must be in its own config object to act as global ignores
@@ -76,6 +77,7 @@ const typescriptConfig = defineConfig([
             '@typescript-eslint/no-unnecessary-template-expression': 'warn',
         },
     },
+    // Disable type-checked rules for JavaScript files
     {
         name: 'project/javascript-disable-type-check',
         files: ['**/*.{js,mjs,cjs}'],
@@ -95,6 +97,7 @@ const reactConfig = defineConfig([
             '@next/next': nextPlugin,
             'unused-imports': eslintPluginUnusedImports,
             perfectionist: eslintPluginPerfectionist,
+            unicorn: eslintPluginUnicorn,
         },
         rules: {
             // React recommended rules
@@ -108,16 +111,35 @@ const reactConfig = defineConfig([
             ...nextPlugin.configs.recommended.rules,
             // Next.js Core Web Vitals rules
             ...nextPlugin.configs['core-web-vitals'].rules,
-            ...eslintPluginPerfectionist.configs['recommended-alphabetical'].rules,
+
             // Customizations for modern React/Next.js
             'react/react-in-jsx-scope': 'off', // Not needed in Next.js
             'react/prop-types': 'off', // Use TypeScript instead
             'react/no-unknown-property': 'off', // Conflicts with custom attributes
             'react/jsx-no-target-blank': 'off', // Next.js handles this
-
             'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
             'no-unused-vars': 'off',
             'object-shorthand': 'error',
+            'prefer-const': ['error', { destructuring: 'all' }],
+            'prefer-destructuring': 'error',
+            'prefer-template': 'warn',
+            'unused-imports/no-unused-imports': 'error',
+            'react/jsx-newline': [
+                'warn',
+                {
+                    prevent: true,
+                },
+            ],
+            'react/self-closing-comp': [
+                'error',
+                {
+                    component: true,
+                    html: true,
+                },
+            ],
+
+            // Perfectionist rules for code style consistency
+            ...eslintPluginPerfectionist.configs['recommended-alphabetical'].rules,
             'perfectionist/sort-objects': [
                 'error',
                 {
@@ -151,25 +173,23 @@ const reactConfig = defineConfig([
                     environment: 'node',
                 },
             ],
-            'prefer-const': ['error', { destructuring: 'all' }],
-            'prefer-destructuring': 'error',
-            'prefer-template': 'warn',
-            'unused-imports/no-unused-imports': 'error',
-            'react/jsx-newline': [
-                'warn',
-                {
-                    prevent: true,
-                },
-            ],
+
+            // Unicorn rules adjustments
+            ...eslintPluginUnicorn.configs.recommended.rules,
+            'unicorn/prevent-abbreviations': 'off',
+            'unicorn/no-useless-undefined': ['error', { checkArguments: false, checkArrowFunctionBody: false }],
+            'unicorn/prefer-node-protocol': 'off',
+            'unicorn/no-null': 'off',
+            'unicorn/no-array-for-each': 'off',
+            'unicorn/no-array-reduce': 'off',
+            'unicorn/prefer-module': 'off',
+            'unicorn/prefer-string-raw': 'off',
+            'unicorn/prefer-array-some': 'off',
+            'unicorn/prefer-global-this': 'off',
+
+            // React Hooks specific rules
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'warn',
-            'react/self-closing-comp': [
-                'error',
-                {
-                    component: true,
-                    html: true,
-                },
-            ],
 
             // Fine-tuned accessibility rules
             'jsx-a11y/alt-text': [
@@ -221,11 +241,8 @@ const tailwindConfig = defineConfig([
             'better-tailwindcss/no-conflicting-classes': 'warn',
         },
         settings: {
-            tailwindcss: {
-                // Point to your Tailwind config file
-                config: `${import.meta.dirname}/tailwind.config.ts`,
-                // CSS files to analyze for Tailwind classes
-                cssFiles: ['app/**/*.css', 'components/**/*.css'],
+            'better-tailwindcss': {
+                entryPoint: 'src/app/globals.css',
             },
         },
     },

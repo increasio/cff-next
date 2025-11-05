@@ -7,8 +7,13 @@ export function Footer() {
     const date = new Date()
     return (
         <>
-            <footer className="bg-black text-white">
-                <div className="container flex flex-col space-y-5 pt-16 pb-14 md:flex-row md:space-y-0 md:space-x-20">
+            <footer className="bg-foreground text-white">
+                <div
+                    className={`
+                      container mx-auto flex flex-col space-y-5 pt-16 pb-14
+                      md:flex-row md:space-y-0 md:space-x-20
+                    `}
+                >
                     <div className="shrink-0">
                         <Image
                             alt="Logo"
@@ -24,30 +29,30 @@ export function Footer() {
                         <div className="flex flex-col md:flex-row md:space-x-10">
                             <div className="flex flex-col space-y-2">
                                 <Link
-                                    className="hover:text-green transition-colors"
+                                    className="transition-colors hover:text-green"
                                     href="/integrations/quickbooks-online/"
                                 >
                                     Cash Flow Frog for QuickBooks Online
                                 </Link>
-                                <Link className="hover:text-green transition-colors" href="/integrations/xero/">
+                                <Link className="transition-colors hover:text-green" href="/integrations/xero/">
                                     Cash Flow Frog for Xero
                                 </Link>
-                                <Link className="hover:text-green transition-colors" href="/integrations/sage-intacct/">
+                                <Link className="transition-colors hover:text-green" href="/integrations/sage-intacct/">
                                     Cash Flow Frog for Sage Intacct
                                 </Link>
-                                <Link className="hover:text-green transition-colors" href="/integrations/zoho-books/">
+                                <Link className="transition-colors hover:text-green" href="/integrations/zoho-books/">
                                     Cash Flow Frog for Zoho Books
                                 </Link>
-                                <Link className="hover:text-green transition-colors" href="/integrations/freshbooks/">
+                                <Link className="transition-colors hover:text-green" href="/integrations/freshbooks/">
                                     Cash Flow Frog for FreshBooks
                                 </Link>
-                                <Link className="hover:text-green transition-colors" href="/integrations/excel/">
+                                <Link className="transition-colors hover:text-green" href="/integrations/excel/">
                                     Cash Flow Frog for Excel
                                 </Link>
                             </div>
                             <div className="flex flex-col space-y-2">
                                 <Link
-                                    className="hover:text-green transition-colors"
+                                    className="transition-colors hover:text-green"
                                     href="/integrations/quickbooks-desktop/"
                                 >
                                     Cash Flow Frog for QuickBooks Desktop
@@ -58,27 +63,27 @@ export function Footer() {
                     <div>
                         <p className="mb-6 font-semibold">Resources</p>
                         <div className="flex flex-col space-y-2">
-                            <Link className="hover:text-green transition-colors" href="/blog/">
+                            <Link className="transition-colors hover:text-green" href="/blog/">
                                 Blog
                             </Link>
-                            <Link className="hover:text-green transition-colors" href="/whats-new/">
+                            <Link className="transition-colors hover:text-green" href="/whats-new/">
                                 Whats new
                             </Link>
-                            <Link className="hover:text-green transition-colors" href="/glossary/">
+                            <Link className="transition-colors hover:text-green" href="/glossary/">
                                 Glossary
                             </Link>
                             <a
-                                className="hover:text-green transition-colors"
+                                className="transition-colors hover:text-green"
                                 href="https://help.cashflowfrog.com/en"
                                 rel="noreferrer"
                                 target="_blank"
                             >
                                 Help & Support
                             </a>
-                            <Link className="hover:text-green transition-colors" href="/about-us/">
+                            <Link className="transition-colors hover:text-green" href="/about-us/">
                                 About us
                             </Link>
-                            <Link className="hover:text-green transition-colors" href="/contact/">
+                            <Link className="transition-colors hover:text-green" href="/contact/">
                                 Contact us
                             </Link>
                         </div>
@@ -86,16 +91,16 @@ export function Footer() {
                 </div>
                 <div
                     className={`
-                      container flex flex-col justify-between border-t border-[#343536] py-5 text-xs
+                      container mx-auto flex flex-col justify-between border-t border-[#343536] py-5 text-xs
                       md:flex-row
                     `}
                 >
                     <p>© Cash Flow Frog {date.getFullYear()}. All Rights Reserved.</p>
                     <div className="space-x-5">
-                        <Link className="hover:text-green transition-colors" href="/terms-conditions/">
+                        <Link className="transition-colors hover:text-green" href="/terms-conditions/">
                             Terms & Conditions
                         </Link>
-                        <Link className="hover:text-green transition-colors" href="/privacy-policy/">
+                        <Link className="transition-colors hover:text-green" href="/privacy-policy/">
                             Privacy Policy
                         </Link>
                     </div>

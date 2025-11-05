@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -26,7 +28,8 @@ export const HeaderClient = ({ data, onlySeo }: HeaderClientProps) => {
             {!onlySeo && (
                 <header
                     className={`
-                      absolute right-0 left-0 z-50 container flex items-center justify-between space-x-10 py-5 text-sm
+                      absolute right-0 left-0 z-50 container mx-auto flex items-center justify-between space-x-10 py-5
+                      text-sm
                     `}
                 >
                     <Link href="/">
@@ -48,7 +51,7 @@ export const HeaderClient = ({ data, onlySeo }: HeaderClientProps) => {
                     {/* prettier-ignore */}
                     <a
                         className="group hidden md:block"
-                        href={`https://accounts.cashflowfrog.com/login?section=header&page=${pathname.replace(/\//g, '')}`}
+                        href={`https://accounts.cashflowfrog.com/login?section=header&page=${pathname.replaceAll('/', '')}`}
                         rel="noreferrer"
                         target="_blank"
                     >
@@ -57,7 +60,7 @@ export const HeaderClient = ({ data, onlySeo }: HeaderClientProps) => {
                     {/* prettier-ignore */}
                     <a
                         className="btnOutline hidden px-7 py-2 md:block"
-                        href={`https://accounts.cashflowfrog.com/signup?action=signup&section=header&page=${pathname.replace(/\//g, '')}`}
+                        href={`https://accounts.cashflowfrog.com/signup?action=signup&section=header&page=${pathname.replaceAll('/', '')}`}
                         rel="noreferrer"
                         target="_blank"
                     >
@@ -185,7 +188,7 @@ const PersonIcon = () => {
     return (
         <svg fill="none" height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
             <path
-                className="group-hover:text-secondary text-white transition-colors"
+                className="text-white transition-colors group-hover:text-secondary"
                 clipRule="evenodd"
                 d="M12.97 5.468A3.956 3.956 0 019 9.438a3.956 3.956 0 01-3.97-3.97A3.955 3.955 0 019 1.5a3.955 3.955 0 013.97 3.968zM9 16.5c-3.253 0-6-.529-6-2.569s2.764-2.55 6-2.55c3.254 0 6 .528 6 2.568 0 2.041-2.764 2.551-6 2.551z"
                 fill="currentColor"
