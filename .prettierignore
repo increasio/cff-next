@@ -1,0 +1,6 @@
+.next
+.npm
+.vscode
+node_modules
+public
+*.yml

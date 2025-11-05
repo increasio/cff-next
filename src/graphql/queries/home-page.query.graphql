@@ -1,0 +1,75 @@
+query GetHomePage {
+    home {
+        FeaturesDescription
+        FeaturesTitle
+        HeroDescription
+        HeroTitle
+        HeroTitleUnderline
+        UnderlineLeft
+        Ladder {
+            Description
+            ImageFile {
+                alternativeText
+                url
+            }
+            Title
+        }
+        Ladder2 {
+            Description
+            ImageFile {
+                alternativeText
+                url
+            }
+            Title
+        }
+        Ladder3 {
+            Description
+            ImageFile {
+                alternativeText
+                url
+            }
+            Title
+        }
+        Seo {
+            MetaDescription
+            MetaTitle
+            OgDescription
+            OgTitle
+            ShareImageFile {
+                url
+            }
+        }
+    }
+    features(filters: { showOnMain: { eq: true } }) {
+        CtaText
+        Description
+        ImageFile {
+            alternativeText
+            url
+        }
+        Ladder {
+            Description
+            ImageFile {
+                alternativeText
+                url
+            }
+            Link
+            Subtitle
+            Title
+            reverse
+        }
+        Link
+        Name
+        Title
+        Slug
+    }
+    benefits {
+        Description
+        ImageFile {
+            alternativeText
+            url
+        }
+        ImageRight
+        Name
+    }
+}

@@ -1,0 +1,19 @@
+query GetHeaderData {
+    setting {
+        headScript
+        bodyNoScript
+    }
+    features(filters: { showOnMain: { eq: true } }, sort: ["Name:asc"]) {
+        Name
+        Slug
+        SortOrder
+    }
+    integrations(sort: ["Name:asc"], filters: { showOnMenu: { eq: true } }) {
+        Name
+        Slug
+    }
+    businesses(filters: { showOnMenu: { eq: true } }) {
+        Slug
+        Name
+    }
+}
