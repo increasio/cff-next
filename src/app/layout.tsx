@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
 
-import { Urbanist } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 
 import { Layout } from '@/components/layout'
 
 import './globals.css'
 
-const urbanist = Urbanist({
+const manrope = Manrope({
     subsets: ['latin'],
-    variable: '--font-geist-sans',
+    variable: '--font-manrope',
+    weight: ['200', '300', '400', '500', '600', '700', '800'],
 })
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${urbanist.variable} antialiased`}>
+            <body className={`${manrope.className} antialiased`}>
                 <Layout>{children}</Layout>
             </body>
         </html>

@@ -5,9 +5,20 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
+import { Button } from '@/components/ui/button'
+import {
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu'
+import { CLOUDINARY_URL } from '@/constants'
 import { GetHeaderDataQuery } from '@/graphql/generated/sdk'
-import { getResponsiveImageLink } from '@/lib/utils'
-
+import { useIsMobile } from '@/hooks/use-mobile'
+import { cn } from '@/lib/utils'
 interface HeaderClientProps {
     data: GetHeaderDataQuery
     onlySeo?: boolean
@@ -15,66 +26,144 @@ interface HeaderClientProps {
 
 export const HeaderClient = ({ data, onlySeo }: HeaderClientProps) => {
     const pathname = usePathname()
+    const isMobile = useIsMobile()
 
     const [showMenu, setShowMenu] = useState(false)
     const [expanded, setExpanded] = useState(0)
 
+    const menu = [
+        {
+            href: '/pricing',
+            showSeeAll: false,
+            submenu: [],
+            title: 'Pricing',
+        },
+        {
+            href: '/features',
+            showSeeAll: true,
+            submenu: data.features.map((feature) => ({
+                href: `/features/${feature?.Slug}`,
+                title: feature?.Name,
+            })),
+            title: 'Features',
+        },
+        {
+            href: '/integrations',
+            showSeeAll: true,
+            submenu: data.integrations.map((integration) => ({
+                href: `/integrations/${integration?.Slug}`,
+                title: integration?.Name,
+            })),
+            title: 'Integrations',
+        },
+        {
+            href: '/accountants-bookkeepers',
+            showSeeAll: false,
+            submenu: [],
+            title: 'Accountants & Bookkeepers',
+        },
+        {
+            href: '/business',
+            showSeeAll: false,
+            submenu: data.businesses.map((business) => ({
+                href: `/business/${business?.Slug}`,
+                title: business?.Name,
+            })),
+            title: 'Business',
+        },
+    ]
+
     return (
         <>
-            {/* <Helmet>
-                <script>{headerData.strapiSetting.headScript}</script>
-            </Helmet>
-            <noscript>{headerData.strapiSetting.bodyNoScript}</noscript> */}
             {!onlySeo && (
                 <header
                     className={`
-                      absolute right-0 left-0 z-50 container mx-auto flex items-center justify-between space-x-10 py-5
+                      absolute inset-x-0 z-50 container mx-auto flex h-[100px] items-center justify-between gap-10 py-7
                       text-sm
                     `}
                 >
                     <Link href="/">
                         <Image
-                            alt="Logo"
-                            height={100}
-                            src={getResponsiveImageLink('images/svg/logo.svg', 160)}
+                            alt="Cash Flow Frog logo"
+                            height={32}
+                            src={`${CLOUDINARY_URL}/images/svg/logo-green.svg`}
                             width={160}
                         />
                     </Link>
-                    {/* Pricing | Features ^ | Integrations ^ | Acc&Book | Business ^  */}
-                    <nav className="hidden flex-1 space-x-10 text-white md:flex">
-                        {/* <LinkComponent href="pricing" title="Pricing" />
-                        <LinkComponent href="features" obj={data.features} title="Features" />
-                        <LinkComponent href="integrations" obj={data.integrations} title="Integrations" />
-                        <LinkComponent href="accountants-bookkeepers" title="Accountants & Bookkeepers" />
-                        <LinkComponentWithoutSingle href="business" obj={data.businesses} title="Business" /> */}
-                    </nav>
-                    {/* prettier-ignore */}
-                    <a
-                        className="group hidden md:block"
-                        href={`https://accounts.cashflowfrog.com/login?section=header&page=${pathname.replaceAll('/', '')}`}
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        <PersonIcon />
-                    </a>
-                    {/* prettier-ignore */}
-                    <a
-                        className="btnOutline hidden px-7 py-2 md:block"
-                        href={`https://accounts.cashflowfrog.com/signup?action=signup&section=header&page=${pathname.replaceAll('/', '')}`}
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        Start free
-                    </a>
-                    {/* burger menu */}
-                    <button
-                        className="md:hidden"
-                        onClick={() => {
-                            setShowMenu(true)
-                        }}
-                    >
-                        <MenuIcon />
-                    </button>
+                    <NavigationMenu viewport={isMobile}>
+                        <NavigationMenuList>
+                            {menu.map((menuItem) => {
+                                return menuItem.submenu.length > 0 ? (
+                                    <NavigationMenuItem
+                                        className="hidden md:block"
+                                        key={menuItem.title + menuItem.href}
+                                    >
+                                        <NavigationMenuTrigger>
+                                            <Link href={menuItem.href}>{menuItem.title}</Link>
+                                        </NavigationMenuTrigger>
+                                        <NavigationMenuContent>
+                                            {menuItem.submenu.map((subItem) => (
+                                                <NavigationMenuLink
+                                                    asChild
+                                                    className="whitespace-nowrap"
+                                                    key={subItem.title}
+                                                >
+                                                    <Link href={subItem.href}>{subItem.title}</Link>
+                                                </NavigationMenuLink>
+                                            ))}
+                                            {menuItem.showSeeAll && (
+                                                <NavigationMenuLink asChild className="text-dark-green">
+                                                    <Link href={menuItem.href}>See all</Link>
+                                                </NavigationMenuLink>
+                                            )}
+                                        </NavigationMenuContent>
+                                    </NavigationMenuItem>
+                                ) : (
+                                    <NavigationMenuItem key={menuItem.title + menuItem.href}>
+                                        <NavigationMenuLink
+                                            asChild
+                                            className={cn(navigationMenuTriggerStyle(), `hover:bg-transparent`)}
+                                        >
+                                            <Link href={menuItem.href}>{menuItem.title}</Link>
+                                        </NavigationMenuLink>
+                                    </NavigationMenuItem>
+                                )
+                            })}
+                        </NavigationMenuList>
+                    </NavigationMenu>
+                    <div className="flex items-center gap-6">
+                        <a
+                            className="group hidden md:block"
+                            href={`https://accounts.cashflowfrog.com/login?section=header&page=${pathname.replaceAll(
+                                '/',
+                                '',
+                            )}`}
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            <PersonIcon />
+                        </a>
+                        <Button asChild className="hidden px-9 md:block" size="sm" variant="outline">
+                            <Link
+                                href={`https://accounts.cashflowfrog.com/signup?action=signup&section=header&page=${pathname.replaceAll(
+                                    '/',
+                                    '',
+                                )}`}
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                Start free
+                            </Link>
+                        </Button>
+                        <button
+                            className="md:hidden"
+                            onClick={() => {
+                                setShowMenu(true)
+                            }}
+                        >
+                            <MenuIcon />
+                        </button>
+                    </div>
                 </header>
             )}
             {/* mobile */}
@@ -188,7 +277,7 @@ const PersonIcon = () => {
     return (
         <svg fill="none" height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
             <path
-                className="text-white transition-colors group-hover:text-secondary"
+                className="text-dark-green transition-colors group-hover:text-secondary"
                 clipRule="evenodd"
                 d="M12.97 5.468A3.956 3.956 0 019 9.438a3.956 3.956 0 01-3.97-3.97A3.955 3.955 0 019 1.5a3.955 3.955 0 013.97 3.968zM9 16.5c-3.253 0-6-.529-6-2.569s2.764-2.55 6-2.55c3.254 0 6 .528 6 2.568 0 2.041-2.764 2.551-6 2.551z"
                 fill="currentColor"

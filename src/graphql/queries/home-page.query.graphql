@@ -1,3 +1,15 @@
+fragment LadderFragment on ComponentLadderLadderItem {
+    Description
+    ImageFile {
+        alternativeText
+        url
+    }
+    Link
+    Subtitle
+    Title
+    reverse
+}
+
 query GetHomePage {
     home {
         FeaturesDescription
@@ -7,28 +19,13 @@ query GetHomePage {
         HeroTitleUnderline
         UnderlineLeft
         Ladder {
-            Description
-            ImageFile {
-                alternativeText
-                url
-            }
-            Title
+            ...LadderFragment
         }
         Ladder2 {
-            Description
-            ImageFile {
-                alternativeText
-                url
-            }
-            Title
+            ...LadderFragment
         }
         Ladder3 {
-            Description
-            ImageFile {
-                alternativeText
-                url
-            }
-            Title
+            ...LadderFragment
         }
         Seo {
             MetaDescription
@@ -48,15 +45,7 @@ query GetHomePage {
             url
         }
         Ladder {
-            Description
-            ImageFile {
-                alternativeText
-                url
-            }
-            Link
-            Subtitle
-            Title
-            reverse
+            ...LadderFragment
         }
         Link
         Name

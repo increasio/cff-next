@@ -1,0 +1,14 @@
+query GetTestimonials {
+    testimonials {
+        Author {
+            AvatarFile {
+                alternativeText
+                url
+            }
+            Name
+            Role
+        }
+        Text
+        Title
+    }
+}

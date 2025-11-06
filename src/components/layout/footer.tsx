@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { getResponsiveImageLink } from '@/lib/utils'
+import { CLOUDINARY_URL } from '@/constants'
 
 export function Footer() {
     const date = new Date()
     return (
         <>
-            <footer className="bg-foreground text-white">
+            <footer className="bg-brown-background text-white">
                 <div
                     className={`
                       container mx-auto flex flex-col space-y-5 pt-16 pb-14
@@ -20,7 +20,7 @@ export function Footer() {
                             className="mb-6"
                             height={100}
                             loading="lazy"
-                            src={getResponsiveImageLink('images/svg/logo-green.svg', 215)}
+                            src={`${CLOUDINARY_URL}/images/svg/logo-green.svg`}
                             width={215}
                         />
                     </div>

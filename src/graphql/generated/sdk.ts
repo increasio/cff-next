@@ -2789,12 +2789,31 @@ export type GetHeaderDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetHeaderDataQuery = { __typename?: 'Query', setting?: { __typename?: 'Setting', headScript?: string | null, bodyNoScript?: string | null } | null, features: Array<{ __typename?: 'Feature', Name?: string | null, Slug?: string | null, SortOrder: number } | null>, integrations: Array<{ __typename?: 'Integration', Name?: string | null, Slug?: string | null } | null>, businesses: Array<{ __typename?: 'Business', Slug?: string | null, Name?: string | null } | null> };
 
+export type LadderFragmentFragment = { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null };
+
 export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHomePageQuery = { __typename?: 'Query', home?: { __typename?: 'Home', FeaturesDescription?: string | null, FeaturesTitle?: string | null, HeroDescription?: string | null, HeroTitle?: string | null, HeroTitleUnderline?: string | null, UnderlineLeft?: boolean | null, Ladder?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Title?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Ladder2?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Title?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Ladder3?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Title?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null } | null, features: Array<{ __typename?: 'Feature', CtaText?: string | null, Description?: string | null, Link?: string | null, Name?: string | null, Title?: string | null, Slug?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, Ladder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null } | null>, benefits: Array<{ __typename?: 'Benefit', Description?: string | null, ImageRight?: boolean | null, Name?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> };
+export type GetHomePageQuery = { __typename?: 'Query', home?: { __typename?: 'Home', FeaturesDescription?: string | null, FeaturesTitle?: string | null, HeroDescription?: string | null, HeroTitle?: string | null, HeroTitleUnderline?: string | null, UnderlineLeft?: boolean | null, Ladder?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Ladder2?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Ladder3?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null } | null, features: Array<{ __typename?: 'Feature', CtaText?: string | null, Description?: string | null, Link?: string | null, Name?: string | null, Title?: string | null, Slug?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, Ladder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null } | null>, benefits: Array<{ __typename?: 'Benefit', Description?: string | null, ImageRight?: boolean | null, Name?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> };
+
+export type GetTestimonialsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
+export type GetTestimonialsQuery = { __typename?: 'Query', testimonials: Array<{ __typename?: 'Testimonial', Text?: string | null, Title: string, Author?: { __typename?: 'ComponentPeoplePeople', Name?: string | null, Role?: string | null, AvatarFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null> };
+
+export const LadderFragmentFragmentDoc = gql`
+    fragment LadderFragment on ComponentLadderLadderItem {
+  Description
+  ImageFile {
+    alternativeText
+    url
+  }
+  Link
+  Subtitle
+  Title
+  reverse
+}
+    `;
 export const GetHeaderDataDocument = gql`
     query GetHeaderData {
   setting {
@@ -2826,28 +2845,13 @@ export const GetHomePageDocument = gql`
     HeroTitleUnderline
     UnderlineLeft
     Ladder {
-      Description
-      ImageFile {
-        alternativeText
-        url
-      }
-      Title
+      ...LadderFragment
     }
     Ladder2 {
-      Description
-      ImageFile {
-        alternativeText
-        url
-      }
-      Title
+      ...LadderFragment
     }
     Ladder3 {
-      Description
-      ImageFile {
-        alternativeText
-        url
-      }
-      Title
+      ...LadderFragment
     }
     Seo {
       MetaDescription
@@ -2867,15 +2871,7 @@ export const GetHomePageDocument = gql`
       url
     }
     Ladder {
-      Description
-      ImageFile {
-        alternativeText
-        url
-      }
-      Link
-      Subtitle
-      Title
-      reverse
+      ...LadderFragment
     }
     Link
     Name
@@ -2892,6 +2888,22 @@ export const GetHomePageDocument = gql`
     Name
   }
 }
+    ${LadderFragmentFragmentDoc}`;
+export const GetTestimonialsDocument = gql`
+    query GetTestimonials {
+  testimonials {
+    Author {
+      AvatarFile {
+        alternativeText
+        url
+      }
+      Name
+      Role
+    }
+    Text
+    Title
+  }
+}
     `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
@@ -2906,6 +2918,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetHomePage(variables?: GetHomePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetHomePageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetHomePageQuery>({ document: GetHomePageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetHomePage', 'query', variables);
+    },
+    GetTestimonials(variables?: GetTestimonialsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetTestimonialsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetTestimonialsQuery>({ document: GetTestimonialsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetTestimonials', 'query', variables);
     }
   };
 }
