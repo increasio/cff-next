@@ -30,7 +30,7 @@ export function BlockWithImage({ data }: BlockWithImageProps) {
                 )}
                 <div className="flex flex-col items-start gap-5 lg:px-8">
                     <h3 className="text-xl leading-[140%] font-semibold lg:text-2xl">{Title}</h3>
-                    <p className="leading-[160%] text-text-light">{Description}</p>
+                    <p className="leading-[160%] text-neutral-500">{Description}</p>
                     {url && (
                         <Button asChild className="mt-7">
                             <Link href={url}>Start Free</Link>

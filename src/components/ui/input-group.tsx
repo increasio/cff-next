@@ -32,9 +32,9 @@ function InputGroup({ className, ...props }: React.ComponentProps<'div'>) {
 
                 // Focus state.
                 `
-                  has-[[data-slot=input-group-control]:focus-visible]:border-neutral-950
+                  has-[[data-slot=input-group-control]:focus-visible]:border-neutral-800
                   has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]
-                  has-[[data-slot=input-group-control]:focus-visible]:ring-neutral-950/50
+                  has-[[data-slot=input-group-control]:focus-visible]:ring-neutral-800/50
                 `,
 
                 // Error state.

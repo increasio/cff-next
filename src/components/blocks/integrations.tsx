@@ -8,7 +8,7 @@ export function Integrations() {
             <h2 className="text-2xl leading-[140%] font-semibold text-balance lg:text-[40px]">
                 Integrates seamlessly with QuickBooks, Xero, Sage Intacct, Zoho Books and FreshBooks
             </h2>
-            <p className="text-balance text-text-light">
+            <p className="text-balance text-neutral-500">
                 Connect your accounting software with the click of a button and get your forecast instantly. No tedious
                 import processes or manual data entry - your accounting data is automatically pulled from your
                 accounting software and is always up-to-date.

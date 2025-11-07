@@ -35,8 +35,8 @@ export function Rating() {
                             </svg>
                         ))}
                     </div>
-                    <span className="text-xl leading-[140%] font-semibold text-dark-green">{item.title}</span>
-                    <span className="leading-[140%] text-text">{item.subtitle}</span>
+                    <span className="text-xl leading-[140%] font-semibold text-primary-200">{item.title}</span>
+                    <span className="leading-[140%] text-neutral-600">{item.subtitle}</span>
                 </div>
             ))}
         </section>

@@ -112,7 +112,7 @@ export const HeaderClient = ({ data, onlySeo }: HeaderClientProps) => {
                                                 </NavigationMenuLink>
                                             ))}
                                             {menuItem.showSeeAll && (
-                                                <NavigationMenuLink asChild className="text-dark-green">
+                                                <NavigationMenuLink asChild className="text-primary-200">
                                                     <Link href={menuItem.href}>See all</Link>
                                                 </NavigationMenuLink>
                                             )}
@@ -277,7 +277,7 @@ const PersonIcon = () => {
     return (
         <svg fill="none" height="18" viewBox="0 0 18 18" width="18" xmlns="http://www.w3.org/2000/svg">
             <path
-                className="text-dark-green transition-colors group-hover:text-secondary"
+                className="text-primary-200 transition-colors group-hover:text-secondary"
                 clipRule="evenodd"
                 d="M12.97 5.468A3.956 3.956 0 019 9.438a3.956 3.956 0 01-3.97-3.97A3.955 3.955 0 019 1.5a3.955 3.955 0 013.97 3.968zM9 16.5c-3.253 0-6-.529-6-2.569s2.764-2.55 6-2.55c3.254 0 6 .528 6 2.568 0 2.041-2.764 2.551-6 2.551z"
                 fill="currentColor"

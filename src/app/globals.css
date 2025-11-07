@@ -4,26 +4,46 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
+    --color-neutral-*: initial;
+
+    --color-neutral-200: var(--color-neutral-200);
+    --color-neutral-300: var(--color-neutral-300);
+    --color-neutral-400: var(--color-neutral-400);
+    --color-neutral-500: var(--color-neutral-500);
+    --color-neutral-600: var(--color-neutral-600);
+    --color-neutral-700: var(--color-neutral-700);
+    --color-neutral-800: var(--color-neutral-800);
+
+    --color-primary-50: var(--color-primary-50);
+    --color-primary-100: var(--color-primary-100);
+    --color-primary-200: var(--color-primary-200);
+    --color-primary-300: var(--color-primary-300);
+
     --color-black: var(--color-black);
     --color-brown-background: var(--color-brown-background);
-    --color-text: var(--color-text);
-    --color-text-light: var(--color-text-light);
-    --color-gray-light: var(--color-gray-light);
-    --color-green: var(--color-green);
-    --color-dark-green: var(--color-dark-green);
     --color-secondary: var(--color-secondary);
     --color-secondary-focused: var(--color-secondary-focused);
 }
 
 :root {
-    --color-black: oklch(26.45% 0 0);
-    --color-brown-background: #1a1a1a;
-    --color-text: #454545;
-    --color-text-light: #7c7c7c;
-    --color-gray-light: #e0e0e0;
-    --color-green: #00906b;
-    --color-dark-green: #005841;
+    --color-white: oklch(100% 0 0);
+
+    --color-neutral-200: #f0f0f0;
+    --color-neutral-300: #e0e0e0;
+    --color-neutral-400: #cacaca;
+    --color-neutral-500: #7c7c7c;
+    --color-neutral-600: #454545;
+    --color-neutral-700: #252525;
+    --color-neutral-800: #191919;
+
+    --color-primary-50: #f1f9f5;
+    --color-primary-100: #00906b;
+    --color-primary-200: #005841;
+    --color-primary-300: #003d2d;
+
     --color-secondary: #ffd480;
+
+    --color-brown-background: #1a1a1a;
     --color-secondary-focused: #ffc75c;
 }
 

@@ -32,7 +32,7 @@ export function Benefits({ data }: BenefitsProps) {
                                       lg:flex-row-reverse lg:p-12
                                     `,
                                     {
-                                        'bg-[#F1F9F5] lg:flex-row': index % 2 !== 0,
+                                        'bg-primary-50 lg:flex-row': index % 2 !== 0,
                                     },
                                 )}
                                 key={benefit.title}
@@ -54,7 +54,7 @@ export function Benefits({ data }: BenefitsProps) {
                                     <h3 className="text-2xl leading-[100%] font-semibold lg:text-4xl">
                                         {benefit.title}
                                     </h3>
-                                    <p className="text-lg leading-[140%] text-text">{benefit.description}</p>
+                                    <p className="text-lg leading-[140%] text-neutral-600">{benefit.description}</p>
                                 </div>
                             </div>
                         )

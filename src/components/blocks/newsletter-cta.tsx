@@ -13,7 +13,12 @@ export function NewsletterCta() {
     return (
         <section className="relative container mx-auto py-10 lg:py-24">
             <div className="lg:px-12">
-                <div className={`flex flex-col gap-8 rounded-2xl bg-green px-4 py-8 shadow-custom lg:px-16 lg:pb-12`}>
+                <div
+                    className={`
+                      flex flex-col gap-8 rounded-2xl bg-primary-100 px-4 py-8 shadow-custom
+                      lg:px-16 lg:pb-12
+                    `}
+                >
                     <h4
                         className={`
                           text-center text-2xl leading-[140%] font-semibold text-balance text-white
@@ -40,7 +45,7 @@ export function NewsletterCta() {
                             ].map((item) => (
                                 <div className="flex items-center gap-3" key={item.text}>
                                     <div className="shrink-0">{item.icon}</div>
-                                    <p className="text-xl leading-[100%] text-gray-light">{item.text}</p>
+                                    <p className="text-xl leading-[100%] text-neutral-300">{item.text}</p>
                                 </div>
                             ))}
                         </div>

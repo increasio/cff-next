@@ -6,7 +6,7 @@ import ReviewsCarousel from './reviews-carousel'
 export async function Reviews() {
     const data = await api.GetTestimonials()
     return (
-        <section className="relative bg-[#F1F9F5] pt-10 md:pt-20">
+        <section className="relative bg-primary-50 pt-10 md:pt-20">
             <BlurCircle color="green" right={120} size={500} top={109} />
             <BlurCircle color="blue" right={-87} size={591} top={390} />
             <div className="flex flex-col gap-12">

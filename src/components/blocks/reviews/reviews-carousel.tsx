@@ -26,7 +26,7 @@ export default function ReviewsCarousel({ data }: ReviewsCarouselProps) {
                         <CarouselItem className="basis-10/12 md:basis-1/2 lg:basis-1/3" key={index}>
                             <div
                                 className={`
-                                  flex h-full flex-col gap-4 rounded-xl border-t-4 border-green bg-white px-4 py-6
+                                  flex h-full flex-col gap-4 rounded-xl border-t-4 border-primary-100 bg-white px-4 py-6
                                   shadow-custom
                                   md:gap-6 md:px-8 md:py-10
                                 `}
@@ -46,11 +46,11 @@ export default function ReviewsCarousel({ data }: ReviewsCarouselProps) {
                                     )}
                                     <div className="flex flex-col gap-0.5">
                                         <p className="font-semibold">{data.Author?.Name}</p>
-                                        <p className="text-xs text-text">{data.Author?.Role}</p>
+                                        <p className="text-xs text-neutral-600">{data.Author?.Role}</p>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-2">
-                                    <p className={`text-xl leading-[140%] font-semibold text-dark-green md:text-2xl`}>
+                                    <p className={`text-xl leading-[140%] font-semibold text-primary-200 md:text-2xl`}>
                                         {data.Title}
                                     </p>
                                     <p className="flex-1">{data.Text}</p>

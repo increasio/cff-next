@@ -29,30 +29,39 @@ export function Footer() {
                         <div className="flex flex-col md:flex-row md:space-x-10">
                             <div className="flex flex-col space-y-2">
                                 <Link
-                                    className="transition-colors hover:text-green"
+                                    className="transition-colors hover:text-primary-100"
                                     href="/integrations/quickbooks-online/"
                                 >
                                     Cash Flow Frog for QuickBooks Online
                                 </Link>
-                                <Link className="transition-colors hover:text-green" href="/integrations/xero/">
+                                <Link className="transition-colors hover:text-primary-100" href="/integrations/xero/">
                                     Cash Flow Frog for Xero
                                 </Link>
-                                <Link className="transition-colors hover:text-green" href="/integrations/sage-intacct/">
+                                <Link
+                                    className="transition-colors hover:text-primary-100"
+                                    href="/integrations/sage-intacct/"
+                                >
                                     Cash Flow Frog for Sage Intacct
                                 </Link>
-                                <Link className="transition-colors hover:text-green" href="/integrations/zoho-books/">
+                                <Link
+                                    className="transition-colors hover:text-primary-100"
+                                    href="/integrations/zoho-books/"
+                                >
                                     Cash Flow Frog for Zoho Books
                                 </Link>
-                                <Link className="transition-colors hover:text-green" href="/integrations/freshbooks/">
+                                <Link
+                                    className="transition-colors hover:text-primary-100"
+                                    href="/integrations/freshbooks/"
+                                >
                                     Cash Flow Frog for FreshBooks
                                 </Link>
-                                <Link className="transition-colors hover:text-green" href="/integrations/excel/">
+                                <Link className="transition-colors hover:text-primary-100" href="/integrations/excel/">
                                     Cash Flow Frog for Excel
                                 </Link>
                             </div>
                             <div className="flex flex-col space-y-2">
                                 <Link
-                                    className="transition-colors hover:text-green"
+                                    className="transition-colors hover:text-primary-100"
                                     href="/integrations/quickbooks-desktop/"
                                 >
                                     Cash Flow Frog for QuickBooks Desktop
@@ -63,27 +72,27 @@ export function Footer() {
                     <div>
                         <p className="mb-6 font-semibold">Resources</p>
                         <div className="flex flex-col space-y-2">
-                            <Link className="transition-colors hover:text-green" href="/blog/">
+                            <Link className="transition-colors hover:text-primary-100" href="/blog/">
                                 Blog
                             </Link>
-                            <Link className="transition-colors hover:text-green" href="/whats-new/">
+                            <Link className="transition-colors hover:text-primary-100" href="/whats-new/">
                                 Whats new
                             </Link>
-                            <Link className="transition-colors hover:text-green" href="/glossary/">
+                            <Link className="transition-colors hover:text-primary-100" href="/glossary/">
                                 Glossary
                             </Link>
                             <a
-                                className="transition-colors hover:text-green"
+                                className="transition-colors hover:text-primary-100"
                                 href="https://help.cashflowfrog.com/en"
                                 rel="noreferrer"
                                 target="_blank"
                             >
                                 Help & Support
                             </a>
-                            <Link className="transition-colors hover:text-green" href="/about-us/">
+                            <Link className="transition-colors hover:text-primary-100" href="/about-us/">
                                 About us
                             </Link>
-                            <Link className="transition-colors hover:text-green" href="/contact/">
+                            <Link className="transition-colors hover:text-primary-100" href="/contact/">
                                 Contact us
                             </Link>
                         </div>
@@ -97,10 +106,10 @@ export function Footer() {
                 >
                     <p>© Cash Flow Frog {date.getFullYear()}. All Rights Reserved.</p>
                     <div className="space-x-5">
-                        <Link className="transition-colors hover:text-green" href="/terms-conditions/">
+                        <Link className="transition-colors hover:text-primary-100" href="/terms-conditions/">
                             Terms & Conditions
                         </Link>
-                        <Link className="transition-colors hover:text-green" href="/privacy-policy/">
+                        <Link className="transition-colors hover:text-primary-100" href="/privacy-policy/">
                             Privacy Policy
                         </Link>
                     </div>

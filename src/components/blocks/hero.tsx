@@ -27,7 +27,7 @@ export function Hero() {
                         >
                             Cash Flow Frog — The Best Cash Flow Forecasting Software
                         </h1>
-                        <p className="text-center leading-[160%] font-medium text-text lg:text-left lg:text-xl">
+                        <p className="text-center leading-[160%] font-medium text-neutral-600 lg:text-left lg:text-xl">
                             Cash Flow Frog connects with QuickBooks, Xero, Sage Intacct & Zoho Books, to give you
                             rolling forecasts up to 36 months. Plan payroll, expenses and growth with confidence, all in
                             minutes.
