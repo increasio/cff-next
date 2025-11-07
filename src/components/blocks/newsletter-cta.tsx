@@ -103,7 +103,7 @@ export function NewsletterCta() {
 
 const TimerIcon = () => (
     <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#a)">
+        <g clipPath="url(#a)">
             <path
                 d="M3.914 4.763a10.847 10.847 0 0 0-2.765 7.124c-.067 6.012 4.843 10.956 10.855 10.968C18.01 22.866 22.86 18.002 22.86 12c0-5.91-4.723-10.72-10.6-10.855a.247.247 0 0 0-.255.247V6.12"
                 stroke="#fff"

@@ -10,13 +10,13 @@ export function Hero() {
     const pathname = usePathname()
 
     return (
-        <section className="relative">
+        <section className="relative pt-6 pb-10 lg:pt-20 lg:pb-28">
             <BlurCircle color="blue" left={-254} size={591} top={-100} />
             <BlurCircle color="green" left={-208} size={500} top={264} />
             <BlurCircle color="green" right={252} size={500} top={0} />
             <BlurCircle color="blue" right={-367} size={591} top={233} />
             <BlurCircle color="blue" right={45} size={591} top={281} />
-            <div className="relative z-10 container mx-auto flex flex-col gap-8 pt-20 pb-28 lg:flex-row lg:gap-[77px]">
+            <div className="relative z-10 container mx-auto flex flex-col gap-8 lg:flex-row lg:gap-[77px]">
                 <div className="flex shrink-0 flex-col items-start gap-8 lg:gap-[72px]">
                     <div className="flex max-w-[431px] flex-col gap-5">
                         <h1

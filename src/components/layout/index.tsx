@@ -10,7 +10,7 @@ export function Layout({ children, onlySeo }: LayoutProps) {
     return (
         <>
             <Header onlySeo={onlySeo} />
-            <main className="pt-[100px]">{children}</main>
+            <main className="pt-16 lg:pt-[100px]">{children}</main>
             {!onlySeo && <Footer />}
         </>
     )

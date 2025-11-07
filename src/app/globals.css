@@ -19,7 +19,6 @@
     --color-primary-200: var(--color-primary-200);
     --color-primary-300: var(--color-primary-300);
 
-    --color-black: var(--color-black);
     --color-brown-background: var(--color-brown-background);
     --color-secondary: var(--color-secondary);
     --color-secondary-focused: var(--color-secondary-focused);
@@ -48,8 +47,12 @@
 }
 
 @layer base {
+    html,
     body {
-        @apply bg-white text-black;
+        @apply overflow-x-hidden;
+    }
+    body {
+        @apply bg-white text-neutral-800;
     }
 }
 

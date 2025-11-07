@@ -51,10 +51,13 @@ function NavigationMenuList({ className, ...props }: React.ComponentProps<typeof
 
 const navigationMenuTriggerStyle = cva(
     `
-      group inline-flex w-max items-center justify-center rounded-md px-4 py-3 text-sm font-medium
+      group inline-flex h-12 w-max items-center justify-center rounded-sm p-3 text-sm font-medium text-primary-200
       transition-[color,box-shadow] outline-none
-      focus-visible:ring-[3px] focus-visible:ring-neutral-950/50 focus-visible:outline-1
+      hover:bg-primary-50
+      focus:bg-primary-50
+      focus-visible:ring-[3px] focus-visible:ring-neutral-800/50 focus-visible:outline-1
       disabled:pointer-events-none disabled:opacity-50
+      data-[state=open]:bg-primary-50 data-[state=open]:hover:bg-primary-50 data-[state=open]:focus:bg-primary-50
     `,
 )
 
@@ -126,9 +129,12 @@ function NavigationMenuLink({ className, ...props }: React.ComponentProps<typeof
         <NavigationMenuPrimitive.Link
             className={cn(
                 `
-                  flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none
-                  focus-visible:ring-[3px] focus-visible:ring-neutral-950/50 focus-visible:outline-1
-                  data-[active=true]:bg-neutral-100/50 data-[active=true]:text-neutral-900
+                  flex flex-col gap-1 rounded-sm p-2 text-sm text-primary-200 transition-all outline-none
+                  hover:bg-primary-50
+                  focus:bg-primary-50
+                  focus-visible:ring-[3px] focus-visible:ring-neutral-800/50 focus-visible:outline-1
+                  data-[active=true]:bg-primary-50 data-[active=true]:text-neutral-800
+                  data-[active=true]:hover:bg-primary-50 data-[active=true]:focus:bg-primary-50
                   [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-neutral-500
                 `,
                 className,
@@ -170,7 +176,7 @@ function NavigationMenuViewport({
                 className={cn(
                     `
                       relative mt-1.5 h-(--radix-navigation-menu-viewport-height) w-full origin-top overflow-hidden
-                      rounded-md border border-neutral-200 bg-white text-neutral-950 shadow-sm
+                      rounded-md border border-neutral-200 bg-white text-neutral-800 shadow-sm
                       data-[state=closed]:animate-out data-[state=closed]:zoom-out-95
                       data-[state=open]:animate-in data-[state=open]:zoom-in-90
                       md:w-(--radix-navigation-menu-viewport-width)
