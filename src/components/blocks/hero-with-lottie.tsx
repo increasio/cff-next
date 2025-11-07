@@ -6,12 +6,7 @@ import { Button } from '@/components/ui/button'
 
 import { BlurCircle } from '../shared/blur-circle'
 
-interface HeroProps {
-    description: string
-    title: string
-}
-
-export function Hero({ description, title }: HeroProps) {
+export function HeroWithLottie() {
     const pathname = usePathname()
 
     return (
@@ -21,19 +16,21 @@ export function Hero({ description, title }: HeroProps) {
             <BlurCircle color="green" right={252} size={500} top={0} />
             <BlurCircle color="blue" right={-367} size={591} top={233} />
             <BlurCircle color="blue" right={45} size={591} top={281} />
-            <div className="relative z-10 container mx-auto flex flex-col items-center gap-8 lg:flex-row lg:gap-[77px]">
-                <div className="flex shrink-0 flex-col items-start gap-8 lg:gap-10">
-                    <div className="flex max-w-[431px] flex-col gap-6">
+            <div className="relative z-10 container mx-auto flex flex-col gap-8 lg:flex-row lg:gap-[77px]">
+                <div className="flex shrink-0 flex-col items-start gap-8 lg:gap-[72px]">
+                    <div className="flex max-w-[431px] flex-col gap-5">
                         <h1
                             className={`
                               text-center text-[34px] leading-[120%] font-bold text-balance
-                              lg:text-left lg:text-3.5xl
+                              lg:text-left lg:text-[40px]
                             `}
                         >
-                            {title}
+                            Cash Flow Frog — The Best Cash Flow Forecasting Software
                         </h1>
                         <p className="text-center leading-[160%] font-medium text-neutral-600 lg:text-left lg:text-xl">
-                            {description}
+                            Cash Flow Frog connects with QuickBooks, Xero, Sage Intacct & Zoho Books, to give you
+                            rolling forecasts up to 36 months. Plan payroll, expenses and growth with confidence, all in
+                            minutes.
                         </p>
                     </div>
                     <Button asChild className="w-full lg:w-auto" variant="default">

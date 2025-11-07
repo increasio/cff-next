@@ -1,7 +1,7 @@
 import { Benefits } from '@/components/blocks/benefits'
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
-import { Hero } from '@/components/blocks/hero'
+import { HeroWithLottie } from '@/components/blocks/hero-with-lottie'
 import { HowItWorks } from '@/components/blocks/how-it-works'
 import { Integrations } from '@/components/blocks/integrations'
 import { NewsletterCta } from '@/components/blocks/newsletter-cta'
@@ -13,7 +13,7 @@ export default async function Home() {
     const data = await api.GetHomePage()
     return (
         <>
-            <Hero />
+            <HeroWithLottie />
             <Rating />
             <Integrations />
             <BlockWithImage data={data.home?.Ladder} />

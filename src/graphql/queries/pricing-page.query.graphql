@@ -1,0 +1,25 @@
+query GetPricingPage {
+    pricingPage {
+        Title
+        TitleUnderline
+        Description
+        HeroImageFile {
+            alternativeText
+            url
+        }
+        PricingFaq {
+            Answer
+            Question
+            id
+        }
+        Seo {
+            MetaDescription
+            MetaTitle
+            OgDescription
+            OgTitle
+            ShareImageFile {
+                url
+            }
+        }
+    }
+}
