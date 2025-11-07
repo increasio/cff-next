@@ -19,7 +19,7 @@ export function Benefits({ data }: BenefitsProps) {
             <BlurCircle color="blue" left={-361} size={640} top={10} />
             <BlurCircle color="green" left={-311} size={540} top={400} />
             <div className="relative z-10 container mx-auto flex flex-col gap-3">
-                <h2 className="text-center text-[28px] font-semibold lg:text-[40px]">Our benefits</h2>
+                <h2 className="text-center text-[28px] font-semibold lg:text-3.5xl">Our benefits</h2>
                 <div className="flex flex-col gap-8 lg:gap-12">
                     {data.map((benefit, index) => {
                         if (!benefit) return null

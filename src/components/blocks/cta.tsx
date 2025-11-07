@@ -14,8 +14,8 @@ export function Cta({ buttonLink, buttonText, title }: CtaProps) {
             <div className="mx-auto flex max-w-[911px] flex-col items-center gap-6 px-4 lg:flex-row lg:gap-12">
                 <h4
                     className={`
-                      text-center text-[32px] leading-[140%] font-semibold text-balance
-                      lg:text-left lg:text-[40px] lg:leading-[100%]
+                      text-center text-2.5xl font-semibold text-balance
+                      lg:text-left lg:text-3.5xl lg:leading-[100%]
                     `}
                 >
                     {title}

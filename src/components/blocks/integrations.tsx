@@ -5,7 +5,7 @@ export function Integrations() {
         <section
             className={`container mx-auto flex flex-col items-center justify-center gap-5 py-10 text-center lg:py-16`}
         >
-            <h2 className="text-2xl leading-[140%] font-semibold text-balance lg:text-[40px]">
+            <h2 className="text-2xl font-semibold text-balance lg:text-3.5xl">
                 Integrates seamlessly with QuickBooks, Xero, Sage Intacct, Zoho Books and FreshBooks
             </h2>
             <p className="text-balance text-neutral-500">

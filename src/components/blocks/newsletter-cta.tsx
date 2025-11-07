@@ -22,7 +22,7 @@ export function NewsletterCta() {
                     <h4
                         className={`
                           text-center text-2xl leading-[140%] font-semibold text-balance text-white
-                          lg:text-[32px]
+                          lg:text-2.5xl
                         `}
                     >
                         Get your cash flow forecast in 1 minute

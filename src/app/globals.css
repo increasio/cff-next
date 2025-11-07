@@ -22,6 +22,11 @@
     --color-brown-background: var(--color-brown-background);
     --color-secondary: var(--color-secondary);
     --color-secondary-focused: var(--color-secondary-focused);
+
+    --text-2.5xl: 2rem;
+    --text-2.5xl--line-height: 1.4;
+    --text-3.5xl: 2.5rem;
+    --text-3.5xl--line-height: 1.4;
 }
 
 :root {

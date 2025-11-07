@@ -22,7 +22,7 @@ export function Hero() {
                         <h1
                             className={`
                               text-center text-[34px] leading-[120%] font-bold text-balance
-                              lg:text-left lg:text-[40px]
+                              lg:text-left lg:text-3.5xl
                             `}
                         >
                             Cash Flow Frog — The Best Cash Flow Forecasting Software
