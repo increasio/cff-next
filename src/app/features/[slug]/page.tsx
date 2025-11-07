@@ -1,4 +1,3 @@
-import Faq from '@/components/blocks/faq'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 
 export default async function FeaturePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -6,7 +5,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
     return (
         <>
             <Breadcrumbs activePage="Feature" pages={[{ href: '/features', name: 'Features' }]} />
-            <Faq />
+            {/* <Faq /> */}
             <div>FeaturePage: {slug}</div>
         </>
     )

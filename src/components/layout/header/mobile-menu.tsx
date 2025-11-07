@@ -57,11 +57,11 @@ export default function MobileMenu({ menu }: MobileMenuProps) {
                         {menu.map((item, index) => (
                             <div key={item.title}>
                                 {item.submenu.length > 0 ? (
-                                    <AccordionItem className="border-0" value={`item-${index}`}>
+                                    <AccordionItem value={`item-${index}`}>
                                         <AccordionTrigger
                                             className={`
                                               px-5 py-3.5 text-sm font-medium text-primary-200
-                                              hover:bg-primary-50 hover:no-underline
+                                              hover:bg-primary-50
                                               data-[state=open]:bg-primary-50
                                             `}
                                         >

@@ -1,5 +1,7 @@
 'use client'
 
+import Markdown from 'markdown-to-jsx'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
@@ -7,11 +9,13 @@ import { Button } from '@/components/ui/button'
 import { BlurCircle } from '../shared/blur-circle'
 
 interface HeroProps {
-    description: string
-    title: string
+    description?: null | string
+    imageAlt?: null | string
+    imageUrl?: null | string
+    title?: null | string
 }
 
-export function Hero({ description, title }: HeroProps) {
+export function Hero({ description, imageAlt, imageUrl, title }: HeroProps) {
     const pathname = usePathname()
 
     return (
@@ -21,7 +25,7 @@ export function Hero({ description, title }: HeroProps) {
             <BlurCircle color="green" right={252} size={500} top={0} />
             <BlurCircle color="blue" right={-367} size={591} top={233} />
             <BlurCircle color="blue" right={45} size={591} top={281} />
-            <div className="relative z-10 container mx-auto flex flex-col items-center gap-8 lg:flex-row lg:gap-[77px]">
+            <div className="relative z-10 container mx-auto grid gap-8 lg:grid-cols-2 lg:gap-6">
                 <div className="flex shrink-0 flex-col items-start gap-8 lg:gap-10">
                     <div className="flex max-w-[431px] flex-col gap-6">
                         <h1
@@ -32,9 +36,14 @@ export function Hero({ description, title }: HeroProps) {
                         >
                             {title}
                         </h1>
-                        <p className="text-center leading-[160%] font-medium text-neutral-600 lg:text-left lg:text-xl">
-                            {description}
-                        </p>
+                        <div
+                            className={`
+                              prose text-center leading-[160%] font-medium text-neutral-600
+                              lg:text-left lg:text-xl
+                            `}
+                        >
+                            <Markdown>{description}</Markdown>
+                        </div>
                     </div>
                     <Button asChild className="w-full lg:w-auto" variant="default">
                         <a
@@ -46,13 +55,17 @@ export function Hero({ description, title }: HeroProps) {
                         </a>
                     </Button>
                 </div>
-                <div
-                    className={`
-                      size-full rounded-xl shadow-[0px_0.6px_23.92px_0px_#42424A05,0px_4.78px_114.83px_0px_#42424A1A]
-                    `}
-                >
-                    <div className={`aspect-video w-full rounded-xl bg-white p-5 shadow-custom`} />
-                </div>
+                {imageUrl && (
+                    <div className="relative">
+                        <Image
+                            alt={imageAlt ?? 'Hero Image'}
+                            className="pointer-events-none object-contain select-none"
+                            fill
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            src={imageUrl}
+                        />
+                    </div>
+                )}
             </div>
         </section>
     )

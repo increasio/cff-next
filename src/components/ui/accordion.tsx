@@ -6,6 +6,10 @@ import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
+interface AccordionTriggerProps extends React.ComponentProps<typeof AccordionPrimitive.Trigger> {
+    showIcon?: boolean
+}
+
 function Accordion({ ...props }: React.ComponentProps<typeof AccordionPrimitive.Root>) {
     return <AccordionPrimitive.Root data-slot="accordion" {...props} />
 }
@@ -27,24 +31,17 @@ function AccordionContent({ children, className, ...props }: React.ComponentProp
 }
 
 function AccordionItem({ className, ...props }: React.ComponentProps<typeof AccordionPrimitive.Item>) {
-    return (
-        <AccordionPrimitive.Item
-            className={cn('border-b last:border-b-0', className)}
-            data-slot="accordion-item"
-            {...props}
-        />
-    )
+    return <AccordionPrimitive.Item className={cn('', className)} data-slot="accordion-item" {...props} />
 }
 
-function AccordionTrigger({ children, className, ...props }: React.ComponentProps<typeof AccordionPrimitive.Trigger>) {
+function AccordionTrigger({ children, className, showIcon = true, ...props }: AccordionTriggerProps) {
     return (
         <AccordionPrimitive.Header className="flex">
             <AccordionPrimitive.Trigger
                 className={cn(
                     `
-                      flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium
+                      flex flex-1 items-center justify-between gap-4 rounded-md py-4 text-left text-sm font-medium
                       transition-all outline-none
-                      hover:underline
                       focus-visible:border-neutral-800 focus-visible:ring-[3px] focus-visible:ring-neutral-800/50
                       disabled:pointer-events-none disabled:opacity-50
                       [&[data-state=open]>svg]:rotate-180
@@ -55,12 +52,14 @@ function AccordionTrigger({ children, className, ...props }: React.ComponentProp
                 {...props}
             >
                 {children}
-                <ChevronDownIcon
-                    className={`
-                      pointer-events-none size-4 shrink-0 translate-y-0.5 text-primary-200 transition-transform
-                      duration-200
-                    `}
-                />
+                {showIcon && (
+                    <ChevronDownIcon
+                        className={`
+                          pointer-events-none size-4 shrink-0 translate-y-0.5 text-primary-200 transition-transform
+                          duration-200
+                        `}
+                    />
+                )}
             </AccordionPrimitive.Trigger>
         </AccordionPrimitive.Header>
     )

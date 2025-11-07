@@ -13,7 +13,7 @@ export default async function Home() {
     const data = await api.GetHomePage()
     return (
         <>
-            <HeroWithLottie />
+            <HeroWithLottie description={data.home?.HeroDescription} title={data.home?.HeroTitle} />
             <Rating />
             <Integrations />
             <BlockWithImage data={data.home?.Ladder} />

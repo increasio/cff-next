@@ -1,12 +1,18 @@
 'use client'
 
+import Markdown from 'markdown-to-jsx'
 import { usePathname } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
 import { BlurCircle } from '../shared/blur-circle'
 
-export function HeroWithLottie() {
+interface HeroWithLottieProps {
+    description?: null | string
+    title?: null | string
+}
+
+export function HeroWithLottie({ description, title }: HeroWithLottieProps) {
     const pathname = usePathname()
 
     return (
@@ -25,13 +31,16 @@ export function HeroWithLottie() {
                               lg:text-left lg:text-[40px]
                             `}
                         >
-                            Cash Flow Frog — The Best Cash Flow Forecasting Software
+                            {title}
                         </h1>
-                        <p className="text-center leading-[160%] font-medium text-neutral-600 lg:text-left lg:text-xl">
-                            Cash Flow Frog connects with QuickBooks, Xero, Sage Intacct & Zoho Books, to give you
-                            rolling forecasts up to 36 months. Plan payroll, expenses and growth with confidence, all in
-                            minutes.
-                        </p>
+                        <div
+                            className={`
+                              prose text-center leading-[160%] font-medium text-neutral-600
+                              lg:text-left lg:text-xl
+                            `}
+                        >
+                            <Markdown>{description}</Markdown>
+                        </div>
                     </div>
                     <Button asChild className="w-full lg:w-auto" variant="default">
                         <a
