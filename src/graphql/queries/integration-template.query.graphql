@@ -5,26 +5,16 @@ query GetIntegrationTemplate($slug: String!) {
         SingleAboutDescription
         SingleDescription
         SingleFirstIconFile {
-            alternativeText
-            url
+            ...UploadFileFragment
         }
         SingleHeroFile {
-            alternativeText
-            url
+            ...UploadFileFragment
         }
         SingleLadder {
-            Description
-            ImageFile {
-                alternativeText
-                url
-            }
-            Subtitle
-            Title
-            reverse
+            ...LadderFragment
         }
         SingleSecondIconFile {
-            alternativeText
-            url
+            ...UploadFileFragment
         }
         SingleTitle
         SingleUnderlineTitle
@@ -35,13 +25,7 @@ query GetIntegrationTemplate($slug: String!) {
             Question
         }
         Seo {
-            MetaDescription
-            MetaTitle
-            OgDescription
-            OgTitle
-            ShareImageFile {
-                url
-            }
+            ...ComponentSeoSeoFragment
         }
     }
 }

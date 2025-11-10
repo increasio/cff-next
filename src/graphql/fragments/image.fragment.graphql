@@ -1,0 +1,4 @@
+fragment UploadFileFragment on UploadFile {
+    alternativeText
+    url
+}

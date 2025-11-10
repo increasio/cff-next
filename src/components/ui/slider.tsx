@@ -61,7 +61,7 @@ function Slider({
             {Array.from({ length: _values.length }, (_, index) => (
                 <SliderPrimitive.Thumb
                     className={`
-                      border-neutral-900 block size-4 shrink-0 rounded-full border border-neutral-200 bg-white shadow-sm
+                      block size-4 shrink-0 rounded-full border border-neutral-200 bg-white shadow-sm
                       ring-neutral-800/50 transition-[color,box-shadow]
                       hover:ring-4
                       focus-visible:ring-4 focus-visible:outline-hidden

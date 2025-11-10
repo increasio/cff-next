@@ -21,7 +21,7 @@ export default async function IntegrationPage({ params }: { params: Promise<{ sl
     }
     return (
         <>
-            <Breadcrumbs activePage={data.Name ?? ''} pages={[{ href: '/features', name: 'Features' }]} />
+            <Breadcrumbs activePage={data.Name ?? ''} pages={[{ href: '/integrations', name: 'Integrations' }]} />
             <Hero
                 buttonText={`Get your ${data.Name} — Start Free `}
                 description={data.SingleDescription}

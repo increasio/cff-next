@@ -1,0 +1,9 @@
+fragment ComponentSeoSeoFragment on ComponentSeoSeo {
+    MetaDescription
+    MetaTitle
+    OgDescription
+    OgTitle
+    ShareImageFile {
+        url
+    }
+}

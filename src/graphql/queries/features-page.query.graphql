@@ -1,0 +1,28 @@
+query GetFeaturesPage {
+    featuresPage {
+        Faq {
+            Answer
+            Question
+        }
+        Seo {
+            ...ComponentSeoSeoFragment
+        }
+        HeroImageFile {
+            ...UploadFileFragment
+        }
+        Title
+        TitleUnderline
+        UnderlineLeft
+        Description
+        CtaText
+    }
+    features(filters: { showOnMain: { eq: true } }) {
+        Title
+        ImageFile {
+            ...UploadFileFragment
+        }
+        Name
+        Description
+        Link
+    }
+}

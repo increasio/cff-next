@@ -1,0 +1,13 @@
+fragment LadderFragment on ComponentLadderLadderItem {
+    Description
+    ImageFile {
+        ...UploadFileFragment
+    }
+    IconFile {
+        ...UploadFileFragment
+    }
+    Link
+    Subtitle
+    Title
+    reverse
+}

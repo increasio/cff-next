@@ -1,5 +1,7 @@
-query GetAccountantsAndBookkeepers {
-    accountantsAndBookkeeper {
+query GetIntegrationPage {
+    integrationsPage {
+        IntegrationDescription
+        IntegrationTitle
         Title
         TitleUnderline
         UnderlineLeft
@@ -7,7 +9,7 @@ query GetAccountantsAndBookkeepers {
         HeroImageFile {
             ...UploadFileFragment
         }
-        AccountantsList {
+        Ladder {
             ...LadderFragment
         }
         Faq {
@@ -17,5 +19,13 @@ query GetAccountantsAndBookkeepers {
         Seo {
             ...ComponentSeoSeoFragment
         }
+    }
+    integrations {
+        Description
+        IconFile {
+            ...UploadFileFragment
+        }
+        Name
+        Slug
     }
 }

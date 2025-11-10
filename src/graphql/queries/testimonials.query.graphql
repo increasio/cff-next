@@ -2,8 +2,7 @@ query GetTestimonials {
     testimonials {
         Author {
             AvatarFile {
-                alternativeText
-                url
+                ...UploadFileFragment
             }
             Name
             Role

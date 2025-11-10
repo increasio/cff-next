@@ -8,7 +8,8 @@
         "start": "next start",
         "lint": "eslint --cache --cache-location .next/cache/eslint/",
         "lint:fix": "eslint --fix",
-        "codegen": "graphql-codegen --config codegen.ts"
+        "codegen": "graphql-codegen --config codegen.ts",
+        "codegen:watch": "graphql-codegen --config codegen.ts --watch"
     },
     "dependencies": {
         "@radix-ui/react-accordion": "^1.2.12",
@@ -30,11 +31,12 @@
         "tailwind-merge": "^3.3.1"
     },
     "devDependencies": {
-        "@graphql-codegen/cli": "6.0.1",
+        "@graphql-codegen/cli": "^6.0.1",
         "@graphql-codegen/client-preset": "5.1.1",
         "@graphql-codegen/typescript": "^5.0.2",
         "@graphql-codegen/typescript-graphql-request": "^6.3.0",
         "@graphql-codegen/typescript-operations": "^5.0.2",
+        "@parcel/watcher": "^2.5.1",
         "@tailwindcss/postcss": "^4.1.16",
         "@tailwindcss/typography": "^0.5.19",
         "@types/node": "^24.10.0",

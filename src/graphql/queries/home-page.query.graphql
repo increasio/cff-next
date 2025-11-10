@@ -1,15 +1,3 @@
-fragment LadderFragment on ComponentLadderLadderItem {
-    Description
-    ImageFile {
-        alternativeText
-        url
-    }
-    Link
-    Subtitle
-    Title
-    reverse
-}
-
 query GetHomePage {
     home {
         FeaturesDescription
@@ -28,21 +16,14 @@ query GetHomePage {
             ...LadderFragment
         }
         Seo {
-            MetaDescription
-            MetaTitle
-            OgDescription
-            OgTitle
-            ShareImageFile {
-                url
-            }
+            ...ComponentSeoSeoFragment
         }
     }
     features(filters: { showOnMain: { eq: true } }) {
         CtaText
         Description
         ImageFile {
-            alternativeText
-            url
+            ...UploadFileFragment
         }
         Ladder {
             ...LadderFragment
@@ -55,8 +36,7 @@ query GetHomePage {
     benefits {
         Description
         ImageFile {
-            alternativeText
-            url
+            ...UploadFileFragment
         }
         ImageRight
         Name

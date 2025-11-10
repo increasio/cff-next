@@ -12,7 +12,7 @@ interface BlockWithImageProps {
 }
 
 export function BlockWithImage({ data }: BlockWithImageProps) {
-    const { Description, ImageFile, Link: url, reverse, Subtitle, Title } = data ?? {}
+    const { Description, IconFile, ImageFile, Link: url, reverse, Subtitle, Title } = data ?? {}
     return (
         <section className="relative pt-8 pb-10 lg:py-16">
             <div
@@ -30,7 +30,18 @@ export function BlockWithImage({ data }: BlockWithImageProps) {
                     />
                 )}
                 <div className="flex flex-col items-start lg:px-8">
-                    {Subtitle && <span className="mb-3 text-sm text-primary-300">{Subtitle}</span>}
+                    <div className="mb-3 flex items-center gap-3">
+                        {IconFile?.url && (
+                            <Image
+                                alt={IconFile.alternativeText ?? Title ?? ''}
+                                className="size-4"
+                                height={16}
+                                src={IconFile.url}
+                                width={16}
+                            />
+                        )}
+                        {Subtitle && <span className="text-sm text-primary-300">{Subtitle}</span>}
+                    </div>
                     <h3 className="mb-4 text-xl leading-[140%] font-semibold lg:text-2xl">{Title}</h3>
                     <div className="prose leading-[160%] prose-li:custom-list">
                         <Markdown>{Description}</Markdown>

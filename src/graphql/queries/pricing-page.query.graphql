@@ -4,8 +4,7 @@ query GetPricingPage {
         TitleUnderline
         Description
         HeroImageFile {
-            alternativeText
-            url
+            ...UploadFileFragment
         }
         PricingFaq {
             Answer
@@ -13,13 +12,7 @@ query GetPricingPage {
             id
         }
         Seo {
-            MetaDescription
-            MetaTitle
-            OgDescription
-            OgTitle
-            ShareImageFile {
-                url
-            }
+            ...ComponentSeoSeoFragment
         }
     }
 }

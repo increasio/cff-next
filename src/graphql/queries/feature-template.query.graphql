@@ -3,23 +3,14 @@ query GetFeaturesTemplate($slug: String!) {
         SingleTitle
         SingleDescription
         SingleImageFile {
-            alternativeText
-            url
+            ...UploadFileFragment
         }
         SingleTitleUnderline
         UnderlineLeft
         Slug
         Name
         Ladder {
-            Description
-            ImageFile {
-                alternativeText
-                url
-            }
-            Link
-            Subtitle
-            Title
-            reverse
+            ...LadderFragment
         }
         CtaText
         AnswersTitle
@@ -30,13 +21,7 @@ query GetFeaturesTemplate($slug: String!) {
             AnswerLink
         }
         Seo {
-            MetaDescription
-            MetaTitle
-            OgDescription
-            OgTitle
-            ShareImageFile {
-                url
-            }
+            ...ComponentSeoSeoFragment
         }
         Faq {
             Answer

@@ -6,30 +6,16 @@ query GetBusinessTemplate($slug: String!) {
         UnderlineLeft
         Description
         HeroImageFile {
-            alternativeText
-            url
+            ...UploadFileFragment
         }
         Ladder {
-            Description
-            ImageFile {
-                alternativeText
-                url
-            }
-            Subtitle
-            Title
-            reverse
+            ...LadderFragment
         }
         AboutTitle
         AboutDescription
         Slug
         Seo {
-            MetaDescription
-            MetaTitle
-            OgDescription
-            OgTitle
-            ShareImageFile {
-                url
-            }
+            ...ComponentSeoSeoFragment
         }
         Faq {
             Answer

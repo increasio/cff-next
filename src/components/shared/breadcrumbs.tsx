@@ -11,7 +11,7 @@ import {
 
 interface BreadcrumbsProps {
     activePage: string
-    pages: { href: string; name: string }[]
+    pages?: { href: string; name: string }[]
 }
 
 export function Breadcrumbs({ activePage, pages }: BreadcrumbsProps) {
@@ -23,7 +23,7 @@ export function Breadcrumbs({ activePage, pages }: BreadcrumbsProps) {
                         <BreadcrumbLink href="/">Home</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
-                    {pages.map((page) => (
+                    {pages?.map((page) => (
                         <Fragment key={page.name}>
                             <BreadcrumbItem>
                                 <BreadcrumbLink href={page.href}>{page.name}</BreadcrumbLink>

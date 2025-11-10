@@ -21,7 +21,7 @@ export default async function BusinessPage({ params }: { params: Promise<{ slug:
     }
     return (
         <>
-            <Breadcrumbs activePage={data.Name ?? ''} pages={[{ href: '/features', name: 'Features' }]} />
+            <Breadcrumbs activePage={data.Name ?? ''} />
             <Hero
                 buttonText={`Get your ${data.Name}`}
                 description={data.Description}
