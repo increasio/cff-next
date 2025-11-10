@@ -1,0 +1,39 @@
+query GetBusinessTemplate($slug: String!) {
+    businesses(filters: { Slug: { eq: $slug } }) {
+        Name
+        Title
+        TitleUnderline
+        UnderlineLeft
+        Description
+        HeroImageFile {
+            alternativeText
+            url
+        }
+        Ladder {
+            Description
+            ImageFile {
+                alternativeText
+                url
+            }
+            Subtitle
+            Title
+            reverse
+        }
+        AboutTitle
+        AboutDescription
+        Slug
+        Seo {
+            MetaDescription
+            MetaTitle
+            OgDescription
+            OgTitle
+            ShareImageFile {
+                url
+            }
+        }
+        Faq {
+            Answer
+            Question
+        }
+    }
+}

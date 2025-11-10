@@ -1,0 +1,35 @@
+query GetAccountantsAndBookkeepers {
+    accountantsAndBookkeeper {
+        Title
+        TitleUnderline
+        UnderlineLeft
+        Description
+        HeroImageFile {
+            alternativeText
+            url
+        }
+        AccountantsList {
+            Description
+            ImageFile {
+                alternativeText
+                url
+            }
+            Link
+            Title
+            reverse
+        }
+        Faq {
+            Answer
+            Question
+        }
+        Seo {
+            MetaDescription
+            MetaTitle
+            OgDescription
+            OgTitle
+            ShareImageFile {
+                url
+            }
+        }
+    }
+}

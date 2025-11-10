@@ -1,0 +1,47 @@
+query GetIntegrationTemplate($slug: String!) {
+    integrations(filters: { Slug: { eq: $slug } }) {
+        Name
+        SingleAboutTitle
+        SingleAboutDescription
+        SingleDescription
+        SingleFirstIconFile {
+            alternativeText
+            url
+        }
+        SingleHeroFile {
+            alternativeText
+            url
+        }
+        SingleLadder {
+            Description
+            ImageFile {
+                alternativeText
+                url
+            }
+            Subtitle
+            Title
+            reverse
+        }
+        SingleSecondIconFile {
+            alternativeText
+            url
+        }
+        SingleTitle
+        SingleUnderlineTitle
+        UnderlineLeft
+        Slug
+        Faq {
+            Answer
+            Question
+        }
+        Seo {
+            MetaDescription
+            MetaTitle
+            OgDescription
+            OgTitle
+            ShareImageFile {
+                url
+            }
+        }
+    }
+}

@@ -25,7 +25,12 @@ export function Cta({ backgroundColor = 'white', buttonLink, buttonText, title }
                 'bg-white': backgroundColor === 'white',
             })}
         >
-            <div className="mx-auto flex max-w-[911px] flex-col items-center gap-6 px-4 lg:flex-row lg:gap-12">
+            <div
+                className={`
+                  mx-auto flex max-w-[911px] flex-col items-center justify-between gap-6 px-4
+                  lg:flex-row lg:gap-12
+                `}
+            >
                 <h4
                     className={`
                       text-center text-2.5xl font-semibold text-balance

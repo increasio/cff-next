@@ -2784,6 +2784,18 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>;
 };
 
+export type GetAccountantsAndBookkeepersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAccountantsAndBookkeepersQuery = { __typename?: 'Query', accountantsAndBookkeeper?: { __typename?: 'AccountantsAndBookkeeper', Title?: string | null, TitleUnderline?: string | null, UnderlineLeft?: boolean | null, Description?: string | null, HeroImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, AccountantsList?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null } | null };
+
+export type GetBusinessTemplateQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetBusinessTemplateQuery = { __typename?: 'Query', businesses: Array<{ __typename?: 'Business', Name?: string | null, Title?: string | null, TitleUnderline?: string | null, UnderlineLeft?: boolean | null, Description?: string | null, AboutTitle?: string | null, AboutDescription?: string | null, Slug?: string | null, HeroImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, Ladder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null } | null> };
+
 export type GetFeaturesTemplateQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
@@ -2802,6 +2814,13 @@ export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetHomePageQuery = { __typename?: 'Query', home?: { __typename?: 'Home', FeaturesDescription?: string | null, FeaturesTitle?: string | null, HeroDescription?: string | null, HeroTitle?: string | null, HeroTitleUnderline?: string | null, UnderlineLeft?: boolean | null, Ladder?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Ladder2?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Ladder3?: { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null } | null, features: Array<{ __typename?: 'Feature', CtaText?: string | null, Description?: string | null, Link?: string | null, Name?: string | null, Title?: string | null, Slug?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, Ladder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null } | null>, benefits: Array<{ __typename?: 'Benefit', Description?: string | null, ImageRight?: boolean | null, Name?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> };
+
+export type GetIntegrationTemplateQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetIntegrationTemplateQuery = { __typename?: 'Query', integrations: Array<{ __typename?: 'Integration', Name?: string | null, SingleAboutTitle?: string | null, SingleAboutDescription?: string | null, SingleDescription?: string | null, SingleTitle?: string | null, SingleUnderlineTitle?: string | null, UnderlineLeft?: boolean | null, Slug?: string | null, SingleFirstIconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, SingleHeroFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, SingleLadder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null, SingleSecondIconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null } | null> };
 
 export type GetPricingPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2824,6 +2843,84 @@ export const LadderFragmentFragmentDoc = gql`
   Subtitle
   Title
   reverse
+}
+    `;
+export const GetAccountantsAndBookkeepersDocument = gql`
+    query GetAccountantsAndBookkeepers {
+  accountantsAndBookkeeper {
+    Title
+    TitleUnderline
+    UnderlineLeft
+    Description
+    HeroImageFile {
+      alternativeText
+      url
+    }
+    AccountantsList {
+      Description
+      ImageFile {
+        alternativeText
+        url
+      }
+      Link
+      Title
+      reverse
+    }
+    Faq {
+      Answer
+      Question
+    }
+    Seo {
+      MetaDescription
+      MetaTitle
+      OgDescription
+      OgTitle
+      ShareImageFile {
+        url
+      }
+    }
+  }
+}
+    `;
+export const GetBusinessTemplateDocument = gql`
+    query GetBusinessTemplate($slug: String!) {
+  businesses(filters: {Slug: {eq: $slug}}) {
+    Name
+    Title
+    TitleUnderline
+    UnderlineLeft
+    Description
+    HeroImageFile {
+      alternativeText
+      url
+    }
+    Ladder {
+      Description
+      ImageFile {
+        alternativeText
+        url
+      }
+      Subtitle
+      Title
+      reverse
+    }
+    AboutTitle
+    AboutDescription
+    Slug
+    Seo {
+      MetaDescription
+      MetaTitle
+      OgDescription
+      OgTitle
+      ShareImageFile {
+        url
+      }
+    }
+    Faq {
+      Answer
+      Question
+    }
+  }
 }
     `;
 export const GetFeaturesTemplateDocument = gql`
@@ -2949,6 +3046,55 @@ export const GetHomePageDocument = gql`
   }
 }
     ${LadderFragmentFragmentDoc}`;
+export const GetIntegrationTemplateDocument = gql`
+    query GetIntegrationTemplate($slug: String!) {
+  integrations(filters: {Slug: {eq: $slug}}) {
+    Name
+    SingleAboutTitle
+    SingleAboutDescription
+    SingleDescription
+    SingleFirstIconFile {
+      alternativeText
+      url
+    }
+    SingleHeroFile {
+      alternativeText
+      url
+    }
+    SingleLadder {
+      Description
+      ImageFile {
+        alternativeText
+        url
+      }
+      Subtitle
+      Title
+      reverse
+    }
+    SingleSecondIconFile {
+      alternativeText
+      url
+    }
+    SingleTitle
+    SingleUnderlineTitle
+    UnderlineLeft
+    Slug
+    Faq {
+      Answer
+      Question
+    }
+    Seo {
+      MetaDescription
+      MetaTitle
+      OgDescription
+      OgTitle
+      ShareImageFile {
+        url
+      }
+    }
+  }
+}
+    `;
 export const GetPricingPageDocument = gql`
     query GetPricingPage {
   pricingPage {
@@ -3000,6 +3146,12 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    GetAccountantsAndBookkeepers(variables?: GetAccountantsAndBookkeepersQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAccountantsAndBookkeepersQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAccountantsAndBookkeepersQuery>({ document: GetAccountantsAndBookkeepersDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAccountantsAndBookkeepers', 'query', variables);
+    },
+    GetBusinessTemplate(variables: GetBusinessTemplateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetBusinessTemplateQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetBusinessTemplateQuery>({ document: GetBusinessTemplateDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetBusinessTemplate', 'query', variables);
+    },
     GetFeaturesTemplate(variables: GetFeaturesTemplateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetFeaturesTemplateQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetFeaturesTemplateQuery>({ document: GetFeaturesTemplateDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetFeaturesTemplate', 'query', variables);
     },
@@ -3008,6 +3160,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetHomePage(variables?: GetHomePageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetHomePageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetHomePageQuery>({ document: GetHomePageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetHomePage', 'query', variables);
+    },
+    GetIntegrationTemplate(variables: GetIntegrationTemplateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetIntegrationTemplateQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetIntegrationTemplateQuery>({ document: GetIntegrationTemplateDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetIntegrationTemplate', 'query', variables);
     },
     GetPricingPage(variables?: GetPricingPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetPricingPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPricingPageQuery>({ document: GetPricingPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetPricingPage', 'query', variables);

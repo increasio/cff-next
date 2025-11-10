@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { BlurCircle } from '../shared/blur-circle'
 
 interface HeroProps {
+    buttonSlot?: React.ReactNode
     buttonText?: string
     description?: null | string
     imageAlt?: null | string
@@ -16,7 +17,7 @@ interface HeroProps {
     title?: null | string
 }
 
-export function Hero({ buttonText = 'Start free', description, imageAlt, imageUrl, title }: HeroProps) {
+export function Hero({ buttonSlot, buttonText = 'Start free', description, imageAlt, imageUrl, title }: HeroProps) {
     const pathname = usePathname()
     const page = pathname === '/' ? 'home' : pathname.replace('/', '').replaceAll('/', '-')
 
@@ -27,7 +28,7 @@ export function Hero({ buttonText = 'Start free', description, imageAlt, imageUr
             <BlurCircle color="green" right={252} size={500} top={0} />
             <BlurCircle color="blue" right={-367} size={591} top={233} />
             <BlurCircle color="blue" right={45} size={591} top={281} />
-            <div className="relative z-10 container mx-auto grid gap-8 lg:grid-cols-2 lg:gap-6">
+            <div className="relative z-10 container mx-auto grid place-items-center gap-8 lg:grid-cols-2 lg:gap-6">
                 <div className="flex shrink-0 flex-col items-start gap-8 lg:gap-10">
                     <div className="flex w-full flex-col gap-6">
                         <h1 className={`text-[34px] leading-[120%] font-bold text-balance lg:text-3.5xl`}>{title}</h1>
@@ -35,15 +36,18 @@ export function Hero({ buttonText = 'Start free', description, imageAlt, imageUr
                             <Markdown>{description}</Markdown>
                         </div>
                     </div>
-                    <Button asChild className="w-full lg:w-auto" variant="default">
-                        <a
-                            href={`https://accounts.cashflowfrog.com/signup?action=signup&section=hero&page=${page}`}
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            {buttonText}
-                        </a>
-                    </Button>
+                    <div className="flex flex-col items-center gap-4 lg:flex-row lg:gap-5">
+                        <Button asChild className="w-full lg:w-auto" variant="default">
+                            <a
+                                href={`https://accounts.cashflowfrog.com/signup?action=signup&section=hero&page=${page}`}
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                {buttonText}
+                            </a>
+                        </Button>
+                        {buttonSlot}
+                    </div>
                 </div>
                 {imageUrl && (
                     <Image
