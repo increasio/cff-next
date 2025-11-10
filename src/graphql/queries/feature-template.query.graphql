@@ -1,0 +1,46 @@
+query GetFeaturesTemplate($slug: String!) {
+    features(filters: { Slug: { eq: $slug } }) {
+        SingleTitle
+        SingleDescription
+        SingleImageFile {
+            alternativeText
+            url
+        }
+        SingleTitleUnderline
+        UnderlineLeft
+        Slug
+        Name
+        Ladder {
+            Description
+            ImageFile {
+                alternativeText
+                url
+            }
+            Link
+            Subtitle
+            Title
+            reverse
+        }
+        CtaText
+        AnswersTitle
+        AnswersInfo
+        AnswersDescription
+        Answers {
+            AnswerTitle
+            AnswerLink
+        }
+        Seo {
+            MetaDescription
+            MetaTitle
+            OgDescription
+            OgTitle
+            ShareImageFile {
+                url
+            }
+        }
+        Faq {
+            Answer
+            Question
+        }
+    }
+}

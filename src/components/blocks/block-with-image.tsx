@@ -1,3 +1,4 @@
+import Markdown from 'markdown-to-jsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -11,28 +12,31 @@ interface BlockWithImageProps {
 }
 
 export function BlockWithImage({ data }: BlockWithImageProps) {
-    const { Description, ImageFile, Link: url, reverse, Title } = data ?? {}
+    const { Description, ImageFile, Link: url, reverse, Subtitle, Title } = data ?? {}
     return (
-        <section className="relative py-16">
+        <section className="relative pt-8 pb-10 lg:py-16">
             <div
-                className={cn('container mx-auto flex flex-col items-center gap-5 lg:flex-row', {
+                className={cn('container mx-auto flex flex-col-reverse items-center gap-8 lg:flex-row lg:gap-[110px]', {
                     'lg:flex-row-reverse': reverse,
                 })}
             >
                 {ImageFile?.url && (
                     <Image
                         alt={ImageFile.alternativeText ?? Title ?? ''}
-                        className="w-[488px] shrink-0"
-                        height={331}
+                        className="w-[500px] shrink-0"
+                        height={380}
                         src={ImageFile.url}
-                        width={488}
+                        width={500}
                     />
                 )}
-                <div className="flex flex-col items-start gap-5 lg:px-8">
-                    <h3 className="text-xl leading-[140%] font-semibold lg:text-2xl">{Title}</h3>
-                    <p className="leading-[160%] text-neutral-500">{Description}</p>
+                <div className="flex flex-col items-start lg:px-8">
+                    {Subtitle && <span className="mb-3 text-sm text-primary-300">{Subtitle}</span>}
+                    <h3 className="mb-4 text-xl leading-[140%] font-semibold lg:text-2xl">{Title}</h3>
+                    <div className="prose leading-[160%] prose-li:custom-list">
+                        <Markdown>{Description}</Markdown>
+                    </div>
                     {url && (
-                        <Button asChild className="mt-7">
+                        <Button asChild className="mt-12">
                             <Link href={url}>Start Free</Link>
                         </Button>
                     )}

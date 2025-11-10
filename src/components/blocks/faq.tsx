@@ -53,11 +53,7 @@ export default function Faq({ data }: FaqProps) {
                                     />
                                 </AccordionTrigger>
                                 <AccordionContent
-                                    className={`
-                                      prose prose-base max-w-[838px] px-3 pb-4 leading-[160%] text-neutral-600
-                                      lg:px-8 lg:pb-6
-                                      prose-p:mt-0
-                                    `}
+                                    className={`prose prose-base max-w-[838px] px-3 pb-4 leading-[160%] lg:px-8 lg:pb-6`}
                                 >
                                     <Markdown className="">{item.Answer}</Markdown>
                                 </AccordionContent>

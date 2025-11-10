@@ -2784,6 +2784,13 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>;
 };
 
+export type GetFeaturesTemplateQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetFeaturesTemplateQuery = { __typename?: 'Query', features: Array<{ __typename?: 'Feature', SingleTitle?: string | null, SingleDescription?: string | null, SingleTitleUnderline?: string | null, UnderlineLeft?: boolean | null, Slug?: string | null, Name?: string | null, CtaText?: string | null, AnswersTitle?: string | null, AnswersInfo?: string | null, AnswersDescription?: string | null, SingleImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, Ladder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null, Answers?: Array<{ __typename?: 'ComponentAnswersAnswers', AnswerTitle?: string | null, AnswerLink?: string | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null } | null> };
+
 export type GetHeaderDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2817,6 +2824,54 @@ export const LadderFragmentFragmentDoc = gql`
   Subtitle
   Title
   reverse
+}
+    `;
+export const GetFeaturesTemplateDocument = gql`
+    query GetFeaturesTemplate($slug: String!) {
+  features(filters: {Slug: {eq: $slug}}) {
+    SingleTitle
+    SingleDescription
+    SingleImageFile {
+      alternativeText
+      url
+    }
+    SingleTitleUnderline
+    UnderlineLeft
+    Slug
+    Name
+    Ladder {
+      Description
+      ImageFile {
+        alternativeText
+        url
+      }
+      Link
+      Subtitle
+      Title
+      reverse
+    }
+    CtaText
+    AnswersTitle
+    AnswersInfo
+    AnswersDescription
+    Answers {
+      AnswerTitle
+      AnswerLink
+    }
+    Seo {
+      MetaDescription
+      MetaTitle
+      OgDescription
+      OgTitle
+      ShareImageFile {
+        url
+      }
+    }
+    Faq {
+      Answer
+      Question
+    }
+  }
 }
     `;
 export const GetHeaderDataDocument = gql`
@@ -2945,6 +3000,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    GetFeaturesTemplate(variables: GetFeaturesTemplateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetFeaturesTemplateQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetFeaturesTemplateQuery>({ document: GetFeaturesTemplateDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetFeaturesTemplate', 'query', variables);
+    },
     GetHeaderData(variables?: GetHeaderDataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetHeaderDataQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetHeaderDataQuery>({ document: GetHeaderDataDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetHeaderData', 'query', variables);
     },

@@ -33,12 +33,7 @@ export function HeroWithLottie({ description, title }: HeroWithLottieProps) {
                         >
                             {title}
                         </h1>
-                        <div
-                            className={`
-                              prose text-center leading-[160%] font-medium text-neutral-600
-                              lg:text-left lg:text-xl
-                            `}
-                        >
+                        <div className={`prose text-center leading-[160%] font-medium lg:text-left lg:text-xl`}>
                             <Markdown>{description}</Markdown>
                         </div>
                     </div>

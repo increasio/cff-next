@@ -9,14 +9,16 @@ import { Button } from '@/components/ui/button'
 import { BlurCircle } from '../shared/blur-circle'
 
 interface HeroProps {
+    buttonText?: string
     description?: null | string
     imageAlt?: null | string
     imageUrl?: null | string
     title?: null | string
 }
 
-export function Hero({ description, imageAlt, imageUrl, title }: HeroProps) {
+export function Hero({ buttonText = 'Start free', description, imageAlt, imageUrl, title }: HeroProps) {
     const pathname = usePathname()
+    const page = pathname === '/' ? 'home' : pathname.replace('/', '').replaceAll('/', '-')
 
     return (
         <section className="relative pt-6 pb-10 lg:pt-20 lg:pb-28">
@@ -27,19 +29,19 @@ export function Hero({ description, imageAlt, imageUrl, title }: HeroProps) {
             <BlurCircle color="blue" right={45} size={591} top={281} />
             <div className="relative z-10 container mx-auto grid gap-8 lg:grid-cols-2 lg:gap-6">
                 <div className="flex shrink-0 flex-col items-start gap-8 lg:gap-10">
-                    <div className="flex w-full max-w-[431px] flex-col gap-6">
+                    <div className="flex w-full flex-col gap-6">
                         <h1 className={`text-[34px] leading-[120%] font-bold text-balance lg:text-3.5xl`}>{title}</h1>
-                        <div className={`prose leading-[160%] font-medium text-neutral-600 lg:text-xl`}>
+                        <div className={`prose max-w-none leading-[160%]`}>
                             <Markdown>{description}</Markdown>
                         </div>
                     </div>
                     <Button asChild className="w-full lg:w-auto" variant="default">
                         <a
-                            href={`https://accounts.cashflowfrog.com/signup?action=signup&section=hero&page=${pathname}`}
+                            href={`https://accounts.cashflowfrog.com/signup?action=signup&section=hero&page=${page}`}
                             rel="noreferrer"
                             target="_blank"
                         >
-                            Start Free
+                            {buttonText}
                         </a>
                     </Button>
                 </div>
