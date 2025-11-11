@@ -8,6 +8,11 @@ const config: CodegenConfig = {
         'src/graphql/generated/sdk.ts': {
             // preset: "client",
             plugins: ['typescript', 'typescript-operations', 'typescript-graphql-request'],
+            config: {
+                scalars: {
+                    DateTime: 'string',
+                },
+            },
         },
     },
 }

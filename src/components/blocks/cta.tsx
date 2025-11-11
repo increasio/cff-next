@@ -10,11 +10,16 @@ import { cn } from '@/lib/utils'
 interface CtaProps {
     backgroundColor?: 'primary-50' | 'white'
     buttonLink?: string
-    buttonText: string
-    title: string
+    buttonText?: string
+    title?: string
 }
 
-export function Cta({ backgroundColor = 'white', buttonLink, buttonText, title }: CtaProps) {
+export function Cta({
+    backgroundColor = 'white',
+    buttonLink,
+    buttonText = 'Start Free Trial Now',
+    title = 'Trusted by thousands of business owners',
+}: CtaProps) {
     const pathname = usePathname()
 
     const page = pathname === '/' ? 'home' : pathname.replace('/', '')

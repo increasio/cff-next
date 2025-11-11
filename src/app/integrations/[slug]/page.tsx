@@ -15,6 +15,8 @@ import { api } from '@/lib/api'
 
 const getData = (slug: string) => api.GetIntegrationTemplate({ slug })
 
+export const revalidate = 3600
+
 interface IntegrationPageProps {
     params: Promise<{ slug: string }>
 }

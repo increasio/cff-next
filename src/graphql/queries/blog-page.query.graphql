@@ -1,0 +1,13 @@
+query GetBlogPageArticles($limit: Int!, $start: Int!) {
+    posts_connection(status: PUBLISHED, sort: ["updatedAt:desc"], pagination: { limit: $limit, start: $start }) {
+        nodes {
+            ...PostFragment
+        }
+        pageInfo {
+            page
+            pageCount
+            pageSize
+            total
+        }
+    }
+}

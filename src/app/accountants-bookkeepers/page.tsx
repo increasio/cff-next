@@ -16,6 +16,8 @@ import { api } from '@/lib/api'
 
 const getData = cache(() => api.GetAccountantsAndBookkeepers())
 
+export const revalidate = 3600
+
 export default async function AccountantsBookkeepersPage() {
     const { accountantsAndBookkeeper: data } = await getData()
     return (
@@ -63,11 +65,7 @@ export default async function AccountantsBookkeepersPage() {
             <PricingSelector onlyPro />
             <PricingTable onlyPro />
             <Reviews backgroundColor="white" />
-            <Cta
-                backgroundColor="primary-50"
-                buttonText="Start Free Trial Now"
-                title="Trusted by thousands of business owners"
-            />
+            <Cta backgroundColor="primary-50" />
         </>
     )
 }

@@ -14,11 +14,13 @@ import { Button } from '@/components/ui/button'
 import { ACCOUNTS_URL } from '@/constants'
 import { api } from '@/lib/api'
 
+const getData = (slug: string) => api.GetFeaturesTemplate({ slug })
+
+export const revalidate = 3600
+
 interface FeaturePageProps {
     params: Promise<{ slug: string }>
 }
-
-const getData = (slug: string) => api.GetFeaturesTemplate({ slug })
 
 export default async function FeaturePage({ params }: FeaturePageProps) {
     const { slug } = await params

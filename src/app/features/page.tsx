@@ -15,6 +15,8 @@ import { api } from '@/lib/api'
 
 const getData = cache(() => api.GetFeaturesPage())
 
+export const revalidate = 3600
+
 export default async function FeaturesPage() {
     const { features, featuresPage: data } = await getData()
     return (
@@ -45,8 +47,6 @@ export default async function FeaturesPage() {
             <Cta
                 backgroundColor="primary-50"
                 buttonLink={`${ACCOUNTS_URL}/signup?action=signup&section=cta&page=features`}
-                buttonText="Start free trial now"
-                title="Trusted by thousands of business owners"
             />
         </>
     )

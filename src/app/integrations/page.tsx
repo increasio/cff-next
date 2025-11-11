@@ -14,6 +14,8 @@ import { api } from '@/lib/api'
 
 const getData = cache(() => api.GetIntegrationPage())
 
+export const revalidate = 3600
+
 export async function generateMetadata() {
     const { integrationsPage: data } = await getData()
     return generateSeo({ pathname: '/integrations', seo: data?.Seo })
@@ -45,8 +47,6 @@ export default async function IntegrationsPage() {
             <Cta
                 backgroundColor="primary-50"
                 buttonLink={`${ACCOUNTS_URL}/signup?action=signup&section=cta&page=features`}
-                buttonText="Start free trial now"
-                title="Trusted by thousands of business owners"
             />
         </>
     )

@@ -16,6 +16,8 @@ import { api } from '@/lib/api'
 
 const getData = (slug: string) => api.GetBusinessTemplate({ slug })
 
+export const revalidate = 3600
+
 interface BusinessPageProps {
     params: Promise<{ slug: string }>
 }

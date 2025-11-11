@@ -1,0 +1,15 @@
+fragment PostFragment on Post {
+    documentId
+    Content
+    ImageFile {
+        ...UploadFileFragment
+    }
+    Slug
+    Title
+    publishedAt
+    updatedAt
+    category {
+        category
+        color
+    }
+}

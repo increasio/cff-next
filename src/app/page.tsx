@@ -15,6 +15,8 @@ import { api } from '@/lib/api'
 
 const getData = cache(() => api.GetHomePage())
 
+export const revalidate = 3600
+
 export async function generateMetadata() {
     const { home: data } = await getData()
     return generateSeo({ pathname: '/', seo: data?.Seo })
@@ -49,7 +51,7 @@ export default async function Home() {
             />
             <NewsletterCta />
             <Reviews />
-            <Cta buttonText="Start free trial now" title="Trusted by thousands of business owners" />
+            <Cta />
         </>
     )
 }

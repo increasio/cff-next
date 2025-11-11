@@ -15,7 +15,7 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  DateTime: { input: any; output: any; }
+  DateTime: { input: string; output: string; }
   JSON: { input: any; output: any; }
 };
 
@@ -2858,12 +2858,22 @@ export type UploadFileFragmentFragment = { __typename?: 'UploadFile', alternativ
 
 export type LadderFragmentFragment = { __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, IconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null };
 
+export type PostFragmentFragment = { __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null };
+
 export type ComponentSeoSeoFragmentFragment = { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null };
 
 export type GetAccountantsAndBookkeepersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetAccountantsAndBookkeepersQuery = { __typename?: 'Query', accountantsAndBookkeeper?: { __typename?: 'AccountantsAndBookkeeper', Title?: string | null, TitleUnderline?: string | null, UnderlineLeft?: boolean | null, Description?: string | null, HeroImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, AccountantsList?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, IconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null } | null };
+
+export type GetBlogPageArticlesQueryVariables = Exact<{
+  limit: Scalars['Int']['input'];
+  start: Scalars['Int']['input'];
+}>;
+
+
+export type GetBlogPageArticlesQuery = { __typename?: 'Query', posts_connection?: { __typename?: 'PostEntityResponseCollection', nodes: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null }>, pageInfo: { __typename?: 'Pagination', page: number, pageCount: number, pageSize: number, total: number } } | null };
 
 export type GetBusinessTemplateQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -2921,6 +2931,11 @@ export type GetTestimonialsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetTestimonialsQuery = { __typename?: 'Query', testimonials: Array<{ __typename?: 'Testimonial', Text?: string | null, Title: string, Author?: { __typename?: 'ComponentPeoplePeople', Name?: string | null, Role?: string | null, AvatarFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null } | null> };
 
+export type GetWhatsNewArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetWhatsNewArticlesQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null } | null> };
+
 export const UploadFileFragmentFragmentDoc = gql`
     fragment UploadFileFragment on UploadFile {
   alternativeText
@@ -2940,6 +2955,23 @@ export const LadderFragmentFragmentDoc = gql`
   Subtitle
   Title
   reverse
+}
+    ${UploadFileFragmentFragmentDoc}`;
+export const PostFragmentFragmentDoc = gql`
+    fragment PostFragment on Post {
+  documentId
+  Content
+  ImageFile {
+    ...UploadFileFragment
+  }
+  Slug
+  Title
+  publishedAt
+  updatedAt
+  category {
+    category
+    color
+  }
 }
     ${UploadFileFragmentFragmentDoc}`;
 export const ComponentSeoSeoFragmentFragmentDoc = gql`
@@ -2978,6 +3010,25 @@ export const GetAccountantsAndBookkeepersDocument = gql`
     ${UploadFileFragmentFragmentDoc}
 ${LadderFragmentFragmentDoc}
 ${ComponentSeoSeoFragmentFragmentDoc}`;
+export const GetBlogPageArticlesDocument = gql`
+    query GetBlogPageArticles($limit: Int!, $start: Int!) {
+  posts_connection(
+    status: PUBLISHED
+    sort: ["updatedAt:desc"]
+    pagination: {limit: $limit, start: $start}
+  ) {
+    nodes {
+      ...PostFragment
+    }
+    pageInfo {
+      page
+      pageCount
+      pageSize
+      total
+    }
+  }
+}
+    ${PostFragmentFragmentDoc}`;
 export const GetBusinessTemplateDocument = gql`
     query GetBusinessTemplate($slug: String!) {
   businesses(filters: {Slug: {eq: $slug}}) {
@@ -3263,6 +3314,17 @@ export const GetTestimonialsDocument = gql`
   }
 }
     ${UploadFileFragmentFragmentDoc}`;
+export const GetWhatsNewArticlesDocument = gql`
+    query GetWhatsNewArticles {
+  posts(
+    filters: {category: {category: {eq: "Whats new"}}}
+    sort: ["updatedAt:desc"]
+    pagination: {limit: 100}
+  ) {
+    ...PostFragment
+  }
+}
+    ${PostFragmentFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -3273,6 +3335,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     GetAccountantsAndBookkeepers(variables?: GetAccountantsAndBookkeepersQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetAccountantsAndBookkeepersQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetAccountantsAndBookkeepersQuery>({ document: GetAccountantsAndBookkeepersDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetAccountantsAndBookkeepers', 'query', variables);
+    },
+    GetBlogPageArticles(variables: GetBlogPageArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetBlogPageArticlesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetBlogPageArticlesQuery>({ document: GetBlogPageArticlesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetBlogPageArticles', 'query', variables);
     },
     GetBusinessTemplate(variables: GetBusinessTemplateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetBusinessTemplateQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetBusinessTemplateQuery>({ document: GetBusinessTemplateDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetBusinessTemplate', 'query', variables);
@@ -3303,6 +3368,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetTestimonials(variables?: GetTestimonialsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetTestimonialsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetTestimonialsQuery>({ document: GetTestimonialsDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetTestimonials', 'query', variables);
+    },
+    GetWhatsNewArticles(variables?: GetWhatsNewArticlesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetWhatsNewArticlesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetWhatsNewArticlesQuery>({ document: GetWhatsNewArticlesDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetWhatsNewArticles', 'query', variables);
     }
   };
 }

@@ -13,6 +13,8 @@ import { api } from '@/lib/api'
 
 const getData = cache(() => api.GetPricingPage())
 
+export const revalidate = 3600
+
 export async function generateMetadata() {
     const { pricingPage: data } = await getData()
     return generateSeo({ pathname: '/pricing', seo: data?.Seo })
@@ -34,11 +36,7 @@ export default async function PricingPage() {
             <PricingTable />
             <Reviews backgroundColor="white" />
             <Faq data={data?.PricingFaq ?? []} />
-            <Cta
-                backgroundColor="primary-50"
-                buttonText="Start free trial now"
-                title="Trusted by thousands of business owners"
-            />
+            <Cta backgroundColor="primary-50" />
         </>
     )
 }

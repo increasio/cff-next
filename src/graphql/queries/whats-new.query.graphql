@@ -1,0 +1,9 @@
+query GetWhatsNewArticles {
+    posts(
+        filters: { category: { category: { eq: "Whats new" } } }
+        sort: ["updatedAt:desc"]
+        pagination: { limit: 100 }
+    ) {
+        ...PostFragment
+    }
+}

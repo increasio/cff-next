@@ -23,3 +23,12 @@ export function nFormatter(num: number, digits = 1): string {
 
     return scaled.toFixed(digits).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, '$1') + unit.symbol
 }
+
+export function formatDate(value?: string | null): string {
+    if (!value) return ''
+    return new Date(value).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    })
+}
