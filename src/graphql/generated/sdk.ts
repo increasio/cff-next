@@ -2921,6 +2921,13 @@ export type GetIntegrationPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetIntegrationPageQuery = { __typename?: 'Query', integrationsPage?: { __typename?: 'IntegrationsPage', IntegrationDescription?: string | null, IntegrationTitle?: string | null, Title?: string | null, TitleUnderline?: string | null, UnderlineLeft?: boolean | null, Description?: string | null, HeroImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, Ladder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, IconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null } | null, integrations: Array<{ __typename?: 'Integration', Description?: string | null, Name?: string | null, Slug?: string | null, IconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> };
 
+export type GetPostPageQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetPostPageQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, author?: { __typename?: 'Author', Name?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, category?: { __typename?: 'Category', color?: string | null, category?: string | null } | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null, rating: Array<{ __typename?: 'PostRating', rating: number } | null>, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null } | null>, newPosts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null } | null>, relatedPosts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null } | null>, interestedPosts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null } | null> };
+
 export type GetPricingPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -3278,6 +3285,64 @@ export const GetIntegrationPageDocument = gql`
     ${UploadFileFragmentFragmentDoc}
 ${LadderFragmentFragmentDoc}
 ${ComponentSeoSeoFragmentFragmentDoc}`;
+export const GetPostPageDocument = gql`
+    query GetPostPage($slug: String!) {
+  posts(filters: {Slug: {eq: $slug}}, pagination: {limit: 1}) {
+    documentId
+    Content
+    ImageFile {
+      ...UploadFileFragment
+    }
+    Slug
+    Title
+    publishedAt
+    updatedAt
+    author {
+      ImageFile {
+        ...UploadFileFragment
+      }
+      Name
+    }
+    category {
+      color
+      category
+    }
+    Seo {
+      ...ComponentSeoSeoFragment
+    }
+    rating {
+      rating
+    }
+    Faq {
+      Answer
+      Question
+    }
+  }
+  newPosts: posts(
+    filters: {Slug: {ne: $slug}}
+    sort: ["updatedAt:desc"]
+    pagination: {limit: 3}
+  ) {
+    ...PostFragment
+  }
+  relatedPosts: posts(
+    filters: {category: {category: {eq: "Cash Flow"}}, Slug: {ne: $slug}}
+    sort: ["updatedAt:desc"]
+    pagination: {limit: 3, start: 3}
+  ) {
+    ...PostFragment
+  }
+  interestedPosts: posts(
+    filters: {category: {category: {eq: "Cash Flow"}}, Slug: {ne: $slug}}
+    sort: ["updatedAt:desc"]
+    pagination: {limit: 3, start: 6}
+  ) {
+    ...PostFragment
+  }
+}
+    ${UploadFileFragmentFragmentDoc}
+${ComponentSeoSeoFragmentFragmentDoc}
+${PostFragmentFragmentDoc}`;
 export const GetPricingPageDocument = gql`
     query GetPricingPage {
   pricingPage {
@@ -3362,6 +3427,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetIntegrationPage(variables?: GetIntegrationPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetIntegrationPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetIntegrationPageQuery>({ document: GetIntegrationPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetIntegrationPage', 'query', variables);
+    },
+    GetPostPage(variables: GetPostPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetPostPageQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetPostPageQuery>({ document: GetPostPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetPostPage', 'query', variables);
     },
     GetPricingPage(variables?: GetPricingPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetPricingPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPricingPageQuery>({ document: GetPricingPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetPricingPage', 'query', variables);

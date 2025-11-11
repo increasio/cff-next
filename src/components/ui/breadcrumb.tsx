@@ -5,7 +5,7 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 
 function Breadcrumb({ ...props }: React.ComponentProps<'nav'>) {
-    return <nav aria-label="breadcrumb" data-slot="breadcrumb" {...props} />
+    return <nav aria-label="breadcrumb" className="w-full overflow-hidden" data-slot="breadcrumb" {...props} />
 }
 
 function BreadcrumbEllipsis({ className, ...props }: React.ComponentProps<'span'>) {
@@ -48,10 +48,7 @@ function BreadcrumbLink({
 function BreadcrumbList({ className, ...props }: React.ComponentProps<'ol'>) {
     return (
         <ol
-            className={cn(
-                `flex flex-wrap items-center gap-1.5 text-xs wrap-break-word text-neutral-500 sm:gap-2.5`,
-                className,
-            )}
+            className={cn(`flex items-center gap-1.5 text-xs wrap-break-word text-neutral-500 sm:gap-2.5`, className)}
             data-slot="breadcrumb-list"
             {...props}
         />
@@ -63,7 +60,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<'span'>) {
         <span
             aria-current="page"
             aria-disabled="true"
-            className={cn('font-bold text-primary-200', className)}
+            className={cn('font-bold whitespace-nowrap text-primary-200', className)}
             data-slot="breadcrumb-page"
             role="link"
             {...props}

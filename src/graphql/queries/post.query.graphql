@@ -1,0 +1,51 @@
+query GetPostPage($slug: String!) {
+    posts(filters: { Slug: { eq: $slug } }, pagination: { limit: 1 }) {
+        documentId
+        Content
+        ImageFile {
+            ...UploadFileFragment
+        }
+        Slug
+        Title
+        publishedAt
+        updatedAt
+        author {
+            ImageFile {
+                ...UploadFileFragment
+            }
+            Name
+        }
+        category {
+            color
+            category
+        }
+        Seo {
+            ...ComponentSeoSeoFragment
+        }
+        rating {
+            rating
+        }
+        Faq {
+            Answer
+            Question
+        }
+    }
+
+    newPosts: posts(filters: { Slug: { ne: $slug } }, sort: ["updatedAt:desc"], pagination: { limit: 3 }) {
+        ...PostFragment
+    }
+    relatedPosts: posts(
+        filters: { category: { category: { eq: "Cash Flow" } }, Slug: { ne: $slug } }
+        sort: ["updatedAt:desc"]
+        pagination: { limit: 3, start: 3 }
+    ) {
+        ...PostFragment
+    }
+    interestedPosts: posts(
+        filters: { category: { category: { eq: "Cash Flow" } }, Slug: { ne: $slug } }
+        sort: ["updatedAt:desc"]
+        pagination: { limit: 3, start: 6 }
+    ) {
+        ...PostFragment
+    }
+}

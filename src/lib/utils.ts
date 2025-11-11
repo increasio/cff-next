@@ -32,3 +32,14 @@ export function formatDate(value?: string | null): string {
         day: 'numeric',
     })
 }
+
+export const stripIndent = (str: string) => {
+    try {
+        return str
+            .split('\n')
+            .map((l) => l.trim())
+            .join('\n')
+    } catch {
+        return str
+    }
+}

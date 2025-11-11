@@ -1,6 +1,5 @@
 'use client'
 
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
@@ -45,9 +44,13 @@ export function Cta({
                     {title}
                 </h4>
                 <Button asChild>
-                    <Link href={buttonLink ?? `${ACCOUNTS_URL}/signup?action=signup&section=cta&page=${page}`}>
+                    <a
+                        href={buttonLink ?? `${ACCOUNTS_URL}/signup?action=signup&section=cta&page=${page}`}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
                         {buttonText}
-                    </Link>
+                    </a>
                 </Button>
             </div>
         </section>
