@@ -14,8 +14,8 @@ export function BlogContentTitle({ activeTitle, title }: BlogContentTitleProps) 
     return (
         <a
             className={clsx('leading-[160%] transition-colors', {
-                'font-bold text-primary-100': isActive,
                 'text-neutral-600 hover:text-primary-100': !isActive,
+                'text-primary-100': isActive,
             })}
             href={`#${title
                 .replaceAll(/[^a-z0-9- ]/gi, '')

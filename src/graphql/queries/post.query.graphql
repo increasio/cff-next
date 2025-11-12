@@ -23,6 +23,7 @@ query GetPostPage($slug: String!) {
             ...ComponentSeoSeoFragment
         }
         rating {
+            user
             rating
         }
         Faq {
@@ -30,21 +31,10 @@ query GetPostPage($slug: String!) {
             Question
         }
     }
-
-    newPosts: posts(filters: { Slug: { ne: $slug } }, sort: ["updatedAt:desc"], pagination: { limit: 3 }) {
-        ...PostFragment
-    }
     relatedPosts: posts(
         filters: { category: { category: { eq: "Cash Flow" } }, Slug: { ne: $slug } }
         sort: ["updatedAt:desc"]
-        pagination: { limit: 3, start: 3 }
-    ) {
-        ...PostFragment
-    }
-    interestedPosts: posts(
-        filters: { category: { category: { eq: "Cash Flow" } }, Slug: { ne: $slug } }
-        sort: ["updatedAt:desc"]
-        pagination: { limit: 3, start: 6 }
+        pagination: { limit: 6 }
     ) {
         ...PostFragment
     }

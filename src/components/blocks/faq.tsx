@@ -10,7 +10,7 @@ interface FaqProps {
     } | null)[]
 }
 
-export default function Faq({ data }: FaqProps) {
+export function Faq({ data }: FaqProps) {
     return (
         <section className="relative flex flex-col gap-6 pt-[60px] pb-[90px]">
             <div className="relative z-10 container mx-auto flex flex-col gap-6">

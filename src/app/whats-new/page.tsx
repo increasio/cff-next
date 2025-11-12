@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
+import BlogHero from '@/app/blog/_components/blog-hero'
+import BlogListLoadMore from '@/app/blog/_components/blog-list-load-more'
 import { Cta } from '@/components/blocks/cta'
-import BlogHero from '@/components/blog/blog-hero'
-import BlogListLoadMore from '@/components/blog/blog-list-load-more'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { api } from '@/lib/api'
 

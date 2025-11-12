@@ -2926,7 +2926,7 @@ export type GetPostPageQueryVariables = Exact<{
 }>;
 
 
-export type GetPostPageQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, author?: { __typename?: 'Author', Name?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, category?: { __typename?: 'Category', color?: string | null, category?: string | null } | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null, rating: Array<{ __typename?: 'PostRating', rating: number } | null>, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null } | null>, newPosts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null } | null>, relatedPosts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null } | null>, interestedPosts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null } | null> };
+export type GetPostPageQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, author?: { __typename?: 'Author', Name?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, category?: { __typename?: 'Category', color?: string | null, category?: string | null } | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null, rating: Array<{ __typename?: 'PostRating', user: string, rating: number } | null>, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null } | null>, relatedPosts: Array<{ __typename?: 'Post', documentId: string, Content?: string | null, Slug?: string | null, Title: string, publishedAt?: string | null, updatedAt?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, category?: { __typename?: 'Category', category?: string | null, color?: string | null } | null } | null> };
 
 export type GetPricingPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3311,6 +3311,7 @@ export const GetPostPageDocument = gql`
       ...ComponentSeoSeoFragment
     }
     rating {
+      user
       rating
     }
     Faq {
@@ -3318,24 +3319,10 @@ export const GetPostPageDocument = gql`
       Question
     }
   }
-  newPosts: posts(
-    filters: {Slug: {ne: $slug}}
-    sort: ["updatedAt:desc"]
-    pagination: {limit: 3}
-  ) {
-    ...PostFragment
-  }
   relatedPosts: posts(
     filters: {category: {category: {eq: "Cash Flow"}}, Slug: {ne: $slug}}
     sort: ["updatedAt:desc"]
-    pagination: {limit: 3, start: 3}
-  ) {
-    ...PostFragment
-  }
-  interestedPosts: posts(
-    filters: {category: {category: {eq: "Cash Flow"}}, Slug: {ne: $slug}}
-    sort: ["updatedAt:desc"]
-    pagination: {limit: 3, start: 6}
+    pagination: {limit: 6}
   ) {
     ...PostFragment
   }

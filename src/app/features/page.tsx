@@ -3,7 +3,7 @@ import { Fragment } from 'react/jsx-runtime'
 
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
-import Faq from '@/components/blocks/faq'
+import { Faq } from '@/components/blocks/faq'
 import { Hero } from '@/components/blocks/hero'
 import { NewsletterCta } from '@/components/blocks/newsletter-cta'
 import { Reviews } from '@/components/blocks/reviews'

@@ -1,7 +1,7 @@
 import { cache } from 'react'
 
 import { Cta } from '@/components/blocks/cta'
-import Faq from '@/components/blocks/faq'
+import { Faq } from '@/components/blocks/faq'
 import { Hero } from '@/components/blocks/hero'
 import PricingSelector from '@/components/blocks/pricing-selector'
 import PricingTable from '@/components/blocks/pricing-table'

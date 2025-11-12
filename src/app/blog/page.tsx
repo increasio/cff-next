@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
+import BlogCard from '@/app/blog/_components/blog-card'
+import BlogHero from '@/app/blog/_components/blog-hero'
 import { Cta } from '@/components/blocks/cta'
-import BlogCard from '@/components/blog/blog-card'
-import BlogHero from '@/components/blog/blog-hero'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { PaginationComponent } from '@/components/shared/pagination'
 import { ARTICLES_PER_PAGE } from '@/constants'
