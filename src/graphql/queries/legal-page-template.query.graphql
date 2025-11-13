@@ -1,0 +1,15 @@
+query GetLegalPageTemplate($slug: String!) {
+    legalPages(filters: { Slug: { eq: $slug } }) {
+        Slug
+        Name
+        content
+        SEO {
+            ...ComponentSeoSeoFragment
+        }
+        Faq {
+            Answer
+            Question
+        }
+        robotsIndex
+    }
+}

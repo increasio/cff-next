@@ -8,6 +8,7 @@ import { Hero } from '@/components/blocks/hero'
 import { Reviews } from '@/components/blocks/reviews'
 import SingleReview from '@/components/blocks/single-review'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
+import { GenerateJsonLd } from '@/components/shared/generate-jsonld'
 import { generateSeo } from '@/components/shared/generate-seo'
 import { Button } from '@/components/ui/button'
 import { ACCOUNTS_URL } from '@/constants'
@@ -39,6 +40,7 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
     }
     return (
         <>
+            <GenerateJsonLd faqData={data.Faq} seo={data.Seo} />
             <Breadcrumbs activePage={data.Name ?? ''} pages={[{ href: '/integrations', name: 'Integrations' }]} />
             <Hero
                 buttonText={`Get your ${data.Name} — Start Free `}

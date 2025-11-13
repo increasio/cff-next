@@ -2921,6 +2921,13 @@ export type GetIntegrationPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetIntegrationPageQuery = { __typename?: 'Query', integrationsPage?: { __typename?: 'IntegrationsPage', IntegrationDescription?: string | null, IntegrationTitle?: string | null, Title?: string | null, TitleUnderline?: string | null, UnderlineLeft?: boolean | null, Description?: string | null, HeroImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, Ladder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, IconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null } | null, integrations: Array<{ __typename?: 'Integration', Description?: string | null, Name?: string | null, Slug?: string | null, IconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> };
 
+export type GetLegalPageTemplateQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type GetLegalPageTemplateQuery = { __typename?: 'Query', legalPages: Array<{ __typename?: 'LegalPage', Slug?: string | null, Name: string, content?: string | null, robotsIndex?: boolean | null, SEO?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null } | null> };
+
 export type GetPostPageQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
@@ -3285,6 +3292,23 @@ export const GetIntegrationPageDocument = gql`
     ${UploadFileFragmentFragmentDoc}
 ${LadderFragmentFragmentDoc}
 ${ComponentSeoSeoFragmentFragmentDoc}`;
+export const GetLegalPageTemplateDocument = gql`
+    query GetLegalPageTemplate($slug: String!) {
+  legalPages(filters: {Slug: {eq: $slug}}) {
+    Slug
+    Name
+    content
+    SEO {
+      ...ComponentSeoSeoFragment
+    }
+    Faq {
+      Answer
+      Question
+    }
+    robotsIndex
+  }
+}
+    ${ComponentSeoSeoFragmentFragmentDoc}`;
 export const GetPostPageDocument = gql`
     query GetPostPage($slug: String!) {
   posts(filters: {Slug: {eq: $slug}}, pagination: {limit: 1}) {
@@ -3414,6 +3438,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     GetIntegrationPage(variables?: GetIntegrationPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetIntegrationPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetIntegrationPageQuery>({ document: GetIntegrationPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetIntegrationPage', 'query', variables);
+    },
+    GetLegalPageTemplate(variables: GetLegalPageTemplateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetLegalPageTemplateQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetLegalPageTemplateQuery>({ document: GetLegalPageTemplateDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetLegalPageTemplate', 'query', variables);
     },
     GetPostPage(variables: GetPostPageQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<GetPostPageQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPostPageQuery>({ document: GetPostPageDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'GetPostPage', 'query', variables);
