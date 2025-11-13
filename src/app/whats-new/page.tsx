@@ -1,15 +1,14 @@
-import { Metadata } from 'next'
-
 import BlogHero from '@/app/blog/_components/blog-hero'
 import BlogListLoadMore from '@/app/blog/_components/blog-list-load-more'
 import { Cta } from '@/components/blocks/cta'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
+import { generateSeo } from '@/components/shared/generate-seo'
 import { api } from '@/lib/api'
 
 export const revalidate = 3600
 
-export const metadata: Metadata = {
-    title: 'What’s New',
+export function generateMetadata() {
+    return generateSeo({ pathname: '/whats-new', seo: { MetaDescription: 'What’s New', MetaTitle: 'What’s New' } })
 }
 
 export default async function WhatsNewPage() {

@@ -13,11 +13,11 @@ function InputGroup({ className, ...props }: React.ComponentProps<'div'>) {
         <div
             className={cn(
                 `
-                  group/input-group relative flex w-full items-center rounded-lg border border-neutral-200 bg-white
-                  shadow-xs transition-[color,box-shadow] outline-none
+                  group/input-group relative flex w-full items-center rounded-lg border border-neutral-300 bg-white
+                  shadow-[0px_1px_2px_0px_#1018280D,0px_1px_4px_0px_#0000003D_inset] transition-[color,box-shadow]
+                  outline-none
                 `,
                 'h-[49px] min-w-0 has-[>textarea]:h-auto',
-
                 // Variants based on alignment.
                 'has-[>[data-align=inline-start]]:[&>input]:pl-3',
                 'has-[>[data-align=inline-end]]:[&>input]:pr-3',
@@ -29,14 +29,8 @@ function InputGroup({ className, ...props }: React.ComponentProps<'div'>) {
                   has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col
                   has-[>[data-align=block-end]]:[&>input]:pt-3
                 `,
-
                 // Focus state.
-                `
-                  has-[[data-slot=input-group-control]:focus-visible]:border-neutral-800
-                  has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]
-                  has-[[data-slot=input-group-control]:focus-visible]:ring-neutral-800/50
-                `,
-
+                `has-[[data-slot=input-group-control]:focus-visible]:border-neutral-800`,
                 // Error state.
                 `
                   has-[[data-slot][aria-invalid=true]]:border-red-500
