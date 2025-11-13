@@ -7,6 +7,7 @@ import { SITE_URL } from '@/constants'
 import './globals.css'
 
 const manrope = Manrope({
+    display: 'swap',
     subsets: ['latin'],
     variable: '--font-manrope',
     weight: ['200', '300', '400', '500', '600', '700', '800'],
