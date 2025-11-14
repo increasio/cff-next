@@ -28,7 +28,17 @@ export function BlurCircle({
                 `pointer-events-none absolute rounded-full opacity-40 blur-[400px] select-none print:hidden`,
                 className,
             )}
-            style={{ background, bottom, height: size, left, right, top, width: size }}
+            style={{
+                background,
+
+                height: size,
+                width: size,
+
+                bottom,
+                left,
+                right,
+                top,
+            }}
         />
     )
 }
