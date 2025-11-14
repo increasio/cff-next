@@ -54,6 +54,7 @@ export function Hero({ buttonSlot, buttonText = 'Start free', description, image
                         alt={imageAlt ?? 'Hero Image'}
                         className="pointer-events-none object-contain select-none"
                         height={400}
+                        priority
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         src={imageUrl}
                         width={600}

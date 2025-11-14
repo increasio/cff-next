@@ -81,6 +81,7 @@ export const HeaderClient = ({ data }: HeaderClientProps) => {
                 <Image
                     alt="Cash Flow Frog logo"
                     height={32}
+                    priority
                     src={`${CLOUDINARY_URL}/images/svg/logo-green.svg`}
                     width={160}
                 />
