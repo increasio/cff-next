@@ -52,12 +52,12 @@
 }
 
 @layer base {
-    /* html,
+    html,
     body {
         @apply overflow-x-hidden;
-    } */
+    }
     body {
-        @apply bg-white text-neutral-800 overflow-x-hidden;
+        @apply bg-white text-neutral-800;
     }
     .prose {
         @apply prose-p:mt-0! text-neutral-600! prose-headings:mt-0!;

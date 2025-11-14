@@ -2,7 +2,7 @@
 
 import Markdown from 'markdown-to-jsx'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { InView } from 'react-intersection-observer'
 
 import { stripIndent } from '@/lib/utils'
@@ -22,6 +22,15 @@ interface PostContentProps {
 
 export function PostContent({ data }: PostContentProps) {
     const [activeTitle, setActiveTitle] = useState('')
+
+    useLayoutEffect(() => {
+        document.documentElement.style.overflowX = 'visible'
+        document.body.style.overflowX = 'visible'
+        return () => {
+            document.documentElement.style.overflowX = 'hidden'
+            document.body.style.overflowX = 'hidden'
+        }
+    }, [])
 
     return (
         <section
