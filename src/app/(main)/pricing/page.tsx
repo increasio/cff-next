@@ -7,6 +7,7 @@ import PricingSelector from '@/components/blocks/pricing-selector'
 import PricingTable from '@/components/blocks/pricing-table'
 import { Rating } from '@/components/blocks/rating'
 import { Reviews } from '@/components/blocks/reviews'
+import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { GenerateJsonLd } from '@/components/shared/generate-jsonld'
 import { generateSeo } from '@/components/shared/generate-seo'
 import { api } from '@/lib/api'
@@ -25,6 +26,7 @@ export default async function PricingPage() {
     return (
         <>
             <GenerateJsonLd faqData={data?.PricingFaq} seo={data?.Seo} />
+            <Breadcrumbs activePage="Pricing" />
             <Hero
                 description={data?.Description}
                 imageAlt={data?.HeroImageFile?.alternativeText}

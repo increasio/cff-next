@@ -29,7 +29,7 @@ export function Hero({ buttonSlot, buttonText = 'Start free', description, image
             <BlurCircle color="blue" right={-367} size={591} top={233} />
             <BlurCircle color="blue" right={45} size={591} top={281} />
             <div className="relative z-10 container mx-auto grid place-items-center gap-8 lg:grid-cols-2 lg:gap-6">
-                <div className="flex shrink-0 flex-col items-start gap-8 lg:gap-10">
+                <div className="flex w-full shrink-0 flex-col items-start gap-8 lg:w-auto lg:gap-10">
                     <div className="flex w-full flex-col gap-6">
                         <h1 className={`text-[34px] leading-[120%] font-bold text-balance lg:text-3.5xl`}>{title}</h1>
                         <div className={`prose max-w-none leading-[160%]`}>
