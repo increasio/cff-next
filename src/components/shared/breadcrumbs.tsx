@@ -13,13 +13,15 @@ import {
     BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { SITE_URL } from '@/constants'
+import { cn } from '@/lib/utils'
 
 interface BreadcrumbsProps {
     activePage: string
+    className?: string
     pages?: { href: string; name: string }[]
 }
 
-export function Breadcrumbs({ activePage, pages }: BreadcrumbsProps) {
+export function Breadcrumbs({ activePage, className, pages }: BreadcrumbsProps) {
     const pathname = usePathname()
 
     const jsonLd: WithContext<BreadcrumbListSchema> = {
@@ -58,26 +60,28 @@ export function Breadcrumbs({ activePage, pages }: BreadcrumbsProps) {
                 id="breadcrumb-jsonld"
                 type="application/ld+json"
             />
-            <section className="relative z-10 container mx-auto flex items-center py-3">
-                <Breadcrumb>
-                    <BreadcrumbList>
-                        <BreadcrumbItem>
-                            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        <BreadcrumbSeparator />
-                        {pages?.map((page) => (
-                            <Fragment key={page.name}>
-                                <BreadcrumbItem>
-                                    <BreadcrumbLink href={page.href}>{page.name}</BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbSeparator />
-                            </Fragment>
-                        ))}
-                        <BreadcrumbItem>
-                            <BreadcrumbPage>{activePage}</BreadcrumbPage>
-                        </BreadcrumbItem>
-                    </BreadcrumbList>
-                </Breadcrumb>
+            <section className={cn('relative', className)}>
+                <div className="relative z-10 container mx-auto flex items-center py-3">
+                    <Breadcrumb>
+                        <BreadcrumbList>
+                            <BreadcrumbItem>
+                                <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                            </BreadcrumbItem>
+                            <BreadcrumbSeparator />
+                            {pages?.map((page) => (
+                                <Fragment key={page.name}>
+                                    <BreadcrumbItem>
+                                        <BreadcrumbLink href={page.href}>{page.name}</BreadcrumbLink>
+                                    </BreadcrumbItem>
+                                    <BreadcrumbSeparator />
+                                </Fragment>
+                            ))}
+                            <BreadcrumbItem>
+                                <BreadcrumbPage>{activePage}</BreadcrumbPage>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                </div>
             </section>
         </>
     )

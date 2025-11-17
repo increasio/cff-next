@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Cta } from '@/components/blocks/cta'
+import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { GenerateJsonLd } from '@/components/shared/generate-jsonld'
 import { generateSeo } from '@/components/shared/generate-seo'
 import { api } from '@/lib/api'
@@ -30,8 +31,9 @@ export default async function GlossaryPage() {
     return (
         <>
             <GenerateJsonLd />
+            <Breadcrumbs activePage="Glossary" className="bg-primary-50" />
             <GlossaryHero data={groupedByAlphabet} />
-            <section className="container mx-auto flex flex-col gap-10 py-12 md:gap-16 md:py-[60px]">
+            <section className="relative z-70 container mx-auto flex flex-col gap-10 py-12 md:gap-16 md:py-[60px]">
                 <p className="text-center text-xl md:text-2xl">Click the term to view its definition</p>
                 <div className="grid gap-x-9 gap-y-10 md:grid-cols-3 md:gap-y-16">
                     {Object.entries(groupedByAlphabet)
@@ -67,7 +69,7 @@ export default async function GlossaryPage() {
                 description="Visit our help center to find answers to your questions about CashFlowFrog."
                 text="Looking for more help?"
             />
-            <Cta backgroundColor="primary-50" />
+            <Cta />
         </>
     )
 }

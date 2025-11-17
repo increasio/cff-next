@@ -3,6 +3,8 @@
 import { ALPHABET } from '@/constants'
 import { cn } from '@/lib/utils'
 
+import GlossaryHeroWrapper from './glossary-hero-wrapper'
+
 interface GlossaryHeroProps {
     data: Record<string, { Name: string; Slug: string }[]>
 }
@@ -13,18 +15,8 @@ export function GlossaryHero({ data }: GlossaryHeroProps) {
     }))
 
     return (
-        <section
-            className={`
-              relative flex flex-col-reverse space-y-0 px-5 pt-20 pb-[100px]
-              md:flex-col md:space-y-20 md:px-0 md:pb-[138px]
-            `}
-        >
-            <div
-                className={`
-                  z-10 mx-auto flex max-w-[550px] flex-col items-center justify-center gap-9 pt-10
-                  md:gap-[60px] md:pt-0
-                `}
-            >
+        <GlossaryHeroWrapper>
+            <div className={`relative z-70 mx-auto flex max-w-[550px] flex-col items-center justify-center gap-8`}>
                 <div className="flex flex-col items-center justify-center gap-3 text-center">
                     <h1 className="text-[30px] leading-[110%] font-semibold md:text-[48px]">
                         Cash Flow <br /> Performance Glossary
@@ -37,8 +29,8 @@ export function GlossaryHero({ data }: GlossaryHeroProps) {
                             className={cn(
                                 'flex size-[30px] items-center justify-center rounded-[5px] p-[5px] text-center',
                                 {
-                                    'bg-primary-50': !active,
-                                    'cursor-pointer bg-primary-100 text-white': active,
+                                    'bg-primary-50 text-neutral-600': !active,
+                                    'cursor-pointer bg-white text-black': active,
                                 },
                             )}
                             disabled={!active}
@@ -52,6 +44,6 @@ export function GlossaryHero({ data }: GlossaryHeroProps) {
                     ))}
                 </div>
             </div>
-        </section>
+        </GlossaryHeroWrapper>
     )
 }

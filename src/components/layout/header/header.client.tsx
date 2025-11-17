@@ -72,73 +72,88 @@ export const HeaderClient = ({ data }: HeaderClientProps) => {
 
     return (
         <header
-            className={`
-              absolute inset-x-0 z-50 container mx-auto flex h-16 items-center justify-between gap-10 py-4 text-sm
-              lg:h-[100px] lg:py-7
-            `}
+            className={cn('absolute inset-x-0 z-50', {
+                'bg-primary-50': pathname.startsWith('/glossary'),
+            })}
         >
-            <Link href="/">
-                <Image
-                    alt="Cash Flow Frog logo"
-                    height={32}
-                    priority
-                    src={`${CLOUDINARY_URL}/images/svg/logo-green.svg`}
-                    width={160}
-                />
-            </Link>
-            <NavigationMenu className="hidden lg:flex" viewport={isMobile}>
-                <NavigationMenuList>
-                    {menu.map((menuItem) => {
-                        return menuItem.submenu.length > 0 ? (
-                            <NavigationMenuItem className="hidden md:block" key={menuItem.title + menuItem.href}>
-                                <NavigationMenuTrigger>
-                                    <Link href={menuItem.href}>{menuItem.title}</Link>
-                                </NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                    {menuItem.submenu.map((subItem) => (
-                                        <NavigationMenuLink asChild className="whitespace-nowrap" key={subItem.title}>
-                                            <Link href={subItem.href}>{subItem.title}</Link>
-                                        </NavigationMenuLink>
-                                    ))}
-                                    {menuItem.showSeeAll && (
-                                        <NavigationMenuLink asChild className="text-primary-200">
-                                            <Link href={menuItem.href}>See all</Link>
-                                        </NavigationMenuLink>
-                                    )}
-                                </NavigationMenuContent>
-                            </NavigationMenuItem>
-                        ) : (
-                            <NavigationMenuItem key={menuItem.title + menuItem.href}>
-                                <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle())}>
-                                    <Link href={menuItem.href}>{menuItem.title}</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                        )
-                    })}
-                </NavigationMenuList>
-            </NavigationMenu>
-            <div className="flex items-center gap-6">
-                <a
-                    className="group hidden text-primary-200 hover:text-primary-300 md:block"
-                    href={`${ACCOUNTS_URL}/login?section=header&page=${pathname.replaceAll('/', '')}`}
-                    rel="noreferrer"
-                    target="_blank"
-                >
-                    <PersonIcon />
-                </a>
-                <Button asChild className="hidden px-9 shadow-none! md:block" size="sm" variant="outline">
-                    <Link
-                        href={`${ACCOUNTS_URL}/signup?action=signup&section=header&page=${pathname.replaceAll(
-                            '/',
-                            '',
-                        )}`}
+            <div
+                className={`
+                  container mx-auto flex h-16 items-center justify-between gap-10 py-4 text-sm
+                  lg:h-[100px] lg:py-7
+                `}
+            >
+                <Link href="/">
+                    <Image
+                        alt="Cash Flow Frog logo"
+                        height={32}
+                        priority
+                        src={`${CLOUDINARY_URL}/images/svg/logo-green.svg`}
+                        width={160}
+                    />
+                </Link>
+                <NavigationMenu className="hidden lg:flex" viewport={isMobile}>
+                    <NavigationMenuList>
+                        {menu.map((menuItem) => {
+                            return menuItem.submenu.length > 0 ? (
+                                <NavigationMenuItem className="hidden md:block" key={menuItem.title + menuItem.href}>
+                                    <NavigationMenuTrigger>
+                                        <Link href={menuItem.href}>{menuItem.title}</Link>
+                                    </NavigationMenuTrigger>
+                                    <NavigationMenuContent>
+                                        {menuItem.submenu.map((subItem) => (
+                                            <NavigationMenuLink
+                                                asChild
+                                                className="whitespace-nowrap"
+                                                key={subItem.title}
+                                            >
+                                                <Link href={subItem.href}>{subItem.title}</Link>
+                                            </NavigationMenuLink>
+                                        ))}
+                                        {menuItem.showSeeAll && (
+                                            <NavigationMenuLink asChild className="text-primary-200">
+                                                <Link href={menuItem.href}>See all</Link>
+                                            </NavigationMenuLink>
+                                        )}
+                                    </NavigationMenuContent>
+                                </NavigationMenuItem>
+                            ) : (
+                                <NavigationMenuItem key={menuItem.title + menuItem.href}>
+                                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle())}>
+                                        <Link href={menuItem.href}>{menuItem.title}</Link>
+                                    </NavigationMenuLink>
+                                </NavigationMenuItem>
+                            )
+                        })}
+                    </NavigationMenuList>
+                </NavigationMenu>
+                <div className="flex items-center gap-6">
+                    <a
+                        className="group hidden text-primary-200 hover:text-primary-300 md:block"
+                        href={`${ACCOUNTS_URL}/login?section=header&page=${pathname.replaceAll('/', '')}`}
                         rel="noreferrer"
                         target="_blank"
                     >
-                        Start free
-                    </Link>
-                </Button>
-                <MobileMenu menu={menu} />
+                        <PersonIcon />
+                    </a>
+                    <Button
+                        asChild
+                        className="hidden bg-transparent px-9 shadow-none! md:block"
+                        size="sm"
+                        variant="outline"
+                    >
+                        <Link
+                            href={`${ACCOUNTS_URL}/signup?action=signup&section=header&page=${pathname.replaceAll(
+                                '/',
+                                '',
+                            )}`}
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            Start free
+                        </Link>
+                    </Button>
+                    <MobileMenu menu={menu} />
+                </div>
             </div>
         </header>
     )
