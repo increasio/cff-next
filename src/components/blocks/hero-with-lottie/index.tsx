@@ -64,11 +64,11 @@ export function HeroWithLottie({ description, title }: HeroWithLottieProps) {
                     <Image
                         alt="Hero Image"
                         className="pointer-events-none object-contain select-none lg:hidden"
-                        height={400}
+                        height={250}
                         priority
-                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        sizes="100vw"
                         src="/hero.png"
-                        width={600}
+                        width={400}
                     />
                 </div>
             </div>
