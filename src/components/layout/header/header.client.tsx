@@ -38,19 +38,23 @@ export const HeaderClient = ({ data }: HeaderClientProps) => {
         {
             href: '/features',
             showSeeAll: true,
-            submenu: data.features.map((feature) => ({
-                href: `/features/${feature?.Slug}`,
-                title: feature?.Name,
-            })),
+            submenu: data.features
+                .toSorted((a, b) => (a?.SortOrder ?? 0) - (b?.SortOrder ?? 0))
+                .map((feature) => ({
+                    href: `/features/${feature?.Slug}`,
+                    title: feature?.Name,
+                })),
             title: 'Features',
         },
         {
             href: '/integrations',
             showSeeAll: true,
-            submenu: data.integrations.map((integration) => ({
-                href: `/integrations/${integration?.Slug}`,
-                title: integration?.Name,
-            })),
+            submenu: data.integrations
+                .toSorted((a, b) => (a?.SortOrder ?? 0) - (b?.SortOrder ?? 0))
+                .map((integration) => ({
+                    href: `/integrations/${integration?.Slug}`,
+                    title: integration?.Name,
+                })),
             title: 'Integrations',
         },
         {

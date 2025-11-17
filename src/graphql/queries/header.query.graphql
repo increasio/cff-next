@@ -3,7 +3,7 @@ query GetHeaderData {
         headScript
         bodyNoScript
     }
-    features(filters: { showOnMain: { eq: true } }, sort: ["Name:asc"]) {
+    features(filters: { showOnMain: { eq: true } }, sort: ["SortOrder:asc"]) {
         Name
         Slug
         SortOrder
@@ -11,8 +11,9 @@ query GetHeaderData {
     integrations(sort: ["Name:asc"], filters: { showOnMenu: { eq: true } }) {
         Name
         Slug
+        SortOrder
     }
-    businesses(filters: { showOnMenu: { eq: true } }) {
+    businesses(filters: { showOnMenu: { eq: true } }, sort: ["Name:asc"]) {
         Slug
         Name
     }

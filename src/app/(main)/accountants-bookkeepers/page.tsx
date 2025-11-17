@@ -1,4 +1,4 @@
-import { cache, Fragment } from 'react'
+import { cache } from 'react'
 
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
@@ -42,26 +42,20 @@ export default async function AccountantsBookkeepersPage() {
             />
             <Rating />
             {data?.AccountantsList?.map((ladderItem, index) => (
-                <Fragment key={ladderItem?.Title ?? index}>
-                    {index === 5 && (
-                        <>
-                            <div className="mb-[90px] flex items-center justify-center">
-                                <Button asChild>
-                                    <a
-                                        href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=AccountantsAndBookkeepers`}
-                                        rel="noreferrer"
-                                        target="_blank"
-                                    >
-                                        Start Free trial now
-                                    </a>
-                                </Button>
-                            </div>
-                            <Integrations backgroundColor="primary-50" />
-                        </>
-                    )}
-                    <BlockWithImage data={ladderItem} key={ladderItem?.Title} />
-                </Fragment>
+                <BlockWithImage data={ladderItem} key={ladderItem?.Title ?? index} />
             ))}
+            <div className="mb-[90px] flex items-center justify-center">
+                <Button asChild>
+                    <a
+                        href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=AccountantsAndBookkeepers`}
+                        rel="noreferrer"
+                        target="_blank"
+                    >
+                        Start Free trial now
+                    </a>
+                </Button>
+            </div>
+            <Integrations backgroundColor="primary-50" />
             <PricingSelector onlyPro />
             <PricingTable onlyPro />
             <Reviews backgroundColor="white" />

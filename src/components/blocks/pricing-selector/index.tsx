@@ -26,9 +26,9 @@ export default function PricingSelector({ onClick, onlyPro = false }: PricingSel
             <div className="mx-auto flex flex-col gap-x-[60px] gap-y-10 md:flex-row lg:px-7">
                 <div
                     className={`
-                      flex w-fit flex-col gap-20 rounded-xl bg-white px-4 py-8
+                      flex w-full flex-col gap-20 rounded-xl bg-white px-4 py-8
                       shadow-[0px_-0.14px_2.83px_0px_#28292E05,0px_-1.1px_22.61px_0px_#28292E0A]
-                      lg:p-8
+                      lg:w-fit lg:p-8
                     `}
                 >
                     <PaymentPeriodSelect
@@ -45,7 +45,7 @@ export default function PricingSelector({ onClick, onlyPro = false }: PricingSel
                     {!onlyPro && (
                         <PricingPlanCard
                             description="Plan long term cash flow & test scenarios"
-                            imageUrl={`${CLOUDINARY_URL}/images/standardPrice.svg`}
+                            imageUrl={`${CLOUDINARY_URL}/v1763379352/strapi/Group_977f710053.png`}
                             onClick={onClick}
                             planName="Standard"
                             price={
@@ -62,7 +62,7 @@ export default function PricingSelector({ onClick, onlyPro = false }: PricingSel
                     )}
                     <PricingPlanCard
                         description="Stay on top of your cash flow with powerful pro features"
-                        imageUrl={`${CLOUDINARY_URL}/images/proPrice.svg`}
+                        imageUrl={`${CLOUDINARY_URL}/v1763379352/strapi/Group2_a7482fd76d.png`}
                         onClick={onClick}
                         planName="Pro"
                         price={

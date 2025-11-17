@@ -31,7 +31,7 @@ export function Hero({ buttonSlot, buttonText = 'Start free', description, image
             <div className="relative z-10 container mx-auto grid place-items-center gap-8 lg:grid-cols-2 lg:gap-6">
                 <div className="flex w-full shrink-0 flex-col items-start gap-8 lg:w-auto lg:gap-10">
                     <div className="flex w-full flex-col gap-6">
-                        <h1 className={`text-[34px] leading-[120%] font-bold text-balance lg:text-3.5xl`}>{title}</h1>
+                        <h1 className={`text-[34px] leading-[120%] font-bold text-balance lg:text-[32px]`}>{title}</h1>
                         <div className={`prose max-w-none leading-[160%]`}>
                             <Markdown>{description}</Markdown>
                         </div>

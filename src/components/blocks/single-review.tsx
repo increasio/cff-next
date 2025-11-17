@@ -22,7 +22,12 @@ export default function SingleReview() {
                     </p>
                     <p className="text-xl font-semibold">Maria Davis</p>
                 </div>
-                <Image alt="Review" height={320} src={`${CLOUDINARY_URL}/images/singlereview.svg`} width={500} />
+                <Image
+                    alt="Review"
+                    height={320}
+                    src={`${CLOUDINARY_URL}/v1763382622/strapi/Group_a64f952cd0.png`}
+                    width={500}
+                />
             </div>
         </section>
     )

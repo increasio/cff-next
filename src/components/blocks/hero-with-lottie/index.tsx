@@ -63,7 +63,8 @@ export function HeroWithLottie({ description, title }: HeroWithLottieProps) {
                     </div>
                     <Image
                         alt="Hero Image"
-                        className="pointer-events-none object-contain select-none lg:hidden"
+                        className="pointer-events-none h-auto w-full object-contain select-none lg:hidden"
+                        fetchPriority="high"
                         height={250}
                         priority
                         sizes="100vw"

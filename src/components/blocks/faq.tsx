@@ -8,13 +8,14 @@ interface FaqProps {
         Answer?: null | string
         Question?: null | string
     } | null)[]
+    title?: string
 }
 
-export function Faq({ data }: FaqProps) {
+export function Faq({ data, title }: FaqProps) {
     return (
         <section className="relative flex flex-col gap-6 pt-[60px] pb-[90px]">
             <div className="relative z-10 container mx-auto flex flex-col gap-6">
-                <h4 className="text-center text-2.5xl font-semibold">FAQ</h4>
+                <h4 className="text-center text-2.5xl font-semibold">{title ?? 'FAQ'}</h4>
             </div>
             <div className="mx-auto flex w-full max-w-[1060px] flex-col gap-6 px-4">
                 {data.map((item) => {

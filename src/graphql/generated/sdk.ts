@@ -2893,7 +2893,7 @@ export type GetGlossaryPageQuery = { __typename?: 'Query', glossaries: Array<{ _
 export type GetHeaderDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHeaderDataQuery = { __typename?: 'Query', setting?: { __typename?: 'Setting', headScript?: string | null, bodyNoScript?: string | null } | null, features: Array<{ __typename?: 'Feature', Name?: string | null, Slug?: string | null, SortOrder: number } | null>, integrations: Array<{ __typename?: 'Integration', Name?: string | null, Slug?: string | null } | null>, businesses: Array<{ __typename?: 'Business', Slug?: string | null, Name?: string | null } | null> };
+export type GetHeaderDataQuery = { __typename?: 'Query', setting?: { __typename?: 'Setting', headScript?: string | null, bodyNoScript?: string | null } | null, features: Array<{ __typename?: 'Feature', Name?: string | null, Slug?: string | null, SortOrder: number } | null>, integrations: Array<{ __typename?: 'Integration', Name?: string | null, Slug?: string | null, SortOrder: number } | null>, businesses: Array<{ __typename?: 'Business', Slug?: string | null, Name?: string | null } | null> };
 
 export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3151,7 +3151,7 @@ export const GetHeaderDataDocument = gql`
     headScript
     bodyNoScript
   }
-  features(filters: {showOnMain: {eq: true}}, sort: ["Name:asc"]) {
+  features(filters: {showOnMain: {eq: true}}, sort: ["SortOrder:asc"]) {
     Name
     Slug
     SortOrder
@@ -3159,6 +3159,7 @@ export const GetHeaderDataDocument = gql`
   integrations(sort: ["Name:asc"], filters: {showOnMenu: {eq: true}}) {
     Name
     Slug
+    SortOrder
   }
   businesses(filters: {showOnMenu: {eq: true}}) {
     Slug
