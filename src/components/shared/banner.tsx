@@ -33,7 +33,7 @@ const Banner = () => {
     return (
         <div
             className={`
-              fixed top-2 left-1/2 z-50 mx-auto flex w-full max-w-xs -translate-x-1/2 items-center justify-between
+              fixed top-2 left-1/2 z-100 mx-auto flex w-full max-w-xs -translate-x-1/2 items-center justify-between
               gap-x-5 rounded-xl bg-[#0094f4] px-5 py-3 text-white shadow-sm
               md:top-5 md:max-w-2xl
             `}
