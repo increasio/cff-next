@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 
@@ -33,12 +34,12 @@ export function PricingPlanCard({ description, imageUrl, onClick, planName, pric
                 </div>
                 <p className="text-neutral-600">{description}</p>
             </div>
-            {/* <p className="text-sm text-neutral-600">
+            <p className="text-sm text-neutral-600">
                 *For Sage Intacct pricing, please{' '}
                 <Link className="underline" href="/contact">
                     contact us
                 </Link>
-            </p> */}
+            </p>
             <Button asChild className="w-full shadow-none!">
                 <a href={onClick ? '##' : url} onClick={onClick} rel="noreferrer" target="_blank">
                     Get Started
