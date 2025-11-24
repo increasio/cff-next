@@ -1,5 +1,5 @@
-import Markdown from 'markdown-to-jsx'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { BlurCircle } from '@/components/shared/blur-circle'
 import { PostFragmentFragment } from '@/graphql/generated/sdk'
@@ -22,7 +22,7 @@ export function BlogHero({ post, title }: BlogHeroProps) {
                 <h1 className="text-[32px] font-semibold">{title}</h1>
             </div>
             {post && (
-                <div className="relative z-10 container mx-auto pb-10 lg:pb-[120px]">
+                <Link className="relative z-10 container mx-auto pb-10 lg:pb-[120px]" href={`/blog/${post.Slug}`}>
                     <div
                         className={`
                           flex flex-col items-center justify-center gap-8 rounded-xl bg-white px-4 pt-6 pb-10
@@ -34,15 +34,7 @@ export function BlogHero({ post, title }: BlogHeroProps) {
                             <h2 className="mb-5 text-[30px] leading-[120%] font-semibold lg:mb-6 lg:text-[48px]">
                                 {post.Title}
                             </h2>
-                            <div className="mb-8 line-clamp-4 text-neutral-600 lg:mb-11">
-                                <Markdown
-                                    options={{
-                                        disableParsingRawHTML: true,
-                                    }}
-                                >
-                                    {post.Content}
-                                </Markdown>
-                            </div>
+                            <div className="mb-8 line-clamp-4 text-neutral-600 lg:mb-11">{post.Content}</div>
                         </div>
                         {post.ImageFile?.url && (
                             <Image
@@ -53,7 +45,7 @@ export function BlogHero({ post, title }: BlogHeroProps) {
                             />
                         )}
                     </div>
-                </div>
+                </Link>
             )}
         </section>
     )
