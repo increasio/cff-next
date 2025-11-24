@@ -19,14 +19,14 @@ export function NewsletterCta() {
                       lg:px-16 lg:pb-12
                     `}
                 >
-                    <h4
+                    <h2
                         className={`
                           text-center text-2xl leading-[140%] font-semibold text-balance text-white
                           lg:text-2.5xl
                         `}
                     >
                         Get your cash flow forecast in 1 minute
-                    </h4>
+                    </h2>
                     <div className="flex flex-col items-start gap-8 lg:flex-row lg:gap-32">
                         <div className="flex flex-col gap-3">
                             {[

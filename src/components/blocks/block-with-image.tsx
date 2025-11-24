@@ -41,7 +41,7 @@ export function BlockWithImage({ data }: BlockWithImageProps) {
                         )}
                         {Subtitle && <span className="text-sm text-primary-300">{Subtitle}</span>}
                     </div>
-                    <h3 className="mb-4 text-xl leading-[140%] font-semibold lg:text-2xl">{Title}</h3>
+                    <h2 className="mb-4 text-xl leading-[140%] font-semibold lg:text-2xl">{Title}</h2>
                     <div className="prose leading-[160%] prose-li:custom-list">
                         <Markdown>{Description}</Markdown>
                     </div>

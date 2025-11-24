@@ -35,14 +35,14 @@ export function Cta({
                   lg:flex-row lg:gap-12
                 `}
             >
-                <h4
+                <p
                     className={`
                       text-center text-2.5xl font-semibold text-balance
                       lg:text-left lg:text-3.5xl lg:leading-[100%]
                     `}
                 >
                     {title}
-                </h4>
+                </p>
                 <Button asChild>
                     <a
                         href={buttonLink ?? `${ACCOUNTS_URL}/signup?action=signup&section=cta&page=${page}`}

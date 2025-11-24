@@ -15,7 +15,7 @@ export function Faq({ data, title }: FaqProps) {
     return (
         <section className="relative flex flex-col gap-6 pt-[60px] pb-[90px]">
             <div className="relative z-10 container mx-auto flex flex-col gap-6">
-                <h4 className="text-center text-2.5xl font-semibold">{title ?? 'FAQ'}</h4>
+                <h2 className="text-center text-2.5xl font-semibold">{title ?? 'FAQ'}</h2>
             </div>
             <div className="mx-auto flex w-full max-w-[1060px] flex-col gap-6 px-4">
                 {data.map((item) => {
@@ -45,7 +45,7 @@ export function Faq({ data, title }: FaqProps) {
                                     `}
                                     showIcon={false}
                                 >
-                                    {item.Question}
+                                    <h3>{item.Question}</h3>
                                     <PlusIcon
                                         className={`
                                           pointer-events-none size-8 shrink-0 text-primary-100 transition-transform
