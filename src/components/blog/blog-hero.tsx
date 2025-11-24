@@ -1,9 +1,12 @@
+import Markdown from 'markdown-to-jsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { BlurCircle } from '@/components/shared/blur-circle'
 import { PostFragmentFragment } from '@/graphql/generated/sdk'
 import { formatDate } from '@/lib/utils'
+
+import { Button } from '../ui/button'
 
 interface BlogHeroProps {
     post?: null | PostFragmentFragment
@@ -22,19 +25,30 @@ export function BlogHero({ post, title }: BlogHeroProps) {
                 <h1 className="text-[32px] font-semibold">{title}</h1>
             </div>
             {post && (
-                <Link className="relative z-10 container mx-auto pb-10 lg:pb-[120px]" href={`/blog/${post.Slug}`}>
+                <div className="relative z-10 container mx-auto pb-10 lg:pb-[120px]">
                     <div
                         className={`
                           flex flex-col items-center justify-center gap-8 rounded-xl bg-white px-4 pt-6 pb-10
                           lg:flex-row lg:gap-16 lg:p-12
                         `}
                     >
-                        <div className="flex w-full max-w-[420px] flex-col">
+                        <div className="flex w-full max-w-[420px] flex-col items-start">
                             <span className="mb-2 text-sm text-neutral-600">{formatDate(post.updatedAt)}</span>
                             <h2 className="mb-5 text-[30px] leading-[120%] font-semibold lg:mb-6 lg:text-[48px]">
                                 {post.Title}
                             </h2>
-                            <div className="mb-8 line-clamp-4 text-neutral-600 lg:mb-11">{post.Content}</div>
+                            <div className="mb-8 line-clamp-4 text-neutral-600 lg:mb-11">
+                                <Markdown
+                                    options={{
+                                        disableParsingRawHTML: true,
+                                    }}
+                                >
+                                    {post.Content}
+                                </Markdown>
+                            </div>
+                            <Button asChild className="shadow-none!">
+                                <Link href={`/blog/${post.Slug}`}>Read more</Link>
+                            </Button>
                         </div>
                         {post.ImageFile?.url && (
                             <Image
@@ -45,7 +59,7 @@ export function BlogHero({ post, title }: BlogHeroProps) {
                             />
                         )}
                     </div>
-                </Link>
+                </div>
             )}
         </section>
     )
