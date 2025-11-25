@@ -44,7 +44,7 @@ export default async function AccountantsBookkeepersPage() {
             {data?.AccountantsList?.map((ladderItem, index) => (
                 <BlockWithImage data={ladderItem} key={ladderItem?.Title ?? index} />
             ))}
-            <div className="mb-[90px] flex items-center justify-center">
+            <div className="mb-16 flex items-center justify-center">
                 <Button asChild>
                     <a
                         href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=AccountantsAndBookkeepers`}
@@ -59,7 +59,7 @@ export default async function AccountantsBookkeepersPage() {
             <PricingSelector onlyPro />
             <PricingTable onlyPro />
             <Reviews backgroundColor="white" />
-            <Cta backgroundColor="primary-50" />
+            <Cta backgroundColor="primary" />
         </>
     )
 }

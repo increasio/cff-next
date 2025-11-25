@@ -59,7 +59,7 @@ export default async function LegalPageTemplate({ params }: LegalPageTemplatePro
                 <Markdown>{data.content}</Markdown>
             </section>
             <Faq data={data.Faq ?? []} />
-            <Cta backgroundColor="primary-50" />
+            <Cta backgroundColor="primary" />
         </>
     )
 }

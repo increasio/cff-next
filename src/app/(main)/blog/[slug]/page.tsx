@@ -105,7 +105,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 </div>
             </section>
             <Faq data={post.Faq ?? []} />
-            <Cta backgroundColor="primary-50" />
+            <Cta backgroundColor="primary" />
         </>
     )
 }

@@ -11,7 +11,7 @@ interface AnswersProps {
 
 export function Answers({ answers, description, info, title }: AnswersProps) {
     return (
-        <section className="relative bg-primary-50 py-10 lg:py-[60px]">
+        <section className="relative bg-primary-50 py-10 lg:py-16">
             <BlurCircle color="blue" left={-430} size={640} top={240} />
             <div className="relative z-10 container mx-auto flex flex-col items-center justify-center gap-10">
                 <div className="mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 text-center">

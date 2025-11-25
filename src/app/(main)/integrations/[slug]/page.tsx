@@ -63,7 +63,7 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
                 <Fragment key={ladderItem?.Title ?? index}>
                     {index === 2 && (
                         <>
-                            <div className="mb-[90px] flex items-center justify-center">
+                            <div className="mb-16 flex items-center justify-center">
                                 <Button asChild>
                                     <a
                                         href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=${data.Name}`}
@@ -80,7 +80,7 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
                     <BlockWithImage data={ladderItem} key={ladderItem?.Title} />
                 </Fragment>
             ))}
-            <div className="mb-[90px] flex items-center justify-center">
+            <div className="mb-16 flex items-center justify-center">
                 <Button asChild>
                     <a
                         href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=${data.Name}`}
@@ -93,7 +93,7 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
             </div>
             <Reviews />
             <Faq data={data.Faq ?? []} />
-            <Cta backgroundColor="primary-50" buttonText="Start free" title={`Get more out of ${data.Name}`} />
+            <Cta backgroundColor="primary" buttonText="Start free" title={`Get more out of ${data.Name}`} />
         </>
     )
 }

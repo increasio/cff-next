@@ -77,7 +77,7 @@ export default async function PricingPage() {
                 </div>
             </section>
             <Faq data={data?.PricingFaq ?? []} title="Pricing FAQ" />
-            <Cta backgroundColor="primary-50" />
+            <Cta backgroundColor="primary" />
         </>
     )
 }

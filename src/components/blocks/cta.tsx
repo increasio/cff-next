@@ -7,7 +7,7 @@ import { ACCOUNTS_URL } from '@/constants'
 import { cn } from '@/lib/utils'
 
 interface CtaProps {
-    backgroundColor?: 'primary-50' | 'white'
+    backgroundColor?: 'primary' | 'white'
     buttonLink?: string
     buttonText?: string
     title?: string
@@ -24,14 +24,14 @@ export function Cta({
     const page = pathname === '/' ? 'home' : pathname.replace('/', '')
     return (
         <section
-            className={cn('relative z-10 py-20', {
-                'bg-primary-50': backgroundColor === 'primary-50',
+            className={cn('py-14 lg:py-20', {
+                'bg-primary-100 text-white': backgroundColor === 'primary',
                 'bg-white': backgroundColor === 'white',
             })}
         >
             <div
                 className={`
-                  mx-auto flex max-w-[911px] flex-col items-center justify-between gap-6 px-4
+                  relative z-20 mx-auto flex max-w-[911px] flex-col items-center justify-between gap-6 px-4
                   lg:flex-row lg:gap-12
                 `}
             >

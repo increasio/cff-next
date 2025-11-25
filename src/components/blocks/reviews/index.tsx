@@ -10,7 +10,7 @@ interface ReviewsProps {
 export async function Reviews({ backgroundColor = 'primary-50' }: ReviewsProps) {
     const data = await api.GetTestimonials()
     return (
-        <section className={`relative pt-10 md:pt-20 ${backgroundColor === 'white' ? `bg-white` : `bg-primary-50`}`}>
+        <section className={`relative pt-16 ${backgroundColor === 'white' ? `bg-white` : `bg-primary-50`}`}>
             <BlurCircle className="z-20" color="green" right={120} size={500} top={109} />
             <BlurCircle className="z-20" color="blue" right={-87} size={591} top={390} />
             <div className="relative z-30 flex flex-col gap-12">

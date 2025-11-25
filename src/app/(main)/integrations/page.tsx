@@ -45,7 +45,7 @@ export default async function IntegrationsPage() {
             />
             <Faq data={data?.Faq ?? []} />
             <Cta
-                backgroundColor="primary-50"
+                backgroundColor="primary"
                 buttonLink={`${ACCOUNTS_URL}/signup?action=signup&section=cta&page=features`}
             />
         </>

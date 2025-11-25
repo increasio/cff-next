@@ -43,7 +43,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     {totalPages > 1 && <PaginationComponent page={page} totalPages={totalPages} />}
                 </div>
             </section>
-            <Cta backgroundColor="primary-50" />
+            <Cta backgroundColor="primary" />
         </>
     )
 }

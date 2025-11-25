@@ -13,7 +13,7 @@ interface FaqProps {
 
 export function Faq({ data, title }: FaqProps) {
     return (
-        <section className="relative flex flex-col gap-6 pt-[60px] pb-[90px]">
+        <section className="relative flex flex-col gap-6 pt-16 pb-10 lg:pt-12 lg:pb-16">
             <div className="relative z-10 container mx-auto flex flex-col gap-6">
                 <h2 className="text-center text-2.5xl font-semibold">{title ?? 'FAQ'}</h2>
             </div>

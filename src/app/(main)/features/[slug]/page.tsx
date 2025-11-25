@@ -45,7 +45,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
                 <Fragment key={ladderItem?.Title ?? index}>
                     {index === 2 && (
                         <>
-                            <div className="mb-[90px] flex items-center justify-center">
+                            <div className="mb-16 flex items-center justify-center">
                                 <Button asChild>
                                     <a
                                         href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=${data.Name}`}
@@ -62,7 +62,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
                     <BlockWithImage data={ladderItem} key={ladderItem?.Title} />
                 </Fragment>
             ))}
-            <div className="mb-[90px] flex items-center justify-center">
+            <div className="mb-16 flex items-center justify-center">
                 <Button asChild>
                     <a
                         href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=${data.Name}`}
@@ -81,7 +81,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
             />
             <Faq data={data.Faq ?? []} />
             <Cta
-                backgroundColor="primary-50"
+                backgroundColor="primary"
                 buttonText="Start free trial now"
                 title={`Get your ${data.Name} in seconds`}
             />

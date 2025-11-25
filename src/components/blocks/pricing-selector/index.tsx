@@ -21,7 +21,7 @@ export default function PricingSelector({ onClick, onlyPro = false }: PricingSel
     const [companiesRange, setCompaniesRange] = useState([5])
 
     return (
-        <section className="relative z-10 container mx-auto flex flex-col gap-6 py-16 lg:gap-10 lg:py-14">
+        <section className="relative z-10 container mx-auto flex flex-col gap-6 py-16 lg:gap-10 lg:py-16">
             <p className="text-center text-[28px] font-semibold lg:text-[32px]">Pick your plan</p>
             <div className="mx-auto flex flex-col gap-x-[60px] gap-y-10 md:flex-row lg:px-7">
                 <div

@@ -11,7 +11,7 @@ export function NewsletterCta() {
     const [email, setEmail] = useState('')
 
     return (
-        <section className="relative container mx-auto py-10 lg:py-24">
+        <section className="relative container mx-auto pt-10 pb-16 lg:py-16">
             <div className="lg:px-12">
                 <div
                     className={`

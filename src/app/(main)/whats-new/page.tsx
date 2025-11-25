@@ -21,7 +21,7 @@ export default async function WhatsNewPage() {
             <Breadcrumbs activePage="What’s New" />
             <BlogHero post={hero} title="What's New" />
             <BlogListLoadMore data={rest} />
-            <Cta backgroundColor="primary-50" />
+            <Cta backgroundColor="primary" />
         </>
     )
 }

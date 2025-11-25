@@ -8,7 +8,7 @@ interface PricingTableProps {
 
 export default function PricingTable({ onlyPro }: PricingTableProps) {
     return (
-        <section className="mx-auto max-w-[880px] px-4 py-14">
+        <section className="mx-auto max-w-[880px] px-4 py-16">
             <table className="w-full divide-y divide-neutral-300">
                 <thead>
                     <tr className="font-semibold">

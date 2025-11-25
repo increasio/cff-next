@@ -19,7 +19,7 @@ export default function ReviewsCarousel({ data }: ReviewsCarouselProps) {
                 startIndex: 1,
             }}
         >
-            <CarouselContent className="pb-10 md:px-4 md:pb-20">
+            <CarouselContent className="pb-10 md:px-4 md:pb-16">
                 {data.testimonials.map((data, index) => {
                     if (!data) return null
                     return (

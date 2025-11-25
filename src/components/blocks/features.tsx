@@ -43,12 +43,17 @@ export default function Features({ Description, Items, Title }: FeaturesProps) {
                 </div>
                 {Items?.map((item, index) => (
                     <div
-                        className={cn('pt-8 pb-10 lg:pt-[100px] lg:pb-[120px]', {
+                        className={cn('py-8 lg:py-[60px]', {
                             'bg-primary-50': index % 2 !== 0,
                         })}
                         key={item?.Title}
                     >
-                        <div className="container mx-auto flex flex-col items-center gap-5 lg:flex-row lg:gap-16">
+                        <div
+                            className={`
+                              relative z-20 container mx-auto flex flex-col items-center gap-5
+                              lg:flex-row lg:gap-16
+                            `}
+                        >
                             <div className="flex flex-col gap-6 lg:gap-12">
                                 <div className="flex flex-col gap-2">
                                     <h3 className="text-2xl font-semibold text-primary-200 lg:text-[32px]">
