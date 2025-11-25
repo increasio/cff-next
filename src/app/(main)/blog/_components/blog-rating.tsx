@@ -50,7 +50,7 @@ export function BlogRating({ data }: BlogRatingProps) {
     const hasRated = useMemo(() => rating.some((r) => r?.user === currentUserId), [rating, currentUserId])
 
     return (
-        <section className="container mx-auto flex items-center gap-x-3">
+        <section className="flex items-center gap-x-3">
             <div className="flex items-center gap-x-1">
                 {Array.from({ length: 5 }, (_, i) => (
                     <button

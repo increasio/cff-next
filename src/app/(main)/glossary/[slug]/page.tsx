@@ -1,4 +1,3 @@
-import Markdown from 'markdown-to-jsx'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -6,15 +5,15 @@ import { Article, CreativeWorkSeries, WithContext } from 'schema-dts'
 
 import { Cta } from '@/components/blocks/cta'
 import { Faq } from '@/components/blocks/faq'
-import { BlogCta } from '@/components/blog/post-content/blog-cta'
+import { PostContent } from '@/components/blog/post-content'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { GenerateJsonLd } from '@/components/shared/generate-jsonld'
 import { generateSeo } from '@/components/shared/generate-seo'
 import { SITE_URL } from '@/constants'
 import { api } from '@/lib/api'
-import { stripIndent } from '@/lib/utils'
 
 import GlossaryHeroWrapper from '../_components/glossary-hero-wrapper'
+import GlossaryTableOfContents from '../_components/glossary-table-of-contents'
 import { HelpCentreCta } from '../_components/help-centre-cta'
 
 const getData = (slug: string) => api.GetGlossaryTemplate({ slug })
@@ -110,105 +109,74 @@ export default async function GlossaryPageTemplate({ params }: GlossaryPageTempl
                     <p className="text-base">{data.ShortDescription}</p>
                 </div>
             </GlossaryHeroWrapper>
-            <section className={`relative z-60 container mx-auto flex flex-col items-start gap-12 py-12 lg:py-[60px]`}>
-                <div className="flex flex-col">
-                    <h2 className="mb-6 text-2xl font-bold lg:text-[32px]">{data.PageTitle}</h2>
-                    {data.PageDescription && <div className="prose mb-12">{data.PageDescription}</div>}
-                    {data.Image?.url && (
-                        <Image
-                            alt={data.Image.alternativeText ?? ''}
-                            className="h-auto w-full"
-                            height={400}
-                            loading="lazy"
-                            src={data.Image.url}
-                            width={600}
-                        />
-                    )}
-                </div>
-                <div
-                    className={`
-                      relative z-60 flex w-full flex-col gap-4 rounded-xl bg-primary-50 px-5 py-6
-                      shadow-[0px_4px_8px_-123px_#18274B0A,0px_4px_4px_-6px_#18274B1F]
-                    `}
-                >
-                    <span className="text-xl font-medium lg:text-2xl">Table of Contents</span>
-                    <div className="flex flex-col gap-3 pl-6 lg:pl-12">
-                        {data.Content?.match(/^##\s(.*?)(?=\n|$)/gm)?.map((header, index) => {
-                            return (
-                                <Link
-                                    className=""
-                                    href={`#${header
-                                        .replaceAll('## ', '')
-                                        .replaceAll(/[^a-z0-9- ]/gi, '')
-                                        .replaceAll(/ /gi, '-')
-                                        .toLowerCase()}`}
-                                    key={index}
+            <PostContent
+                data={data}
+                slot={
+                    <>
+                        <div
+                            className={`
+                              flex w-full flex-col gap-4 rounded-xl bg-primary-50 px-5 py-6
+                              shadow-[0px_4px_8px_-123px_#18274B0A,0px_4px_4px_-6px_#18274B1F]
+                            `}
+                        >
+                            <h3 className="text-xl font-medium lg:text-2xl">Related Terms</h3>
+                            <div className="flex flex-col gap-3 pl-6 lg:pl-12">
+                                {data.relatedGlossaries.map((item) => {
+                                    if (!item) return null
+                                    return (
+                                        <Link
+                                            className={`
+                                              text-base leading-[26px] text-primary-200 underline transition-colors
+                                              hover:text-primary-200
+                                            `}
+                                            href={`/glossary/${item.Slug}`}
+                                            key={item.Slug}
+                                        >
+                                            {item.Name}
+                                        </Link>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                        <div className="px-3 py-2.5">
+                            <Link className="flex items-center gap-2.5 px-3 py-2.5" href="/glossary/">
+                                <svg
+                                    fill="none"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    width="24"
+                                    xmlns="http://www.w3.org/2000/svg"
                                 >
-                                    {index}. <span className="underline">{header.replace('## ', '')}</span>
-                                </Link>
-                            )
-                        })}
-                    </div>
-                </div>
-                <div className="prose w-full overflow-hidden">
-                    <Markdown
-                        options={{
-                            overrides: {
-                                a: {
-                                    props: {
-                                        rel: 'noopener noreferrer',
-                                        target: '_blank',
-                                    },
-                                },
-                                CTA: {
-                                    component: (props) => <BlogCta {...props} />,
-                                },
-
-                                h2: {
-                                    component: (props: { children: React.ReactNode[]; id: string }) => {
-                                        return <h2 id={props.id}>{props.children[0]}</h2>
-                                    },
-                                },
-                            },
-                        }}
-                    >
-                        {stripIndent(data.Content ?? '')}
-                    </Markdown>
-                </div>
-                <div
-                    className={`
-                      flex w-full flex-col gap-4 rounded-xl bg-primary-50 px-5 py-6
-                      shadow-[0px_4px_8px_-123px_#18274B0A,0px_4px_4px_-6px_#18274B1F]
-                    `}
-                >
-                    <h3 className="text-xl font-medium lg:text-2xl">Related Terms</h3>
-                    <div className="flex flex-col gap-3 pl-6 lg:pl-12">
-                        {data.relatedGlossaries.map((item) => {
-                            if (!item) return null
-                            return (
-                                <Link
-                                    className={`
-                                      text-base leading-[26px] text-primary-200 underline transition-colors
-                                      hover:text-primary-200
-                                    `}
-                                    href={`/glossary/${item.Slug}`}
-                                    key={item.Slug}
-                                >
-                                    {item.Name}
-                                </Link>
-                            )
-                        })}
-                    </div>
-                </div>
-                <div className="px-3 py-2.5">
-                    <Link className="flex items-center gap-2.5 px-3 py-2.5" href="/glossary/">
-                        <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="m7.825 13 5.6 5.6L12 20l-8-8 8-8 1.425 1.4-5.6 5.6H20v2H7.825Z" fill="#005841" />
-                        </svg>
-                        <span className="font-semibold text-[#005841]">Back to Glossary Page</span>
-                    </Link>
-                </div>
-            </section>
+                                    <path
+                                        d="m7.825 13 5.6 5.6L12 20l-8-8 8-8 1.425 1.4-5.6 5.6H20v2H7.825Z"
+                                        fill="#005841"
+                                    />
+                                </svg>
+                                <span className="font-semibold text-[#005841]">Back to Glossary Page</span>
+                            </Link>
+                        </div>
+                    </>
+                }
+                slotBefore={
+                    <>
+                        <div className="flex flex-col">
+                            <h2 className="mb-6 text-2xl font-bold lg:text-[32px]">{data.PageTitle}</h2>
+                            {data.PageDescription && <div className="prose mb-12">{data.PageDescription}</div>}
+                            {data.Image?.url && (
+                                <Image
+                                    alt={data.Image.alternativeText ?? ''}
+                                    className="h-auto w-full"
+                                    height={400}
+                                    loading="lazy"
+                                    src={data.Image.url}
+                                    width={600}
+                                />
+                            )}
+                        </div>
+                        <GlossaryTableOfContents content={data.Content} />
+                    </>
+                }
+            />
             {data.Faq && <Faq data={data.Faq} />}
             <HelpCentreCta
                 buttonText="Help Centre"

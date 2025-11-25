@@ -17,8 +17,8 @@ export default function GlossaryHeroWrapper({ children }: GlossaryHeroWrapperPro
         >
             <BlurCircle className="z-60" color="blue" left={-254} size={591} top={-60} />
             <BlurCircle className="z-60" color="green" left={-208} size={500} top={264} />
-            <BlurCircle className="z-60" color="green" right={-198} size={500} top={0} />
-            <BlurCircle className="z-60" color="blue" right={-367} size={591} top={233} />
+            <BlurCircle className="z-60 hidden lg:block" color="green" right={-198} size={500} top={0} />
+            <BlurCircle className="z-60 hidden lg:block" color="blue" right={-367} size={591} top={233} />
             {children}
         </section>
     )

@@ -18,9 +18,11 @@ interface PostContentProps {
             url?: string
         } | null
     }
+    slot?: React.ReactNode
+    slotBefore?: React.ReactNode
 }
 
-export function PostContent({ data }: PostContentProps) {
+export function PostContent({ data, slot, slotBefore }: PostContentProps) {
     const [activeTitle, setActiveTitle] = useState('')
 
     useLayoutEffect(() => {
@@ -39,50 +41,54 @@ export function PostContent({ data }: PostContentProps) {
               lg:flex-row lg:gap-5 lg:pt-[60px] lg:pb-[90px]
             `}
         >
-            <div className="prose w-full max-w-none flex-1 overflow-hidden">
-                {data.ImageFile?.url && (
-                    <Image
-                        alt={data.ImageFile.alternativeText ?? ''}
-                        className="mb-[18px] h-auto w-full"
-                        height={400}
-                        loading="lazy"
-                        src={data.ImageFile.url}
-                        width={600}
-                    />
-                )}
-                <Markdown
-                    options={{
-                        overrides: {
-                            a: {
-                                props: {
-                                    rel: 'noopener noreferrer',
-                                    target: '_blank',
+            <div className="flex w-full flex-1 flex-col gap-12 overflow-hidden">
+                {slotBefore}
+                <div className="prose w-full max-w-none overflow-hidden">
+                    {data.ImageFile?.url && (
+                        <Image
+                            alt={data.ImageFile.alternativeText ?? ''}
+                            className="mb-[18px] h-auto w-full"
+                            height={400}
+                            loading="lazy"
+                            src={data.ImageFile.url}
+                            width={600}
+                        />
+                    )}
+                    <Markdown
+                        options={{
+                            overrides: {
+                                a: {
+                                    props: {
+                                        rel: 'noopener noreferrer',
+                                        target: '_blank',
+                                    },
+                                },
+                                CTA: {
+                                    component: (props) => <BlogCta {...props} />,
+                                },
+                                h2: {
+                                    component: (props: { children: React.ReactNode[]; id: string }) => {
+                                        return (
+                                            <InView
+                                                onChange={(inView) => {
+                                                    if (inView) {
+                                                        setActiveTitle(props.children[0] as string)
+                                                    }
+                                                }}
+                                                rootMargin="0px 0px -50% 0px"
+                                            >
+                                                <h2 id={props.id}>{props.children[0]}</h2>
+                                            </InView>
+                                        )
+                                    },
                                 },
                             },
-                            CTA: {
-                                component: (props) => <BlogCta {...props} />,
-                            },
-                            h2: {
-                                component: (props: { children: React.ReactNode[]; id: string }) => {
-                                    return (
-                                        <InView
-                                            onChange={(inView) => {
-                                                if (inView) {
-                                                    setActiveTitle(props.children[0] as string)
-                                                }
-                                            }}
-                                            rootMargin="0px 0px -50% 0px"
-                                        >
-                                            <h2 id={props.id}>{props.children[0]}</h2>
-                                        </InView>
-                                    )
-                                },
-                            },
-                        },
-                    }}
-                >
-                    {stripIndent(data.Content ?? '')}
-                </Markdown>
+                        }}
+                    >
+                        {stripIndent(data.Content ?? '')}
+                    </Markdown>
+                </div>
+                {slot}
             </div>
             <div
                 className={`

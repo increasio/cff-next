@@ -95,8 +95,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                 publishedAt={formatDate(post.publishedAt)}
                 title={post.Title}
             />
-            <PostContent data={post} />
-            <BlogRating data={post} />
+            <PostContent data={post} slot={<BlogRating data={post} key="rating" />} />
             <section className="relative py-16 lg:py-[90px]">
                 <div className="relative container mx-auto grid gap-6 lg:grid-cols-3 lg:gap-y-12">
                     {relatedPosts.map((relatedPost) => (
