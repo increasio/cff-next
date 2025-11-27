@@ -2,6 +2,7 @@ import { cache } from 'react'
 
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
+import CtaStatic from '@/components/blocks/cta-static'
 import { Faq } from '@/components/blocks/faq'
 import { Hero } from '@/components/blocks/hero'
 import IntegrationsCards from '@/components/blocks/integrations-cards'
@@ -37,6 +38,7 @@ export default async function IntegrationsPage() {
             {data?.Ladder?.map((item) => (
                 <BlockWithImage data={item} key={item?.Title} />
             ))}
+            <CtaStatic className="mb-10 lg:mb-16" contained />
             <SingleReview />
             <IntegrationsCards
                 description={data?.IntegrationDescription}

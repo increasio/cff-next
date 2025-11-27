@@ -4,14 +4,13 @@ import { Fragment } from 'react'
 import { Answers } from '@/components/blocks/answers'
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
+import CtaStatic from '@/components/blocks/cta-static'
 import { Faq } from '@/components/blocks/faq'
 import { Hero } from '@/components/blocks/hero'
 import SingleReview from '@/components/blocks/single-review'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { GenerateJsonLd } from '@/components/shared/generate-jsonld'
 import { generateSeo } from '@/components/shared/generate-seo'
-import { Button } from '@/components/ui/button'
-import { ACCOUNTS_URL } from '@/constants'
 import { api } from '@/lib/api'
 
 const getData = (slug: string) => api.GetFeaturesTemplate({ slug })
@@ -45,34 +44,18 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
                 <Fragment key={ladderItem?.Title ?? index}>
                     {index === 2 && (
                         <>
-                            <div className="mb-16 flex items-center justify-center">
-                                <Button asChild>
-                                    <a
-                                        href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=${data.Name}`}
-                                        rel="noreferrer"
-                                        target="_blank"
-                                    >
-                                        Start Free
-                                    </a>
-                                </Button>
-                            </div>
+                            <CtaStatic
+                                className="mb-10 lg:mb-16"
+                                contained
+                                title="Ready to take control of your cash flow?"
+                            />
                             <SingleReview />
                         </>
                     )}
                     <BlockWithImage data={ladderItem} key={ladderItem?.Title} />
                 </Fragment>
             ))}
-            <div className="mb-16 flex items-center justify-center">
-                <Button asChild>
-                    <a
-                        href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=${data.Name}`}
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        Start Free
-                    </a>
-                </Button>
-            </div>
+            <CtaStatic className="mb-10 lg:mb-16" contained />
             <Answers
                 answers={data.Answers?.map((answer) => answer?.AnswerTitle ?? '') ?? []}
                 description={data.AnswersDescription}
@@ -80,11 +63,7 @@ export default async function FeaturePage({ params }: FeaturePageProps) {
                 title={data.AnswersTitle}
             />
             <Faq data={data.Faq ?? []} />
-            <Cta
-                backgroundColor="primary"
-                buttonText="Start free trial now"
-                title={`Get your ${data.Name} in seconds`}
-            />
+            <Cta backgroundColor="primary" title={`Get your ${data.Name} in seconds`} />
         </>
     )
 }

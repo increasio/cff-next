@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
+import CtaStatic from '@/components/blocks/cta-static'
 import { Faq } from '@/components/blocks/faq'
 import { Hero } from '@/components/blocks/hero'
 import { Reviews } from '@/components/blocks/reviews'
@@ -10,8 +11,6 @@ import SingleReview from '@/components/blocks/single-review'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { GenerateJsonLd } from '@/components/shared/generate-jsonld'
 import { generateSeo } from '@/components/shared/generate-seo'
-import { Button } from '@/components/ui/button'
-import { ACCOUNTS_URL } from '@/constants'
 import { api } from '@/lib/api'
 
 const getData = (slug: string) => api.GetIntegrationTemplate({ slug })
@@ -63,34 +62,18 @@ export default async function IntegrationPage({ params }: IntegrationPageProps) 
                 <Fragment key={ladderItem?.Title ?? index}>
                     {index === 2 && (
                         <>
-                            <div className="mb-16 flex items-center justify-center">
-                                <Button asChild>
-                                    <a
-                                        href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=${data.Name}`}
-                                        rel="noreferrer"
-                                        target="_blank"
-                                    >
-                                        Start Free
-                                    </a>
-                                </Button>
-                            </div>
+                            <CtaStatic
+                                className="mb-10 lg:mb-16"
+                                contained
+                                title="Ready to take control of your cash flow?"
+                            />
                             <SingleReview />
                         </>
                     )}
                     <BlockWithImage data={ladderItem} key={ladderItem?.Title} />
                 </Fragment>
             ))}
-            <div className="mb-16 flex items-center justify-center">
-                <Button asChild>
-                    <a
-                        href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=${data.Name}`}
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        Start Free
-                    </a>
-                </Button>
-            </div>
+            <CtaStatic className="mb-10 lg:mb-16" contained />
             <Reviews />
             <Faq data={data.Faq ?? []} />
             <Cta backgroundColor="primary" buttonText="Start free" title={`Get more out of ${data.Name}`} />

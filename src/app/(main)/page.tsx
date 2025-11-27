@@ -3,6 +3,7 @@ import { cache } from 'react'
 import { Benefits } from '@/components/blocks/benefits'
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
+import CtaStatic from '@/components/blocks/cta-static'
 import Features from '@/components/blocks/features'
 import { HeroWithLottie } from '@/components/blocks/hero-with-lottie'
 import { Integrations } from '@/components/blocks/integrations'
@@ -36,6 +37,7 @@ export default async function Home() {
                 Items={data?.Features?.Items ?? []}
                 Title={data?.Features?.Title}
             />
+            <CtaStatic />
             <BlockWithImage data={data?.Ladder2} />
             <BlockWithImage data={data?.Ladder3} />
             <Benefits

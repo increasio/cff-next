@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { cache } from 'react'
 
 import { Cta } from '@/components/blocks/cta'
+import CtaStatic from '@/components/blocks/cta-static'
 import { Faq } from '@/components/blocks/faq'
 import { Hero } from '@/components/blocks/hero'
 import PricingSelector from '@/components/blocks/pricing-selector'
@@ -40,6 +41,7 @@ export default async function PricingPage() {
             <Rating />
             <PricingSelector />
             <PricingTable />
+            <CtaStatic />
             <Reviews backgroundColor="white" />
             <section className="relative bg-primary-50 py-12 lg:py-20">
                 <div

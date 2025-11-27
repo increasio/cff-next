@@ -1,8 +1,6 @@
 import Image from 'next/image'
 
 import { BlurCircle } from '@/components/shared/blur-circle'
-import { Button } from '@/components/ui/button'
-import { ACCOUNTS_URL } from '@/constants'
 import { cn } from '@/lib/utils'
 
 interface FeaturesProps {
@@ -92,17 +90,6 @@ export default function Features({ Description, Items, Title }: FeaturesProps) {
                         </div>
                     </div>
                 ))}
-                <div className="flex items-center justify-center">
-                    <Button asChild>
-                        <a
-                            href={`${ACCOUNTS_URL}/signup?action=signup&section=features&page=home`}
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            Start Free Trial Now
-                        </a>
-                    </Button>
-                </div>
             </div>
         </section>
     )

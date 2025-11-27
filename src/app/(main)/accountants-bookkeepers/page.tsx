@@ -2,6 +2,7 @@ import { cache } from 'react'
 
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
+import CtaStatic from '@/components/blocks/cta-static'
 import { Hero } from '@/components/blocks/hero'
 import { Integrations } from '@/components/blocks/integrations'
 import PricingSelector from '@/components/blocks/pricing-selector'
@@ -44,17 +45,7 @@ export default async function AccountantsBookkeepersPage() {
             {data?.AccountantsList?.map((ladderItem, index) => (
                 <BlockWithImage data={ladderItem} key={ladderItem?.Title ?? index} />
             ))}
-            <div className="mb-16 flex items-center justify-center">
-                <Button asChild>
-                    <a
-                        href={`${ACCOUNTS_URL}/signup?action=signup&section=content&page=AccountantsAndBookkeepers`}
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        Start Free trial now
-                    </a>
-                </Button>
-            </div>
+            <CtaStatic className="mb-10 lg:mb-16" contained />
             <Integrations backgroundColor="primary-50" />
             <PricingSelector onlyPro />
             <PricingTable onlyPro />
