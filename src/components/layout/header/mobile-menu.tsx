@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
@@ -70,7 +71,7 @@ export default function MobileMenu({ menu }: MobileMenuProps) {
                                         </AccordionTrigger>
                                         <AccordionContent className="pb-0">
                                             {item.submenu.map((child) => (
-                                                <a
+                                                <Link
                                                     className={`
                                                       block px-4 py-3.5 pl-12 text-sm font-medium text-primary-200
                                                       transition-colors
@@ -83,8 +84,20 @@ export default function MobileMenu({ menu }: MobileMenuProps) {
                                                     }}
                                                 >
                                                     {child.title}
-                                                </a>
+                                                </Link>
                                             ))}
+                                            {item.showSeeAll && (
+                                                <Link
+                                                    className={`
+                                                      block px-4 py-3.5 pl-12 text-sm font-medium text-primary-200
+                                                      transition-colors
+                                                      hover:bg-primary-50
+                                                    `}
+                                                    href={item.href}
+                                                >
+                                                    See all
+                                                </Link>
+                                            )}
                                         </AccordionContent>
                                     </AccordionItem>
                                 ) : (

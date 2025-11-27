@@ -54,7 +54,7 @@ export default function IntegrationsCards({ description, integrations, title }: 
                                 {item.Description}
                             </p>
                             <Link
-                                className="group flex items-center gap-1.5 py-3 text-primary-200"
+                                className="group flex items-center gap-1.5 py-3 font-semibold text-primary-200"
                                 href={`/integrations/${item.Slug}/`}
                             >
                                 <p>Learn more</p>

@@ -24,7 +24,7 @@ export const PricingRow = ({ item, onlyPro = false }: PricingRowProps) => {
                     <TooltipTrigger asChild>
                         <Image
                             alt="FAQ"
-                            className="cursor-pointer"
+                            className="hidden cursor-pointer lg:inline-block"
                             height={20}
                             loading="lazy"
                             src={`${CLOUDINARY_URL}/images/Question.svg`}

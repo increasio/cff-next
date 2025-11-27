@@ -16,7 +16,7 @@ export function GlossaryHero({ data }: GlossaryHeroProps) {
 
     return (
         <GlossaryHeroWrapper>
-            <div className={`relative z-70 mx-auto flex max-w-[550px] flex-col items-center justify-center gap-8`}>
+            <div className={`relative z-20 mx-auto flex max-w-[550px] flex-col items-center justify-center gap-8`}>
                 <div className="flex flex-col items-center justify-center gap-3 text-center">
                     <h1 className="text-[30px] leading-[110%] font-semibold md:text-[48px]">
                         Cash Flow <br /> Performance Glossary
@@ -36,7 +36,10 @@ export function GlossaryHero({ data }: GlossaryHeroProps) {
                             disabled={!active}
                             key={index}
                             onClick={() => {
-                                window.location.href = `#${letter.toLowerCase()}`
+                                const element = document.querySelector(`#${letter}`)
+                                if (element) {
+                                    element.scrollIntoView({ behavior: 'smooth' })
+                                }
                             }}
                         >
                             {letter}

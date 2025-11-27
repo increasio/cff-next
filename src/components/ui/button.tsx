@@ -6,8 +6,8 @@ import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
     `
-      inline-flex shrink-0 items-center justify-center gap-2 rounded-sm font-medium whitespace-nowrap uppercase
-      shadow-custom transition-all outline-none
+      inline-flex shrink-0 items-center justify-center gap-2 rounded-sm text-center font-medium uppercase shadow-custom
+      transition-all outline-none
       focus-visible:border-neutral-800 focus-visible:ring-[3px] focus-visible:ring-neutral-800/50
       disabled:pointer-events-none
       aria-invalid:border-red-500 aria-invalid:ring-red-500/20
@@ -21,7 +21,7 @@ const buttonVariants = cva(
         },
         variants: {
             size: {
-                default: 'h-[51px] px-12 py-3 text-xl leading-[120%] font-semibold has-[>svg]:px-3',
+                default: 'px-12 py-3 text-xl leading-[120%] font-semibold has-[>svg]:px-3',
                 icon: 'size-10 p-2',
                 sm: 'h-11 px-12 py-3 text-sm leading-[120%] font-bold has-[>svg]:px-3',
             },

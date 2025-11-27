@@ -15,18 +15,26 @@ export function PaymentPeriodSelect({ selectedPaymentPeriod, setSelectedPaymentP
     return (
         <div className="flex flex-col gap-8">
             <p className="text-2xl leading-[140%] font-semibold">Select the payment period</p>
-            <div className="flex w-full justify-around rounded-sm bg-[#F8F8F8] p-2 text-sm md:gap-2 md:text-base">
-                {paymentOptions.map(({ discount, id, label }) => {
+            <div
+                className={`
+                  flex w-full flex-wrap justify-around gap-y-2.5 rounded-sm bg-[#F8F8F8] p-2 text-sm
+                  md:gap-2 md:text-base
+                  lg:flex-nowrap
+                `}
+            >
+                {paymentOptions.map(({ discount, id, label }, index) => {
                     const isSelected = selectedPaymentPeriod === id
                     return (
                         <button
                             className={cn(
                                 `
-                                  flex basis-1/3 flex-col items-center gap-2.5 rounded-sm p-2 transition-colors
+                                  flex items-center justify-center gap-2.5 rounded-sm p-2 font-semibold
+                                  transition-colors
                                   md:px-4
-                                  lg:basis-auto lg:flex-row
+                                  lg:basis-auto lg:font-normal
                                 `,
                                 isSelected ? 'bg-primary-100 text-white' : 'bg-transparent',
+                                index === 0 ? 'basis-full' : 'basis-1/2',
                             )}
                             key={id}
                             onClick={() => {

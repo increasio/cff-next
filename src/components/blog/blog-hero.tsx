@@ -38,13 +38,7 @@ export function BlogHero({ post, title }: BlogHeroProps) {
                                 {post.Title}
                             </h2>
                             <div className="mb-8 line-clamp-4 text-neutral-600 lg:mb-11">
-                                <Markdown
-                                    options={{
-                                        disableParsingRawHTML: true,
-                                    }}
-                                >
-                                    {post.Content}
-                                </Markdown>
+                                <Markdown>{post.Content}</Markdown>
                             </div>
                             <Button asChild className="shadow-none!">
                                 <Link href={`/blog/${post.Slug}`}>Read more</Link>

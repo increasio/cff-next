@@ -63,7 +63,7 @@ export default async function PricingPage() {
                                 fillRule="evenodd"
                             />
                         </svg>
-                        <p className="text-[28px] font-semibold">Are you an accountant or a bookkeeper?</p>
+                        <p className="text-[28px] font-semibold text-balance">Are you an accountant or a bookkeeper?</p>
                         <Button asChild>
                             <Link href="/accountants-bookkeepers">See our Partners Program</Link>
                         </Button>

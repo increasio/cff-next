@@ -38,7 +38,7 @@ export default function Features({ Description, Items, Title }: FeaturesProps) {
             <BlurCircle bottom={-325} className="opacity-20" color="blue" right={-120} size={590} />
             <div className="relative z-10 flex flex-col gap-3">
                 <div className="container mx-auto flex flex-col items-center justify-center gap-4 text-center">
-                    <h2 className="text-[28px] font-semibold lg:text-[40px]">{Title}</h2>
+                    <h2 className="text-[28px] font-semibold text-balance lg:text-[40px]">{Title}</h2>
                     <p className="leading-[160%] font-medium text-neutral-600 lg:text-xl">{Description}</p>
                 </div>
                 {Items?.map((item, index) => (

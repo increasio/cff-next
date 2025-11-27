@@ -38,7 +38,7 @@ export function Cta({
                 <p
                     className={`
                       text-center text-2.5xl font-semibold text-balance
-                      lg:text-left lg:text-3.5xl lg:leading-[100%]
+                      lg:text-left lg:text-3.5xl lg:leading-[140%]
                     `}
                 >
                     {title}
