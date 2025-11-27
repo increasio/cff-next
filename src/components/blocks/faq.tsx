@@ -45,7 +45,7 @@ export function Faq({ data, title }: FaqProps) {
                                     `}
                                     showIcon={false}
                                 >
-                                    <h3>{item.Question}</h3>
+                                    {item.Question}
                                     <PlusIcon
                                         className={`
                                           pointer-events-none size-8 shrink-0 text-primary-100 transition-transform
