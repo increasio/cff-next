@@ -662,6 +662,7 @@ export type FeaturesPage = {
   Description?: Maybe<Scalars['String']['output']>;
   Faq?: Maybe<Array<Maybe<ComponentFaqFaq>>>;
   HeroImageFile?: Maybe<UploadFile>;
+  Ladder?: Maybe<Array<Maybe<ComponentLadderLadderItem>>>;
   Seo?: Maybe<ComponentSeoSeo>;
   Title?: Maybe<Scalars['String']['output']>;
   TitleUnderline?: Maybe<Scalars['String']['output']>;
@@ -679,11 +680,19 @@ export type FeaturesPageFaqArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+
+export type FeaturesPageLadderArgs = {
+  filters?: InputMaybe<ComponentLadderLadderItemFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type FeaturesPageInput = {
   CtaText?: InputMaybe<Scalars['String']['input']>;
   Description?: InputMaybe<Scalars['String']['input']>;
   Faq?: InputMaybe<Array<InputMaybe<ComponentFaqFaqInput>>>;
   HeroImageFile?: InputMaybe<Scalars['ID']['input']>;
+  Ladder?: InputMaybe<Array<InputMaybe<ComponentLadderLadderItemInput>>>;
   Seo?: InputMaybe<ComponentSeoSeoInput>;
   Title?: InputMaybe<Scalars['String']['input']>;
   TitleUnderline?: InputMaybe<Scalars['String']['input']>;
@@ -2883,7 +2892,7 @@ export type GetAllFaqsQuery = { __typename?: 'Query', faqs: Array<{ __typename?:
 export type GetFeaturesPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetFeaturesPageQuery = { __typename?: 'Query', featuresPage?: { __typename?: 'FeaturesPage', Title?: string | null, TitleUnderline?: string | null, UnderlineLeft?: boolean | null, Description?: string | null, CtaText?: string | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null, HeroImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null, features: Array<{ __typename?: 'Feature', Title?: string | null, Name?: string | null, Description?: string | null, Link?: string | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> };
+export type GetFeaturesPageQuery = { __typename?: 'Query', featuresPage?: { __typename?: 'FeaturesPage', Title?: string | null, TitleUnderline?: string | null, UnderlineLeft?: boolean | null, Description?: string | null, CtaText?: string | null, Faq?: Array<{ __typename?: 'ComponentFaqFaq', Answer?: string | null, Question?: string | null } | null> | null, Ladder?: Array<{ __typename?: 'ComponentLadderLadderItem', Description?: string | null, Link?: string | null, Subtitle?: string | null, Title?: string | null, reverse?: boolean | null, ImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null, IconFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null> | null, Seo?: { __typename?: 'ComponentSeoSeo', MetaDescription?: string | null, MetaTitle?: string | null, OgDescription?: string | null, OgTitle?: string | null, ShareImageFile?: { __typename?: 'UploadFile', url: string } | null } | null, HeroImageFile?: { __typename?: 'UploadFile', alternativeText?: string | null, url: string } | null } | null };
 
 export type GetGlossaryPageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3113,6 +3122,9 @@ export const GetFeaturesPageDocument = gql`
       Answer
       Question
     }
+    Ladder {
+      ...LadderFragment
+    }
     Seo {
       ...ComponentSeoSeoFragment
     }
@@ -3125,17 +3137,9 @@ export const GetFeaturesPageDocument = gql`
     Description
     CtaText
   }
-  features(filters: {showOnMain: {eq: true}}) {
-    Title
-    ImageFile {
-      ...UploadFileFragment
-    }
-    Name
-    Description
-    Link
-  }
 }
-    ${ComponentSeoSeoFragmentFragmentDoc}
+    ${LadderFragmentFragmentDoc}
+${ComponentSeoSeoFragmentFragmentDoc}
 ${UploadFileFragmentFragmentDoc}`;
 export const GetGlossaryPageDocument = gql`
     query GetGlossaryPage {
@@ -3161,7 +3165,7 @@ export const GetHeaderDataDocument = gql`
     Slug
     SortOrder
   }
-  businesses(filters: {showOnMenu: {eq: true}}) {
+  businesses(filters: {showOnMenu: {eq: true}}, sort: ["Name:asc"]) {
     Slug
     Name
   }

@@ -1,12 +1,13 @@
-import { cache } from 'react'
-import { Fragment } from 'react/jsx-runtime'
+import { cache, Fragment } from 'react'
 
 import { BlockWithImage } from '@/components/blocks/block-with-image'
 import { Cta } from '@/components/blocks/cta'
+import CtaStatic from '@/components/blocks/cta-static'
 import { Faq } from '@/components/blocks/faq'
 import { Hero } from '@/components/blocks/hero'
 import { NewsletterCta } from '@/components/blocks/newsletter-cta'
 import { Reviews } from '@/components/blocks/reviews'
+import SingleReview from '@/components/blocks/single-review'
 import { Breadcrumbs } from '@/components/shared/breadcrumbs'
 import { GenerateJsonLd } from '@/components/shared/generate-jsonld'
 import { generateSeo } from '@/components/shared/generate-seo'
@@ -18,7 +19,7 @@ const getData = cache(() => api.GetFeaturesPage())
 export const revalidate = 3600
 
 export default async function FeaturesPage() {
-    const { features, featuresPage: data } = await getData()
+    const { featuresPage: data } = await getData()
     return (
         <>
             <GenerateJsonLd faqData={data?.Faq} seo={data?.Seo} />
@@ -29,17 +30,20 @@ export default async function FeaturesPage() {
                 imageUrl={data?.HeroImageFile?.url}
                 title={data?.Title}
             />
-            {features.map((feature, index) => (
-                <Fragment key={feature?.Name}>
+            {data?.Ladder?.map((item, index) => (
+                <Fragment key={item?.Title ?? index}>
+                    {index === 2 && (
+                        <>
+                            <CtaStatic
+                                className="mb-10 lg:mb-16"
+                                contained
+                                title="Ready to take control of your cash flow?"
+                            />
+                            <SingleReview />
+                        </>
+                    )}
                     {index === 4 && <NewsletterCta />}
-                    <BlockWithImage
-                        data={{
-                            Description: feature?.Description,
-                            ImageFile: feature?.ImageFile,
-                            reverse: index % 2 === 1,
-                            Title: feature?.Title,
-                        }}
-                    />
+                    <BlockWithImage data={item} key={item?.Title} />
                 </Fragment>
             ))}
             <Reviews />
