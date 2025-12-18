@@ -16,7 +16,7 @@ export function AnnualRevenueSlider({ annualRevenue, setAnnualRevenue }: AnnualR
                 <SliderPrimitive.Root
                     className="relative flex w-full touch-none items-center select-none"
                     defaultValue={annualRevenue}
-                    max={10_000_000}
+                    max={10_000_001}
                     min={0}
                     onValueChange={setAnnualRevenue}
                     step={10_000}

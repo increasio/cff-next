@@ -36,19 +36,24 @@ export function getPrice({
     onlyPro,
     plan,
     selectedPaymentPeriod,
-}: GetPriceParams): number | undefined {
+}: GetPriceParams): number {
     if (plan === 'pro' && onlyPro) {
-        const i = getRangeIndex(companiesRange, companyRanges)
-        return priceMatrix.companies[selectedPaymentPeriod][i] ?? 0
+        const maxIndex = priceMatrix.companies[selectedPaymentPeriod].length - 1
+        const i = getRangeIndex(companiesRange, companyRanges, maxIndex)
+        return priceMatrix.companies[selectedPaymentPeriod][i]
     }
 
-    const i = getRangeIndex(annualRevenue, revenueRanges)
-    return plan === 'pro'
-        ? priceMatrix.pro[selectedPaymentPeriod][i] ?? 0
-        : priceMatrix.standard[selectedPaymentPeriod][i] ?? 0
+    const matrix = plan === 'pro' ? priceMatrix.pro : priceMatrix.standard
+
+    const maxIndex = matrix[selectedPaymentPeriod].length - 1
+    const i = getRangeIndex(annualRevenue, revenueRanges, maxIndex)
+
+    return matrix[selectedPaymentPeriod][i]
 }
 
-function getRangeIndex(value: number, ranges: number[]) {
-    for (let i = 0; i < ranges.length; i++) if (value <= ranges[i]) return i
-    return ranges.length
+function getRangeIndex(value: number, ranges: number[], maxIndex: number) {
+    for (let i = 0; i < ranges.length; i++) {
+        if (value <= ranges[i]) return i
+    }
+    return maxIndex
 }
